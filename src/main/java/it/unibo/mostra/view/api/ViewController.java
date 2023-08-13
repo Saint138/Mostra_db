@@ -3,7 +3,13 @@ package main.java.it.unibo.mostra.view.api;
  * Interface for the viewController.
  */
 public interface ViewController {
-    public setHomeView();
+    /**
+     * Method that sets the Home view.
+     */
+    void setHomeView();
+    /**
+     * Method that sets the Login view.
+     */
 
-    public setLoginView();
+    void setLoginView();
 }
