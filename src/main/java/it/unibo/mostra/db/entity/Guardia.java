@@ -1,4 +1,4 @@
-import it.unibo.mostra.db.entity.AbstractPersonale;
+package main.java.it.unibo.mostra.db.entity;
 
 public class Guardia extends AbstractPersonale{
 

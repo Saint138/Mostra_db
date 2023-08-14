@@ -1,6 +1,6 @@
-package it.unibo.mostra.db.entity;
+package main.java.it.unibo.mostra.db.entity;
 
-import it.unibo.mostra.db.api.Personale;
+import main.java.it.unibo.mostra.db.api.Personale;
 
 public abstract class AbstractPersonale implements Personale {
     private Integer stipendio;

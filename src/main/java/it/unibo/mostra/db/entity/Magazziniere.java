@@ -1,4 +1,4 @@
-
+package main.java.it.unibo.mostra.db.entity;
 
 public class Magazziniere extends AbstractPersonale{
 
