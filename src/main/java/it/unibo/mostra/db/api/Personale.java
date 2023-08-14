@@ -1,4 +1,4 @@
-package main.java.it.unibo.mostra.db.api;
+package it.unibo.mostra.db.api;
 
 
 /**

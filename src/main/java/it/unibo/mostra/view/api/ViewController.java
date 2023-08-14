@@ -1,4 +1,4 @@
-package main.java.it.unibo.mostra.view.api;
+package it.unibo.mostra.view.api;
 /**
  * Interface for the viewController.
  */
