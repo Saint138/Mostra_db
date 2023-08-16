@@ -1,4 +1,4 @@
-package it.unibo.mostra.db.views;
+package it.unibo.mostra.db.entity;
 
 public class Biglietto {
     private String data_biglietto;
