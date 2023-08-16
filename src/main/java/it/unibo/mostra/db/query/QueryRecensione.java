@@ -85,24 +85,4 @@ public class QueryRecensione {
 
     }
 
-    public ObservableList<Recensione> visulizzaMediaRecensioni(){
-        final String query = "SELECT M.nome, COUNT( R.codice_recensione) as numero_recensioni, AVG(R.valutazione) as media"
-                            + "FROM Mostra M"
-                            + "JOIN Recensione R on M.codice_mostra = R.codice_mostra"
-                            + "GROUP BY M.nome";
-
-        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
-            final ResultSet rs = stmt.executeQuery();
-
-            final ObservableList<Recensione> list = FXCollections.observableArrayList();
-            while(rs.next()){
-                list.add(new Recensione(rs.getString("M.nome"), rs.getString("numero_recensioni"),rs.getString("media")));
-            }
-            return list;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
 }
