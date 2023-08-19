@@ -4,6 +4,13 @@ import it.unibo.mostra.view.api.ViewController;
 
 public class ViewControllerImpl implements ViewController {
 
+    private final Stage stage;
+    private final SceneFactory sceneFactory;
+
+    public ViewControllerImpl(Stage stage) {
+        this.stage = stage;
+        this.sceneFactory = new SceneFactoryImpl();
+    }
     @Override
     public void setHomeView() {
         // TODO Auto-generated method stub
