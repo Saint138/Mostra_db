@@ -16,7 +16,26 @@ public class QueryRecensione {
         this.connection = connection;
     }
 
-    public ObservableList<Recensione> visulizzaRecensioniMostra(String codiceMostra){
+    //inserire una nuova mostra
+  
+    public void addRecensione(String cod, String Cf, String commento, String codMostra, Integer val) throws SQLException, SQLIntegrityConstraintViolationException {
+        final String query = "INSERT INTO Mostra (CODICE_RECENSIONE, CF, COMMENTO, CODICE_MOSTRA , VALUTAZIONE) "
+                            + "VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, cod);
+            stmt.setInt(2, cf);
+            stmt.setString(3, commento);
+            stmt.setString(4, codMostra);
+            stmt.setString(5, valore);
+            stmt.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("Recensione già inserita");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<List> visulizzaRecensioniMostra(String codiceMostra){
         final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.valutazione, R.commento"
                             + "FROM Recensione R"
                             + "JOIN Visitatore V on R.CF = V.CF"
@@ -27,7 +46,7 @@ public class QueryRecensione {
 
             final ObservableList<Recensione> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new Recensione(rs.getString("V.nome"), rs.getString("V.cognome"),
+                list.add(new List(rs.getString("V.nome"), rs.getString("V.cognome"),
                                                rs.getString("R.Valutazione"), rs.getString("R.commento")));
             }
             return list;
@@ -38,7 +57,7 @@ public class QueryRecensione {
 
     }
 
-    public ObservableList<Recensione> visulizzaRecensioniUtente(String CF){
+    public ObservableList<Recensione>aRecensioniUtente(String CF){
         final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.valutazione, R.commento"
                             + "FROM Recensione R"
                             + "JOIN Visitatore V on R.CF = V.CF"
