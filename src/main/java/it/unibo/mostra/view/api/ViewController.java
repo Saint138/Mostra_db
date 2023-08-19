@@ -7,9 +7,20 @@ public interface ViewController {
      * Method that sets the Home view.
      */
     void setHomeView();
-    /**
-     * Method that sets the Login view.
-     */
 
-    void setLoginView();
+    void setAdminLoginView();
+
+    void setDipendeteLoginView();
+    
+    void setMainView();
+
+    void setRicercaView();
+
+    void setBiglietteriaView();
+
+    void setRecensioneView();
+
+    void setAdminAdd();
+
+    void setDipendenteTurni();
 }
