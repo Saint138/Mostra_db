@@ -79,5 +79,24 @@ public class QueryMostra {
         }
 
     }
+  //inserire una nuova mostra
+  
+    public void addMostra(String nome, String città, Integer numeroOpere, String data, String codiceMostra, Integer valore) throws SQLException, SQLIntegrityConstraintViolationException {
+        final String query = "INSERT INTO Mostra (NOME, CITTA, NUMERO_OPERE, DATA , CODICE_MOSTRA, VALORE) "
+                            + "VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, nome);
+            stmt.setInt(2, città);
+            stmt.setString(3, numeroOpere);
+            stmt.setString(4, data);
+            stmt.setString(5, codiceMostra);
+            stmt.setString(6, valore);
+            stmt.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("mostra già inserita");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
