@@ -1,3 +1,5 @@
+package it.unibo.mostra.db.entity;
+
 public class Mostra {
     private String nome;
     private String città;

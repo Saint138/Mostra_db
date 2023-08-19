@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class QueryVisita {
     
+    private Connection connection;
+
     public QueryVisita(Connection connection) {
         this.connection = connection;
     }
@@ -17,9 +20,9 @@ public class QueryVisita {
                             + "VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, codice_visita);
-            stmt.setInt(2, ora_inizio);
+            stmt.setFloat(2, ora_inizio);
             stmt.setString(3, data_visita);
-            stmt.setString(4, numero_partecipanti);
+            stmt.setInt(4, numero_partecipanti);
             stmt.setString(5, codice_mostra);
             stmt.setString(6, codice_contratto);
             stmt.executeUpdate();

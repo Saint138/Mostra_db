@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import it.unibo.mostra.db.entity.Recensione;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class QueryUtente {
        
     private Connection connection;

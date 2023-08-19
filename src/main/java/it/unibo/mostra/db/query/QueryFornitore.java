@@ -2,8 +2,8 @@ package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class QueryFornitore {
     
@@ -20,7 +20,7 @@ public class QueryFornitore {
                             + "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, codice_fornitore);
-            stmt.setInt(2, nome);
+            stmt.setString(2, nome);
             stmt.setString(3, cognome);
             stmt.setString(4, email);
             stmt.setString(5, numero_telefono);

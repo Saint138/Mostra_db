@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.List;
 
 import it.unibo.mostra.db.entity.Recensione;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class QueryRecensione {
     
@@ -23,10 +27,10 @@ public class QueryRecensione {
                             + "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, cod);
-            stmt.setInt(2, cf);
+            stmt.setString(2, Cf);
             stmt.setString(3, commento);
             stmt.setString(4, codMostra);
-            stmt.setString(5, valore);
+            stmt.setFloat(5, val);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("Recensione già inserita");

@@ -4,6 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
+import it.unibo.mostra.db.entity.Recensione;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class QueryMostra {
 
@@ -86,11 +91,11 @@ public class QueryMostra {
                             + "VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome);
-            stmt.setInt(2, città);
-            stmt.setString(3, numeroOpere);
+            stmt.setString(2, città);
+            stmt.setInt(3, numeroOpere);
             stmt.setString(4, data);
             stmt.setString(5, codiceMostra);
-            stmt.setString(6, valore);
+            stmt.setFloat(6, valore);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("mostra già inserita");

@@ -2,8 +2,8 @@ package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class QueryOpera {
     
@@ -18,7 +18,7 @@ public class QueryOpera {
                             + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nomeArtista);
-            stmt.setInt(2, nomeArte);
+            stmt.setString(2, nomeOpera);
             stmt.setString(3, codiceVendita);
             stmt.setString(4, annoRealizzazione);
             stmt.setString(5, dimensioni);
