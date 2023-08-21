@@ -4,7 +4,10 @@ import java.sql.Connection;
 
 import javax.security.auth.login.LoginContext;
 
-import it.unibo.mostra.controller.LoginController;
+import it.unibo.mostra.controller.HomeController;
+import it.unibo.mostra.controller.adminLoginController;
+import it.unibo.mostra.controller.dipendenteLoginController;
+import it.unibo.mostra.controller.mainViewController;
 import it.unibo.mostra.db.query.*;
 import it.unibo.mostra.view.api.View;
 import javafx.fxml.FXMLLoader;
@@ -43,8 +46,8 @@ public class ViewImpl implements View {
     @Override
     public void setHomeView() {
         try {
-            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/loginView.fxml"));
-            loader.setController(new LoginController(this));
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/HomeView.fxml"));
+            loader.setController(new HomeController(this));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -55,38 +58,80 @@ public class ViewImpl implements View {
 
     @Override
     public void setAdminLoginView() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setAdminLoginView'");
+        try {
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/adminLoginView.fxml"));
+            loader.setController(new adminLoginController(this));
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void setDipendeteLoginView() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDipendeteLoginView'");
+        try {
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/dipendenteLoginView.fxml"));
+            loader.setController(new dipendenteLoginController(this));
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void setMainView() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setMainView'");
+        try{
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/MainView.fxml"));
+            loader.setController(new mainViewController(this, queryMostra));
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void setRicercaView() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setRicercaView'");
+        try {
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/ricercaView.fxml"));
+            loader.setController(new HomeController(this));
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void setBiglietteriaView() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setBiglietteriaView'");
+        try {
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/BiglietteriaView.fxml"));
+            loader.setController(new HomeController(this));
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void setRecensioneView() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setRecensioneView'");
+        try {
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/RecensioneView.fxml"));
+            loader.setController(new HomeController(this));
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -97,8 +142,15 @@ public class ViewImpl implements View {
 
     @Override
     public void setDipendenteTurni() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDipendenteTurni'");
+        try {
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/turniDipendenteView.fxml"));
+            loader.setController(new HomeController(this));
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
