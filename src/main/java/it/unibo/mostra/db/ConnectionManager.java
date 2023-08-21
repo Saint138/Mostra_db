@@ -9,13 +9,13 @@ import java.sql.SQLException;
  */
 public class ConnectionManager {
 
-    private final String user, password, dbname;
+    private final String username, password, dbname;
 
     /**
      * Constructor.
      */
-    public ConnectionManager(String user, String password) {
-        this.user = user;
+    public ConnectionManager(String username, String password) {
+        this.username = username;
         this.password = password;
         this.dbname = "Mostradb";
     }
@@ -34,7 +34,7 @@ public class ConnectionManager {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(
-                    dbLink, this.user, this.password);
+                    dbLink, this.username, this.password);
         } catch (final SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         } catch (final ClassNotFoundException e) {
