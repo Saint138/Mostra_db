@@ -11,20 +11,20 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../immagini%20SceneBuilder/immagine%20post%20login.jpg" />
+            <Image url="@../images/mainView.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="46.0" layoutY="59.0" mnemonicParsing="false" onAction="#enterBiglietto" prefHeight="70.0" prefWidth="175.0" text="ACQUISTA BIGLIETTO">
+      <Button layoutX="46.0" layoutY="59.0" mnemonicParsing="false" onAction="#enterBigliettoView" prefHeight="70.0" prefWidth="175.0" text="ACQUISTA BIGLIETTO">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="318.0" layoutY="59.0" mnemonicParsing="false" onAction="#enterRicerca" prefHeight="70.0" prefWidth="164.0" text="RICERCA">
+      <Button layoutX="318.0" layoutY="59.0" mnemonicParsing="false" onAction="#enterRicercaView" prefHeight="70.0" prefWidth="164.0" text="RICERCA">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="578.0" layoutY="59.0" mnemonicParsing="false" onAction="#enterRecensione" prefHeight="70.0" prefWidth="164.0" text="RECENSIONE ">
+      <Button layoutX="578.0" layoutY="59.0" mnemonicParsing="false" onAction="#enterRecensioneView" prefHeight="70.0" prefWidth="164.0" text="RECENSIONE ">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>

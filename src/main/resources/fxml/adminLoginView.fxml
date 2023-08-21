@@ -13,17 +13,17 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../immagini%20SceneBuilder/adminLoginView.jpg" />
+            <Image url="@../images/adminLoginView.jpg" />
          </image>
       </ImageView>
       <TextField layoutX="309.0" layoutY="218.0" prefHeight="35.0" prefWidth="182.0" promptText="Username" />
       <TextField layoutX="309.0" layoutY="282.0" prefHeight="35.0" prefWidth="182.0" promptText="MySqlPassword" />
-      <Button layoutX="309.0" layoutY="354.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="26.0" prefWidth="182.0" text="Accedi">
+      <Button layoutX="309.0" layoutY="354.0" mnemonicParsing="false" onAction="#enterAdminPage" prefHeight="26.0" prefWidth="182.0" text="Accedi">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="369.0" layoutY="523.0" mnemonicParsing="false" onAction="#goLoginView" prefHeight="26.0" prefWidth="81.0" text="Back">
+      <Button layoutX="369.0" layoutY="523.0" mnemonicParsing="false" onAction="#goHome" prefHeight="26.0" prefWidth="81.0" text="Back">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
