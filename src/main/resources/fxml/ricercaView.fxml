@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../immagini%20SceneBuilder/RicercaView.png" />
+         </image>
+      </ImageView>
+      <TabPane layoutX="58.0" layoutY="44.0" prefHeight="512.0" prefWidth="684.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Artista">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <left>
+                        <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Separator prefHeight="160.0" prefWidth="206.0" />
+                              <TextField fx:id="nome_artista" prefHeight="44.0" prefWidth="206.0" promptText="Nome Artista" />
+                              <Button mnemonicParsing="false" onAction="#findArtista" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
+                                 <font>
+                                    <Font name="Baskerville Old Face" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Separator prefHeight="234.0" prefWidth="206.0" />
+                           </children>
+                        </FlowPane>
+                     </left>
+                     <center>
+                        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+          <Tab text="Opera">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <left>
+                        <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Separator prefHeight="160.0" prefWidth="206.0" />
+                              <TextField fx:id="nome_opera" prefHeight="44.0" prefWidth="206.0" promptText="Nome Opera" />
+                              <Button mnemonicParsing="false" onAction="#findOpera" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
+                                 <font>
+                                    <Font name="Baskerville Old Face" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Separator prefHeight="234.0" prefWidth="206.0" />
+                           </children>
+                        </FlowPane>
+                     </left>
+                     <center>
+                        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="Mostra">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <left>
+                        <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Separator prefHeight="160.0" prefWidth="206.0" />
+                              <TextField fx:id="nome_opera1" prefHeight="44.0" prefWidth="206.0" promptText="Nome Mostra" />
+                              <Button mnemonicParsing="false" onAction="#findMostra" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
+                                 <font>
+                                    <Font name="Baskerville Old Face" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Separator prefHeight="234.0" prefWidth="206.0" />
+                           </children>
+                        </FlowPane>
+                     </left>
+                     <center>
+                        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
