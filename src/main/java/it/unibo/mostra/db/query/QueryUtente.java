@@ -31,7 +31,7 @@ public class QueryUtente {
             final ObservableList<Recensione> list = FXCollections.observableArrayList();
             while(rs.next()){
                 list.add(new UtentiPiùAttivi(rs.getString("V.nome"), rs.getString("V.cognome"),
-                                               rs.getString("conteggio_recensioni")));
+                                               rs.getInt("conteggio_recensioni")));
             }
             return list;
         } catch (SQLException e) {
