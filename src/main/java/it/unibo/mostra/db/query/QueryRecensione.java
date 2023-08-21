@@ -14,12 +14,13 @@ import javafx.collections.ObservableList;
 public class QueryRecensione {
     
     private Connection connection;
+    private Random rand = new Random();
     
 
     public QueryRecensione(Connection connection) {
         this.connection = connection;
     }
-/* 
+
     //inserire una nuova mostra
   
     public void addRecensione(String cod, String Cf, String commento, String codMostra, Integer val) throws SQLException, SQLIntegrityConstraintViolationException {
@@ -39,8 +40,8 @@ public class QueryRecensione {
         }
     }
 
-    public ObservableList<List> visulizzaRecensioniMostra(String codiceMostra){
-        final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.valutazione, R.commento"
+    public ObservableList<Recensione> visulizzaRecensioniMostra(String codiceMostra){
+        final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.codice, R.valutazione, R.commento"
                             + "FROM Recensione R"
                             + "JOIN Visitatore V on R.CF = V.CF"
                             + "WHERE R.codice_mostra= ?";
@@ -50,7 +51,7 @@ public class QueryRecensione {
 
             final ObservableList<Recensione> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new List(rs.getString("V.nome"), rs.getString("V.cognome"),
+                list.add(new List(rs.getString("V.nome"), rs.getString("V.cognome"), rs.getString("R.codice") 
                                                rs.getString("R.Valutazione"), rs.getString("R.commento")));
             }
             return list;
@@ -60,7 +61,7 @@ public class QueryRecensione {
         }
 
     }
-
+/* 
     public ObservableList<Recensione>aRecensioniUtente(String CF){
         final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.valutazione, R.commento"
                             + "FROM Recensione R"

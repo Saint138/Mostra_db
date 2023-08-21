@@ -2,6 +2,8 @@ package it.unibo.mostra.db.entity;
 
 public class Recensione {
     private String cod;
+    private String nome;
+    private String cognome;
     private String CF;
     private Integer valutazione;
     private String commento;
@@ -13,6 +15,14 @@ public class Recensione {
         this.codMostra = codMostra;
         this.valutazione = val;
         this.commento = commento;
+    }
+    public Recensione (String nome,String cognome, String Cod, String commento, String codMostra, Integer val){
+        this.cod = cod;
+        this.codMostra = codMostra;
+        this.valutazione = val;
+        this.commento = commento;
+        this.nome = nome;
+        this.cognome = cognome;
     }
 
     public String getCodRecensione(){
