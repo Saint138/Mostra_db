@@ -51,7 +51,7 @@ public class QueryRecensione {
 
             final ObservableList<Recensione> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new List(rs.getString("V.nome"), rs.getString("V.cognome"), rs.getString("R.codice") 
+                list.add(new Recensione(rs.getString("V.nome"), rs.getString("V.cognome"), rs.getString("R.codice") 
                                                rs.getString("R.Valutazione"), rs.getString("R.commento")));
             }
             return list;
