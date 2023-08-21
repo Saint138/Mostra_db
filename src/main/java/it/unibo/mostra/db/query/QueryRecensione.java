@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+import java.util.Random;
 
 import it.unibo.mostra.db.entity.Recensione;
 import javafx.collections.FXCollections;
@@ -31,7 +32,7 @@ public class QueryRecensione {
             stmt.setString(2, Cf);
             stmt.setString(3, commento);
             stmt.setString(4, codMostra);
-            stmt.setFloat(5, val);
+            stmt.setInt(5, val);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("Recensione già inserita");
@@ -51,8 +52,8 @@ public class QueryRecensione {
 
             final ObservableList<Recensione> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new Recensione(rs.getString("V.nome"), rs.getString("V.cognome"), rs.getString("R.codice") 
-                                               rs.getString("R.Valutazione"), rs.getString("R.commento")));
+                list.add(new Recensione(rs.getString("V.nome"), rs.getString("V.cognome"), rs.getString("R.codice"),rs.getString("R.commento"), 
+                                               rs.getInt("R.valutazione")));
             }
             return list;
         } catch (SQLException e) {
