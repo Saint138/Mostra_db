@@ -17,7 +17,7 @@ public class QueryUtente {
     public QueryUtente(Connection connection) {
         this.connection = connection;
     }
-/*
+
     public ObservableList<Recensione> UtentiPiùAttivi(){
         final String query = "SELECT  V.nome,V.cognome,V.CF, COUNT(R.codice_recensione) as conteggio_recensioni"
                             + "FROM Recensione R"
@@ -30,7 +30,7 @@ public class QueryUtente {
 
             final ObservableList<Recensione> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new Recensione(rs.getString("V.nome"), rs.getString("V.cognome"),
+                list.add(new UtentiPiùAttivi(rs.getString("V.nome"), rs.getString("V.cognome"),
                                                rs.getString("conteggio_recensioni")));
             }
             return list;
@@ -39,5 +39,5 @@ public class QueryUtente {
             return null;
         }
 
-    }*/
+    }
 }
