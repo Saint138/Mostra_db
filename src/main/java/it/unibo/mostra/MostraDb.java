@@ -1,7 +1,19 @@
 package it.unibo.mostra;
 
-public class MostraDb {
-    public static void main(String[] args) {
-        
+import javafx.application.Application;
+
+/**
+ * Main class.
+ */
+public final class MostraDb {
+
+    /**
+     * Main application method.
+     *
+     * @param args
+     */
+    public static void main(final String[] args) {
+        Application.launch(LauncherApp.class, args);
     }
 }
+

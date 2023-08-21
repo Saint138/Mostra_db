@@ -11,13 +11,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class QueryMostra {
-
+    
     private Connection connection;
     
     public QueryMostra(Connection connection) {
         this.connection = connection;
     }
-
+    /* 
     public ObservableList<Recensione> MediaRecensioniMostra(){
         final String query = "SELECT M.nome, COUNT( R.codice_recensione) as numero_recensioni, AVG(R.valutazione) as media"
                             + "FROM Mostra M"
@@ -103,5 +103,5 @@ public class QueryMostra {
             e.printStackTrace();
         }
     }
-
+    */
 }

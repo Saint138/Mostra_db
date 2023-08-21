@@ -17,7 +17,7 @@ public class QueryUtente {
     public QueryUtente(Connection connection) {
         this.connection = connection;
     }
-
+/*
     public ObservableList<Recensione> UtentiPiùAttivi(){
         final String query = "SELECT  V.nome,V.cognome,V.CF, COUNT(R.codice_recensione) as conteggio_recensioni"
                             + "FROM Recensione R"
@@ -39,5 +39,5 @@ public class QueryUtente {
             return null;
         }
 
-    }
+    }*/
 }
