@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 /**
  * Controller for the opening page.
  */
-public class LoginController{
+public class HomeController{
 
     private ViewImpl view;
     @FXML TextField username;
@@ -20,7 +20,7 @@ public class LoginController{
      * Constructor for the controller.
      * @param view the view.
      */
-    public LoginController(ViewImpl view){
+    public HomeController(ViewImpl view){
         this.view = view;
     }
 
@@ -40,14 +40,15 @@ public class LoginController{
             this.password.setStyle("-fx-prompt-text-fill: red");
             throw new IllegalStateException(e);
         }
+       // this.view.setMainView();
     }
     
     @FXML
     public void goAdminLoginView() {
-        /*  this.view.();*/
+          this.view.setAdminLoginView();
     }
     @FXML
     public void goDipendenteLoginView() {
-        /*  this.view.();*/
+         this.view.setDipendeteLoginView();
     }
 }
