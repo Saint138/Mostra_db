@@ -13,7 +13,7 @@
    <children>
       <ImageView fx:id="mostra_prezzo" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../immagini%20SceneBuilder/biglietteria.jpg" />
+            <Image url="@../images/biglietteria.jpg" />
          </image>
       </ImageView>
       <Label layoutX="218.0" layoutY="54.0" prefHeight="79.0" prefWidth="363.0" text="BIGLIETTERIA" textFill="#f5f5dc">

@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../immagini%20SceneBuilder/RicercaView.png" />
+            <Image url="@../images/RicercaView.jpg" />
          </image>
       </ImageView>
       <TabPane layoutX="58.0" layoutY="44.0" prefHeight="512.0" prefWidth="684.0" tabClosingPolicy="UNAVAILABLE">

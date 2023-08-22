@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../immagini%20SceneBuilder/dipendenteViewTurni.jpg" />
+            <Image url="@../images/dipendenteViewTurni.jpg" />
          </image>
       </ImageView>
       <Button layoutX="277.0" layoutY="188.0" mnemonicParsing="false" onAction="#reloadTurniDipendente" prefHeight="32.0" prefWidth="246.0" text="Vedi i tuoi turni">

@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../immagini%20SceneBuilder/Recensioni.jpeg" />
+            <Image url="@../images/Recensioni.jpg" />
          </image>
       </ImageView>
       <TableView fx:id="tabRecensioni" layoutX="545.0" layoutY="209.0" prefHeight="187.0" prefWidth="200.0" />
