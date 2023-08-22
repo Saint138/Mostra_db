@@ -1,6 +1,9 @@
 package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 
 public class QueryDipendenti {
@@ -17,7 +20,7 @@ public class QueryDipendenti {
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, stipendio);
-            stmt.setString(2, codice_contratto);
+            stmt.setString(2, codContratto);
             stmt.setString(3, matricola);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
@@ -51,7 +54,7 @@ public class QueryDipendenti {
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, stipendio);
-            stmt.setString(2, codice_contratto);
+            stmt.setString(2, codContratto);
             stmt.setString(3, matricola);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
@@ -85,7 +88,7 @@ public class QueryDipendenti {
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, stipendio);
-            stmt.setString(2, codice_contratto);
+            stmt.setString(2, codContratto);
             stmt.setString(3, matricola);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
@@ -119,7 +122,7 @@ public class QueryDipendenti {
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, stipendio);
-            stmt.setString(2, codice_contratto);
+            stmt.setString(2, codContratto);
             stmt.setString(3, matricola);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
@@ -153,7 +156,7 @@ public class QueryDipendenti {
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, stipendio);
-            stmt.setString(2, codice_contratto);
+            stmt.setString(2, codContratto);
             stmt.setString(3, matricola);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {

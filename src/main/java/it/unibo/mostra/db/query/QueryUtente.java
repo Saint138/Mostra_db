@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import it.unibo.mostra.db.entity.UtentiPiùAttivi;
 import it.unibo.mostra.db.entity.Recensione;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +18,7 @@ public class QueryUtente {
     public QueryUtente(Connection connection) {
         this.connection = connection;
     }
-
+    /* 
     public ObservableList<Recensione> UtentiPiùAttivi(){
         final String query = "SELECT  V.nome,V.cognome,V.CF, COUNT(R.codice_recensione) as conteggio_recensioni"
                             + "FROM Recensione R"
@@ -40,4 +41,5 @@ public class QueryUtente {
         }
 
     }
+    */
 }

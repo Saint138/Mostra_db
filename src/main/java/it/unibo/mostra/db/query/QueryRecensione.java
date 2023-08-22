@@ -21,7 +21,7 @@ public class QueryRecensione {
     public QueryRecensione(Connection connection) {
         this.connection = connection;
     }
-
+/* 
     //inserire una nuova mostra
   
     public void addRecensione(String cod, String Cf, String commento, String codMostra, Integer val) throws SQLException, SQLIntegrityConstraintViolationException {
@@ -110,5 +110,5 @@ public class QueryRecensione {
         }
 
     }
-
+*/
 }
