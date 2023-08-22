@@ -29,8 +29,8 @@
                         <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
                            <children>
                               <Separator prefHeight="160.0" prefWidth="206.0" />
-                              <TextField fx:id="nome_artista" prefHeight="44.0" prefWidth="206.0" promptText="Nome Artista" />
-                              <Button mnemonicParsing="false" onAction="#findArtista" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
+                              <TextField fx:id="nome_arte" prefHeight="44.0" prefWidth="206.0" promptText="Nome Artista" />
+                              <Button mnemonicParsing="false" onAction="#ricercaArtista" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
                                  <font>
                                     <Font name="Baskerville Old Face" size="14.0" />
                                  </font>
@@ -40,12 +40,12 @@
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView fx:id="ricercaArtista" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="viewRicercaArtista" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
             </Tab>
-          <Tab fx:id="ricercaOpera" text="Opera">
+          <Tab text="Opera">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
@@ -63,12 +63,12 @@
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView fx:id="ricercaOpera" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="viewRicercaOpera" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
           </Tab>
-          <Tab fx:id="ricercaMostra" text="Mostra">
+          <Tab text="Mostra">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
@@ -93,7 +93,7 @@
           </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="374.0" layoutY="561.0" mnemonicParsing="false" onAction="#goback" prefHeight="25.0" prefWidth="75.0" text="Back">
+      <Button layoutX="374.0" layoutY="561.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="75.0" text="Back">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
