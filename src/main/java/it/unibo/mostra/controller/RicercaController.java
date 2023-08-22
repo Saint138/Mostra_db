@@ -36,7 +36,7 @@ public class RicercaController {
     }
 
     @FXML
-    public void viewRicercaArtista() {
+    public void ricercaArtista() {
         this.viewRicercaArtista.getColumns().clear();
         TableColumn<Artista, String> nome = new TableColumn<>("Nome");
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));

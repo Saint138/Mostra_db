@@ -37,7 +37,7 @@ public class MainViewController {
     @FXML
     public void refreshMostra() {
         this.refreshMostraView.getColumns().clear();
-       TableColumn<refreshMostra, String> nomeMostra = new TableColumn<>("Nome mostra");
+        TableColumn<refreshMostra, String> nomeMostra = new TableColumn<>("Nome mostra");
         nomeMostra.setCellValueFactory(new PropertyValueFactory<>("nome"));
         TableColumn<refreshMostra, String> codiceMostra = new TableColumn<>("Codice Mostra");
         codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codiceMostra"));
@@ -47,10 +47,15 @@ public class MainViewController {
         dataInizio.setCellValueFactory(new PropertyValueFactory<>("dataInizio"));
         TableColumn<refreshMostra, String> dataFine = new TableColumn<>("Data Fine");
         dataFine.setCellValueFactory(new PropertyValueFactory<>("dataFine"));
-        this.refreshMostraView.getColumns().addAll(Arrays.asList(nomeMostra, codiceMostra, città, dataInizio, dataFine));
+        this.refreshMostraView.getColumns()
+                .addAll(Arrays.asList(nomeMostra, codiceMostra, città, dataInizio, dataFine));
         this.refreshMostraView.setItems(this.queryMain.refreshMostra());
 
     }
     
+    @FXML
+    public void goBack() {
+        this.view.setHomeView();
+    }
     
 }

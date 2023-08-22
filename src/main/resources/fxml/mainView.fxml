@@ -29,8 +29,13 @@
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="refreshMostraView" layoutX="151.0" layoutY="419.0" prefHeight="140.0" prefWidth="480.0" />
-      <Button layoutX="312.0" layoutY="390.0" mnemonicParsing="false" onAction="#refreshMostra" prefHeight="26.0" prefWidth="175.0" text="AGGIORNA MOSTRE">
+      <TableView fx:id="refreshMostraView" layoutX="168.0" layoutY="347.0" prefHeight="140.0" prefWidth="480.0" />
+      <Button layoutX="312.0" layoutY="319.0" mnemonicParsing="false" onAction="#refreshMostra" prefHeight="26.0" prefWidth="175.0" text="AGGIORNA MOSTRE">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="363.0" layoutY="541.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="94.0" text="Back">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
