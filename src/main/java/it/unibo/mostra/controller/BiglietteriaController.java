@@ -47,7 +47,7 @@ public class BiglietteriaController {
     }
 
     @FXML
-    public void goHome() {
-          this.view.setHomeView();
+    public void goBack() {
+          this.view.setMainView();
     }
 }
