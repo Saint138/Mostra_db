@@ -21,7 +21,7 @@
             <Font name="Calisto MT" size="48.0" />
          </font>
       </Label>
-      <Button layoutX="359.0" layoutY="513.0" mnemonicParsing="false" onAction="#goHome" prefHeight="26.0" prefWidth="81.0" text="Home">
+      <Button layoutX="359.0" layoutY="513.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="81.0" text="Back">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
