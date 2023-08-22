@@ -29,7 +29,7 @@
                         <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
                            <children>
                               <Separator prefHeight="160.0" prefWidth="206.0" />
-                              <TextField fx:id="nome_arte" prefHeight="44.0" prefWidth="206.0" promptText="Nome D'Arte" />
+                              <TextField fx:id="nome_artista" prefHeight="44.0" prefWidth="206.0" promptText="Nome Artista" />
                               <Button mnemonicParsing="false" onAction="#findArtista" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
                                  <font>
                                     <Font name="Baskerville Old Face" size="14.0" />
@@ -53,7 +53,7 @@
                            <children>
                               <Separator prefHeight="160.0" prefWidth="206.0" />
                               <TextField fx:id="nome_opera" prefHeight="44.0" prefWidth="206.0" promptText="Nome Opera" />
-                              <Button mnemonicParsing="false" onAction="#findOpera" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
+                              <Button mnemonicParsing="false" onAction="#ricercaOpera" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
                                  <font>
                                     <Font name="Baskerville Old Face" size="14.0" />
                                  </font>
@@ -63,7 +63,7 @@
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="ricercaOpera" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
@@ -75,8 +75,8 @@
                         <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
                            <children>
                               <Separator prefHeight="160.0" prefWidth="206.0" />
-                              <TextField fx:id="nome_opera1" prefHeight="44.0" prefWidth="206.0" promptText="Nome Mostra" />
-                              <Button mnemonicParsing="false" onAction="#findMostra" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
+                              <TextField fx:id="nome_mostra" prefHeight="44.0" prefWidth="206.0" promptText="Nome Mostra" />
+                              <Button mnemonicParsing="false" onAction="#ricercaMostra" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
                                  <font>
                                     <Font name="Baskerville Old Face" size="14.0" />
                                  </font>
@@ -86,14 +86,14 @@
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="viewRicercaMostra" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
           </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="374.0" layoutY="561.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Home">
+      <Button layoutX="374.0" layoutY="561.0" mnemonicParsing="false" onAction="#goback" prefHeight="25.0" prefWidth="75.0" text="Back">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>

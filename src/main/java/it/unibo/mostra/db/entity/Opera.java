@@ -9,15 +9,23 @@ public class Opera {
     private String tecnica;
     private String descrizione;
 
-    public Opera(String nomeArtista, String nomeOpera, String codiceVendita, String annoRealizzazione, String dimensioni, String tecnica, String descrizione ){
+    public Opera(String nomeArte, String nomeOpera, String codiceVendita, String annoRealizzazione, String dimensioni, String tecnica, String descrizione ){
         this.annoRealizzazione = annoRealizzazione;
         this.codiceVendita = codiceVendita;
-        this.nomeArte = nomeArtista;
+        this.nomeArte = nomeArte;
         this.nomeOpera = nomeOpera;
         this.dimensioni = dimensioni;
         this.tecnica = tecnica;
         this.descrizione = descrizione;
     }
+    
+    public Opera(String nomeArte, String annoRealizzazione, String dimensioni, String tecnica, String descrizione ){
+            this.annoRealizzazione = annoRealizzazione;
+            this.nomeArte = nomeArte;
+            this.dimensioni = dimensioni;
+            this.tecnica = tecnica;
+            this.descrizione = descrizione;
+        }
 
     public String getNomeOpera(){
         return this.nomeOpera;
