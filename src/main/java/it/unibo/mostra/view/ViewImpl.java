@@ -9,6 +9,7 @@ import it.unibo.mostra.controller.AdminLoginController;
 import it.unibo.mostra.controller.BiglietteriaController;
 import it.unibo.mostra.controller.DipendenteLoginController;
 import it.unibo.mostra.controller.MainViewController;
+import it.unibo.mostra.controller.RecensioneController;
 import it.unibo.mostra.controller.RicercaController;
 import it.unibo.mostra.db.query.*;
 import it.unibo.mostra.view.api.View;
@@ -129,7 +130,7 @@ public class ViewImpl implements View {
     public void setRecensioneView() {
         try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/RecensioneView.fxml"));
-            loader.setController(new HomeController(this));
+            loader.setController(new RecensioneController(this,queryRecensione));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
