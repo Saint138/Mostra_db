@@ -2,9 +2,7 @@ package it.unibo.mostra.controller;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import com.mysql.cj.conf.ConnectionUrlParser.Pair;
-
+import it.unibo.mostra.utils.Pair;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -31,7 +29,7 @@ public class DipendenteLoginController{
 
     @FXML
     public void checkAccess() {
-        System.out.println("fatto");
+        
         if (this.dipendenti.contains(new Pair<>(this.username.getText(), this.password.getText()))) {
             /*this.view.setDipendenteTurni();*/
         } else {
