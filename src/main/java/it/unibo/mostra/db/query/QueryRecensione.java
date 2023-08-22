@@ -22,8 +22,7 @@ public class QueryRecensione {
     public QueryRecensione(Connection connection) {
         this.connection = connection;
     }
-/* 
-    //inserire una nuova mostra
+
   
     public void addRecensione(String cod, String Cf, String commento, String codMostra, Integer val) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Mostra (CODICE_RECENSIONE, CF, COMMENTO, CODICE_MOSTRA , VALUTAZIONE) "
@@ -41,7 +40,7 @@ public class QueryRecensione {
             e.printStackTrace();
         }
     }
-
+/* 
     public ObservableList<Recensione> visulizzaRecensioniMostra(String codiceMostra){
         final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.codice, R.valutazione, R.commento"
                             + "FROM Recensione R"
