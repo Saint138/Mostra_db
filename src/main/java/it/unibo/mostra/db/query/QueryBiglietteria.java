@@ -15,8 +15,8 @@ public class QueryBiglietteria {
         this.connection = connection;
     }
 
-    private void newBiglietto() {
-        /*final String query = "INSERT INTO Biglietto "
+    private void newBiglietto() {/* 
+        final String query = "INSERT INTO Biglietto "
                 + "(CF, codice_biglietto, prezzo, data_biglietto, codice_visita) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
