@@ -115,9 +115,9 @@ public class QueryRecensione {
 
 
     public ObservableList<Recensione> refreshRecensione() {
-        final String query = "SELECT DISTINCT V.nome,V.cognome, V.cf, R.data_recensione, R.codice, R.valutazione, R.commento,  R.codice_mostra"
+        final String query = "SELECT DISTINCT V.nome,V.cognome, V.CF, R.data_recensione, R.codice_recensione, R.valutazione, R.commento,  R.codice_mostra"
                             + "FROM Recensione R, Visitatore V"
-                            + "WHERE R.cf = V.cf";
+                            + "WHERE R.CF = V.CF";
 
          try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                 final ResultSet rs = stmt.executeQuery();
