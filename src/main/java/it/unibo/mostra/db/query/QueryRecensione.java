@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 import it.unibo.mostra.db.entity.Recensione;
+import it.unibo.mostra.db.entity.refreshBiglietteria;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -111,4 +112,25 @@ public class QueryRecensione {
 
     }
 */
+
+
+    public ObservableList<Recensione> refreshRecensione() {
+        final String query = "SELECT DISTINCT V.nome,V.cognome, V.cf, R.data_recensione, R.codice, R.valutazione, R.commento,  R.codice_mostra"
+                            + "FROM Recensione R, Visitatore V"
+                            + "WHERE R.cf=V.cf";
+
+         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+                final ResultSet rs = stmt.executeQuery();
+                final ObservableList<Recensione> tab = FXCollections.observableArrayList();
+                 while (rs.next()) {
+                                    tab.add(new Recensione(rs.getString("nome"), rs.getString("cognome"), rs.getString("codice_recensione"),
+                                            rs.getString("commento"), rs.getInt("valutazione"), rs.getString("data_recensione"), rs.getString("codice_mostra")));
+                                                              
+                                }
+                                return tab;
+    }
+      catch (final SQLException e) {
+                                throw new IllegalStateException("Cannot execute the query!", e);
+     }                    
+}
 }
