@@ -1,46 +1,51 @@
 package it.unibo.mostra.controller;
 
-import java.sql.Connection;
+import java.util.HashSet;
+import java.util.Set;
 
-import it.unibo.mostra.db.ConnectionManager;
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
+
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class DipendenteLoginController{
-
+    private String user;
+    private String pass;
     private ViewImpl view;
-    @FXML TextField username;
-    @FXML TextField password;
+    private Set<Pair<String, String>> dipendenti;
+     
+    @FXML
+    private TextField username;
+    @FXML
+    private PasswordField password;
 
-    /**
-     * Constructor for the controller.
-     * @param view the view.
-     */
     public DipendenteLoginController(ViewImpl view){
         this.view = view;
+        this.user = "dipendente";
+        this.pass = "dipendente";
+        this.dipendenti = new HashSet<>();
+        this.dipendenti.add(new Pair<>(this.user, this.pass));
     }
 
     @FXML
-    public void enterTurniDipendente() {
-        try {
-            final ConnectionManager connectClass = new ConnectionManager(this.username.getText(),
-                    this.password.getText());
-            Connection connection = connectClass.getSQLConnection();
-            this.view.addConnection(connection);
-        } catch (Exception e) {
+    public void checkAccess() {
+        System.out.println("fatto");
+        if (this.dipendenti.contains(new Pair<>(this.username.getText(), this.password.getText()))) {
+            /*this.view.setDipendenteTurni();*/
+        } else {
             this.username.clear();
+            this.username.setPromptText("Username o password sbagliata");
+            this.username.setStyle("-fx-prompt-text-fill: red;");
             this.password.clear();
-            this.username.setPromptText("Username errato");
-            this.password.setPromptText("Password errata");
-            this.username.setStyle("-fx-prompt-text-fill: red");
-            this.password.setStyle("-fx-prompt-text-fill: red");
-            throw new IllegalStateException(e);
+            this.password.setPromptText("Password sbagliata");
+            this.password.setStyle("-fx-prompt-text-fill: red;");
         }
     }
     
     @FXML
-    public void goHome() {
+    public void goBack() {
           this.view.setHomeView();
     }
     
