@@ -40,7 +40,7 @@ public class HomeController{
             this.password.setStyle("-fx-prompt-text-fill: red");
             throw new IllegalStateException(e);
         }
-       // this.view.setMainView();
+        this.view.setMainView();
     }
     
     @FXML

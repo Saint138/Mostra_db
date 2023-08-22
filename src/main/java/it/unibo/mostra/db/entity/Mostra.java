@@ -6,15 +6,17 @@ public class Mostra {
     private Integer numeroOpere;
     private final String codiceMostra;
     private Integer valore;
-    private String dataInizio;
+    private String data_inizio;
+    private String data_fine;
 
-    public Mostra(String nome, String città, Integer numeroOpere, String data, String codiceMostra, Integer valore ){
+    public Mostra(String nome, String città, Integer numeroOpere, String data_inizio, String codiceMostra, Integer valore,String data_fine ){
         this.città = città;
         this.nome = nome;
         this.numeroOpere = numeroOpere;
         this.codiceMostra = codiceMostra;
         this.valore = valore;
-        this.dataInizio = data;
+        this.data_inizio = data_inizio;
+        this.data_fine = data_fine;
     }
 
     public String getNome(){
@@ -23,8 +25,12 @@ public class Mostra {
     public String getCitta(){
         return città;
     }
-    public String getData(){
-        return dataInizio;
+
+    public String getDataInizio() {
+        return data_inizio;
+    }
+    public String getDataFine(){
+        return data_fine;
     }
     public Integer getNumeroOpere (){
         return numeroOpere;

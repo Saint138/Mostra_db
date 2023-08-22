@@ -12,7 +12,7 @@ public class UtentiPiùAttivi {
     }
 
     public String getNome() {
-        return this.cognome;
+        return this.nome;
     }
 
     public String getCognome() {
