@@ -3,7 +3,6 @@ package it.unibo.mostra.controller;
 import java.util.Arrays;
 
 import it.unibo.mostra.db.entity.Recensione;
-import it.unibo.mostra.db.entity.refreshBiglietteria;
 import it.unibo.mostra.db.query.QueryRecensione;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
@@ -25,20 +24,24 @@ public class RecensioneController {
     }
 
     @FXML
-    public void refreshRecensione() {/* 
+    public void refreshRecensione() {
         this.refreshRecensioneView.getColumns().clear();
        TableColumn<Recensione, String> nome = new TableColumn<>("nome");
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        TableColumn<Recensione, String> codice_visita = new TableColumn<>("cognome");
-        codice_visita.setCellValueFactory(new PropertyValueFactory<>("cognome"));
-        TableColumn<Recensione, String> data_inizio = new TableColumn<>("codice fiscale");
-        data_inizio.setCellValueFactory(new PropertyValueFactory<>("cf"));
-        TableColumn<Recensione, String> data_fine = new TableColumn<>("Data Fine");
-        data_fine.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
-        TableColumn<Recensione, Integer> prezzo = new TableColumn<>("Prezzo");
-        prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
-        this.refreshRecensioneView.getColumns().addAll(Arrays.asList(nome, codice_visita, data_inizio, data_fine, prezzo));
-        this.refreshRecensioneView.setItems(this.queryRecensione.refreshRecensione());*/
+        TableColumn<Recensione, String> cognome = new TableColumn<>("cognome");
+        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        TableColumn<Recensione, String> codice_recensione = new TableColumn<>("codice recensione");
+        codice_recensione.setCellValueFactory(new PropertyValueFactory<>("codice_recensione"));
+        TableColumn<Recensione, String> commento = new TableColumn<>("commento");
+        commento.setCellValueFactory(new PropertyValueFactory<>("commento"));
+        TableColumn<Recensione, Integer> valutazione = new TableColumn<>("valutazione");
+        valutazione.setCellValueFactory(new PropertyValueFactory<>("valutazione"));
+        TableColumn<Recensione, String> data_recensione = new TableColumn<>("Data");
+        data_recensione.setCellValueFactory(new PropertyValueFactory<>("data_recensione"));
+        TableColumn<Recensione, String> codice_mostra = new TableColumn<>("mostra");
+        codice_mostra.setCellValueFactory(new PropertyValueFactory<>("codice_mostra"));
+        this.refreshRecensioneView.getColumns().addAll(Arrays.asList(nome, cognome, codice_recensione, commento, valutazione, data_recensione, codice_mostra));
+        this.refreshRecensioneView.setItems(this.queryRecensione.refreshRecensione());
     }
 
     @FXML
