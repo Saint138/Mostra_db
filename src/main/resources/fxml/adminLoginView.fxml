@@ -17,7 +17,7 @@
          </image>
       </ImageView>
       <TextField layoutX="309.0" layoutY="218.0" prefHeight="35.0" prefWidth="182.0" promptText="Username" />
-      <TextField layoutX="309.0" layoutY="282.0" prefHeight="35.0" prefWidth="182.0" promptText="MySqlPassword" />
+      <TextField layoutX="309.0" layoutY="282.0" prefHeight="35.0" prefWidth="182.0" promptText="Password" />
       <Button layoutX="309.0" layoutY="354.0" mnemonicParsing="false" onAction="#enterAdminPage" prefHeight="26.0" prefWidth="182.0" text="Accedi">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
