@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/RicercaView.jpg" />
+            <Image url="@../images/RicercaView.png" />
          </image>
       </ImageView>
       <TabPane layoutX="58.0" layoutY="44.0" prefHeight="512.0" prefWidth="684.0" tabClosingPolicy="UNAVAILABLE">
@@ -29,7 +29,7 @@
                         <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
                            <children>
                               <Separator prefHeight="160.0" prefWidth="206.0" />
-                              <TextField fx:id="nome_artista" prefHeight="44.0" prefWidth="206.0" promptText="Nome Artista" />
+                              <TextField fx:id="nome_arte" prefHeight="44.0" prefWidth="206.0" promptText="Nome D'Arte" />
                               <Button mnemonicParsing="false" onAction="#findArtista" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
                                  <font>
                                     <Font name="Baskerville Old Face" size="14.0" />
@@ -40,12 +40,12 @@
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="ricercaArtista" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
             </Tab>
-          <Tab text="Opera">
+          <Tab fx:id="ricercaOpera" text="Opera">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
@@ -68,7 +68,7 @@
                   </BorderPane>
                </content>
           </Tab>
-          <Tab text="Mostra">
+          <Tab fx:id="ricercaMostra" text="Mostra">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
@@ -93,5 +93,10 @@
           </Tab>
         </tabs>
       </TabPane>
+      <Button layoutX="374.0" layoutY="561.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Home">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
