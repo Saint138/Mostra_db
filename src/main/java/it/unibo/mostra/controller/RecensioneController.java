@@ -9,11 +9,14 @@ import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class RecensioneController {
     private ViewImpl view;
     private QueryRecensione queryRecensione;
+    @FXML private TextField testo;
+    @FXML private TextField codice_mostra;
     @FXML private TableView<Recensione> refreshRecensioneView;
 
     public RecensioneController (ViewImpl view, QueryRecensione queryRecensione){
@@ -21,8 +24,8 @@ public class RecensioneController {
         this.queryRecensione = queryRecensione;
     }
 
-      @FXML
-    public void refreshRecensione() {
+    @FXML
+    public void refreshRecensione() {/* 
         this.refreshRecensioneView.getColumns().clear();
        TableColumn<Recensione, String> nome = new TableColumn<>("nome");
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -30,13 +33,12 @@ public class RecensioneController {
         codice_visita.setCellValueFactory(new PropertyValueFactory<>("cognome"));
         TableColumn<Recensione, String> data_inizio = new TableColumn<>("codice fiscale");
         data_inizio.setCellValueFactory(new PropertyValueFactory<>("cf"));
-        TableColumn<Recensione, String> data_fine = new TableColumn<>("commento");
-        data_fine.setCellValueFactory(new PropertyValueFactory<>("commento"));
-        TableColumn<Recensione, Integer> prezzo = new TableColumn<>("valutazione");
-        prezzo.setCellValueFactory(new PropertyValueFactory<>("valutazione"));
-        System.out.println("fatto");
+        TableColumn<Recensione, String> data_fine = new TableColumn<>("Data Fine");
+        data_fine.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
+        TableColumn<Recensione, Integer> prezzo = new TableColumn<>("Prezzo");
+        prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
         this.refreshRecensioneView.getColumns().addAll(Arrays.asList(nome, codice_visita, data_inizio, data_fine, prezzo));
-        this.refreshRecensioneView.setItems(this.queryRecensione.refreshRecensione());
+        this.refreshRecensioneView.setItems(this.queryRecensione.refreshRecensione());*/
     }
 
     @FXML
@@ -46,6 +48,6 @@ public class RecensioneController {
 
     @FXML
     public void goBack() {
-          this.view.setMainView();
+        this.view.setMainView();
     }
 }
