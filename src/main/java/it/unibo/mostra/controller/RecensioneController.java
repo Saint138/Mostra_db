@@ -2,9 +2,7 @@ package it.unibo.mostra.controller;
 
 import java.util.Arrays;
 
-import it.unibo.mostra.db.entity.Opera;
 import it.unibo.mostra.db.entity.Recensione;
-import it.unibo.mostra.db.entity.refreshBiglietteria;
 import it.unibo.mostra.db.query.QueryRecensione;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
