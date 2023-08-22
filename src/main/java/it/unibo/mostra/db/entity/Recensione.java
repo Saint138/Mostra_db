@@ -11,15 +11,7 @@ public class Recensione {
     private String nomeMostra;
     private String dataRecensione;
 
-    public Recensione (String cod, String Cf, String commento, String codMostra, Integer val, String dataRecensione){
-        this.CF = Cf;
-        this.cod = cod;
-        this.codMostra = codMostra;
-        this.valutazione = val;
-        this.commento = commento;
-        this.dataRecensione = dataRecensione;
-    }
-    public Recensione (String nome,String cognome, String Cod, String commento, Integer val,  String dataRecensione){
+    public Recensione (String nome,String cognome, String cod, String commento, Integer val,  String dataRecensione,String codMostra){
         this.cod = cod;
         this.codMostra = codMostra;
         this.valutazione = val;
@@ -27,23 +19,6 @@ public class Recensione {
         this.nome = nome;
         this.cognome = cognome;
         this.dataRecensione = dataRecensione;
-    }
-    public Recensione (String nome,String cognome, String Cod,String nomeMostra, String commento, Integer val,  String dataRecensione){
-        this.cod = cod;
-        this.codMostra = codMostra;
-        this.valutazione = val;
-        this.commento = commento;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.dataRecensione = dataRecensione;
-    }
-    public Recensione (String nome,String cognome, String Cod,String nomeMostra, String commento, Integer val){
-        this.cod = cod;
-        this.codMostra = codMostra;
-        this.valutazione = val;
-        this.commento = commento;
-        this.nome = nome;
-        this.cognome = cognome;
     }
 
     public String getCodRecensione(){
