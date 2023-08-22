@@ -7,7 +7,7 @@ import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class adminLoginController{
+public class AdminLoginController{
 
     private ViewImpl view;
     @FXML TextField username;
@@ -17,7 +17,7 @@ public class adminLoginController{
      * Constructor for the controller.
      * @param view the view.
      */
-    public adminLoginController(ViewImpl view){
+    public AdminLoginController(ViewImpl view){
         this.view = view;
     }
 

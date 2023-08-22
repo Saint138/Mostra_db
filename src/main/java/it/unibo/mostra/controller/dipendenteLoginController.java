@@ -7,7 +7,7 @@ import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class dipendenteLoginController{
+public class DipendenteLoginController{
 
     private ViewImpl view;
     @FXML TextField username;
@@ -17,7 +17,7 @@ public class dipendenteLoginController{
      * Constructor for the controller.
      * @param view the view.
      */
-    public dipendenteLoginController(ViewImpl view){
+    public DipendenteLoginController(ViewImpl view){
         this.view = view;
     }
 
