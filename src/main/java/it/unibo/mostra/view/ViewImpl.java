@@ -5,9 +5,11 @@ import java.sql.Connection;
 import javax.security.auth.login.LoginContext;
 
 import it.unibo.mostra.controller.HomeController;
-import it.unibo.mostra.controller.adminLoginController;
-import it.unibo.mostra.controller.dipendenteLoginController;
-import it.unibo.mostra.controller.mainViewController;
+import it.unibo.mostra.controller.AdminLoginController;
+import it.unibo.mostra.controller.BiglietteriaController;
+import it.unibo.mostra.controller.DipendenteLoginController;
+import it.unibo.mostra.controller.MainViewController;
+import it.unibo.mostra.controller.RicercaController;
 import it.unibo.mostra.db.query.*;
 import it.unibo.mostra.view.api.View;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +28,8 @@ public class ViewImpl implements View {
     private QueryRecensione queryRecensione;
     private QueryUtente queryUtente;
     private QueryVisita queryVisita;
+    private QueryRicerca queryRicerca;
+    private QueryBiglietteria queryBiglietteria;
     /**
      * Constructor for the view.
      * 
@@ -60,7 +64,7 @@ public class ViewImpl implements View {
     public void setAdminLoginView() {
         try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/adminLoginView.fxml"));
-            loader.setController(new adminLoginController(this));
+            loader.setController(new AdminLoginController(this));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -73,7 +77,7 @@ public class ViewImpl implements View {
     public void setDipendeteLoginView() {
         try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/dipendenteLoginView.fxml"));
-            loader.setController(new dipendenteLoginController(this));
+            loader.setController(new DipendenteLoginController(this));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -86,7 +90,7 @@ public class ViewImpl implements View {
     public void setMainView() {
         try{
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/MainView.fxml"));
-            loader.setController(new mainViewController(this, queryMostra));
+            loader.setController(new MainViewController(this, queryMostra));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -99,7 +103,7 @@ public class ViewImpl implements View {
     public void setRicercaView() {
         try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/ricercaView.fxml"));
-            loader.setController(new HomeController(this));
+            loader.setController(new RicercaController(this,queryRicerca));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -112,7 +116,7 @@ public class ViewImpl implements View {
     public void setBiglietteriaView() {
         try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/BiglietteriaView.fxml"));
-            loader.setController(new HomeController(this));
+            loader.setController(new BiglietteriaController(this,queryBiglietteria));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
