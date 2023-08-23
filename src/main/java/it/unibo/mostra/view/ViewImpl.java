@@ -158,7 +158,7 @@ public class ViewImpl implements View {
     public void setDipendenteTurni() {
         try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/turniDipendenteView.fxml"));
-            loader.setController(new TurniDipendenteController(this,queryDipendenti));
+            loader.setController(new TurniDipendenteController(this,queryTurno));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);

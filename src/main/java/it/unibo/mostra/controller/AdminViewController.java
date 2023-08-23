@@ -274,15 +274,28 @@ public class AdminViewController {
 
     @FXML
     public void refreshDipendenti() {
+        this.tabDipendenti.getColumns().clear();
+        TableColumn<Dipendente, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Dipendente, String> cognome = new TableColumn<>("Cognome");
+        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        TableColumn<Dipendente, String> matricola= new TableColumn<>("Matricola");
+        matricola.setCellValueFactory(new PropertyValueFactory<>("matricola"));
+        TableColumn<Dipendente, String> email = new TableColumn<>("Email");
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        this.tabDipendenti.getColumns()
+                .addAll(Arrays.asList(matricola, nome, cognome, email));
+        this.tabDipendenti.setItems(this.queryDipendenti.refreshDipendente());
 
     }
 
     @FXML
     public void addTurno() {
+        //da errore perchè in addTurno ho aggiunto i codici contratto per ogni specializzazione, non saprei come gestirli qui però
+            codice_turno.clear();
         try{
             queryTurno.addTurno(codice_turno.getText(),data_turno.getText(), ora_inizio.getText(),
-                                    ora_fine.getText(),codice_mostra_turno.getText());
-            codice_turno.clear();
+                                    ora_fine.getText(),codice_mostra_turno.getText() ); 
             data_turno.clear();
             ora_inizio.clear();
             ora_fine.clear();
