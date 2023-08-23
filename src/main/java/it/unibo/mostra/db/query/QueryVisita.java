@@ -13,7 +13,7 @@ public class QueryVisita {
         this.connection = connection;
     }
 
-    public void addVisita(String codice_visita, String ora_inizio, String data_visita, int numero_partecipanti,
+    public void addVisita(String codice_visita, String ora_inizio, String data_visita,
     String codice_mostra, String codice_contratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Mostra (CODICE_VISITA, ORA_INZIO, DATA, NUMERO_PARTECIPANTI , CODICE_MOSTRA, CODICE_CONTRATTO) "
                             + "VALUES (?, ?, ?, ?, ?, ?)";
@@ -21,7 +21,7 @@ public class QueryVisita {
             stmt.setString(1, codice_visita);
             stmt.setString(2, ora_inizio);
             stmt.setString(3, data_visita);
-            stmt.setInt(4, numero_partecipanti);
+            stmt.setInt(4, 0);
             stmt.setString(5, codice_mostra);
             stmt.setString(6, codice_contratto);
             stmt.executeUpdate();
