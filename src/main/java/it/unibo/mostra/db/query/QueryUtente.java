@@ -21,7 +21,7 @@ public class QueryUtente {
         this.connection = connection;
     }
 
-    public void addUtente(String CF, String email, String nome, String cognome){
+    public void addUtente(String CF, String email, String nome, String cognome) throws SQLException, SQLIntegrityConstraintViolationException {
          final String query = "INSERT INTO Visitatore(nome,cognome,email,CF)"
                              + "VALUES (?, ?, ?, ?)";
         
