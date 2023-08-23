@@ -1,10 +1,15 @@
 package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Random;
+
 import it.unibo.mostra.db.entity.refreshBiglietteria;
+import it.unibo.mostra.utils.DateAdapter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -15,24 +20,26 @@ public class QueryBiglietteria {
         this.connection = connection;
     }
 
-    private void newBiglietto() {/* 
-        final String query = "INSERT INTO Biglietto "
-                + "(CF, codice_biglietto, prezzo, data_biglietto, codice_visita) "
+    public void newBiglietto(Float prezzo, String CF, String codice_visita) {
+
+        Random rand = new Random();
+        String cod = "B" + Integer.toString(rand.nextInt(100000000, 999999999));
+        Date data = new Date (System.currentTimeMillis ());
+
+        final String query = "INSERT INTO Biglietto (CF, codice_biglietto, prezzo, data_biglietto, codice_visita) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, cf);
-            statement.setTimestamp(2, dataOra);
-            statement.setInt(3, puntiFatti);
-            statement.setString(4, idCampionato);
-            statement.setInt(5, annoCampioanto);
-            statement.setString(6, nomeGirone);
-            statement.setString(7, nomeSquadra);
+            statement.setString(1,  CF);
+            statement.setString(2, cod);
+            statement.setFloat(3, prezzo);
+            statement.setTimestamp(4, DateAdapter.dateToSqlDate(data));
+            statement.setString(5, codice_visita);
             statement.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             throw new IllegalArgumentException(e);
         } catch (SQLException e) {
             throw new IllegalStateException(e);
-        }*/
+        }
     }
 
     public ObservableList<refreshBiglietteria> refreshBiglietteria(){
