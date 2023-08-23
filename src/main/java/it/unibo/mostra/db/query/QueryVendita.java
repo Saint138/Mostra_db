@@ -15,7 +15,7 @@ public class QueryVendita {
         this.connection = connection;
     }
     
-    public void addVendita(String codice_vendita, String data_vendita, float importo, String codice_fornitore){
+    public void addVendita(String codice_vendita, String data_vendita, float importo, String codice_fornitore) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = " INSERT INTO Vendita(codice_vendita,data_vendita,importo,codice_fornitore)"
         + "VALUES (?, ?, ?, ?, ?, ?)";
 
