@@ -1,15 +1,19 @@
 package it.unibo.mostra.controller;
 
-import java.sql.Connection;
-
-import it.unibo.mostra.db.ConnectionManager;
+import java.util.HashSet;
+import java.util.Set;
+import it.unibo.mostra.utils.Pair;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class AdminLoginController{
 
+     private String user;
+    private String pass;
     private ViewImpl view;
+    private Set<Pair<String, String>> admin;
+     
     @FXML TextField username;
     @FXML TextField password;
 
@@ -19,29 +23,30 @@ public class AdminLoginController{
      */
     public AdminLoginController(ViewImpl view){
         this.view = view;
+        this.user = "admin";
+        this.pass = "admin";
+        this.admin = new HashSet<>();
+        this.admin.add(new Pair<>(this.user, this.pass));
     }
 
     @FXML
     public void enterAdminPage() {
-        try {
-            final ConnectionManager connectClass = new ConnectionManager(this.username.getText(),
-                    this.password.getText());
-            Connection connection = connectClass.getSQLConnection();
-            this.view.addConnection(connection);
-        } catch (Exception e) {
+        
+        if (this.admin.contains(new Pair<>(this.username.getText(), this.password.getText()))) {
+            this.view.setAdminView();
+        } else {
             this.username.clear();
+            this.username.setPromptText("Username o password sbagliata");
+            this.username.setStyle("-fx-prompt-text-fill: red;");
             this.password.clear();
-            this.username.setPromptText("Username errato");
-            this.password.setPromptText("Password errata");
-            this.username.setStyle("-fx-prompt-text-fill: red");
-            this.password.setStyle("-fx-prompt-text-fill: red");
-            throw new IllegalStateException(e);
+            this.password.setPromptText("Password sbagliata");
+            this.password.setStyle("-fx-prompt-text-fill: red;");
         }
     }
     
     @FXML
     public void goHome() {
-          this.view.setHomeView();
+          this.view.setMainView();
     }
     
 }

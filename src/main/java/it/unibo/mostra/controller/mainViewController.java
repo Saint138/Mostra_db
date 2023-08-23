@@ -52,7 +52,14 @@ public class MainViewController {
         this.refreshMostraView.setItems(this.queryMain.refreshMostra());
 
     }
-    
+    @FXML
+    public void goAdminLoginView() {
+          this.view.setAdminLoginView();
+    }
+    @FXML
+    public void goDipendenteLoginView() {
+         this.view.setDipendeteLoginView();
+    }
     @FXML
     public void goBack() {
         this.view.setHomeView();

@@ -43,12 +43,5 @@ public class HomeController{
         this.view.setMainView();
     }
     
-    @FXML
-    public void goAdminLoginView() {
-          this.view.setAdminLoginView();
-    }
-    @FXML
-    public void goDipendenteLoginView() {
-         this.view.setDipendeteLoginView();
-    }
+   
 }

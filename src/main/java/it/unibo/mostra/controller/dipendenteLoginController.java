@@ -31,7 +31,7 @@ public class DipendenteLoginController{
     public void checkAccess() {
         
         if (this.dipendenti.contains(new Pair<>(this.username.getText(), this.password.getText()))) {
-            /*this.view.setDipendenteTurni();*/
+            this.view.setDipendenteTurni();
         } else {
             this.username.clear();
             this.username.setPromptText("Username o password sbagliata");
@@ -44,7 +44,7 @@ public class DipendenteLoginController{
     
     @FXML
     public void goBack() {
-          this.view.setHomeView();
+          this.view.setMainView();
     }
     
 }

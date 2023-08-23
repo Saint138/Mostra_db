@@ -15,6 +15,7 @@ public class RecensioneController {
     private ViewImpl view;
     private QueryRecensione queryRecensione;
     @FXML private TextField testo;
+    @FXML private TextField cf;
     @FXML private TextField codice_mostra;
     @FXML private TableView<Recensione> refreshRecensioneView;
 
