@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import it.unibo.mostra.db.entity.Recensione;
-import it.unibo.mostra.db.entity.refreshMostra;
+import it.unibo.mostra.db.entity.RefreshMostra;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -106,16 +106,16 @@ public class QueryMostra {
         }
     }
     */
-    public ObservableList<refreshMostra> refreshMostra(){
+    public ObservableList<RefreshMostra> refreshMostra(){
         final String query = "SELECT nome,codice_mostra,città,data_inizio,data_fine "
                             + "FROM Mostra ";
 
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();
                     
-                                final ObservableList<refreshMostra> list = FXCollections.observableArrayList();
+                                final ObservableList<RefreshMostra> list = FXCollections.observableArrayList();
                                 while (rs.next()) {
-                                    list.add(new refreshMostra(rs.getString("nome"), rs.getString("codice_mostra"), rs.getString("città"),
+                                    list.add(new RefreshMostra(rs.getString("nome"), rs.getString("codice_mostra"), rs.getString("città"),
                                                                  rs.getString("data_inizio"),rs.getString("data_fine")));
                                 }
                                 return list;

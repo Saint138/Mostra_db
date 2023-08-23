@@ -1,9 +1,12 @@
 package it.unibo.mostra.controller;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
 
 import it.unibo.mostra.db.entity.Recensione;
 import it.unibo.mostra.db.query.QueryRecensione;
+import it.unibo.mostra.utils.DateAdapter;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -17,6 +20,12 @@ public class RecensioneController {
     @FXML private TextField testo;
     @FXML private TextField codice_mostra;
     @FXML private TableView<Recensione> refreshRecensioneView;
+
+    @FXML private TextField Cf;
+    @FXML private TextField codiceMostra;
+    @FXML private TextField commento;
+    @FXML private TextField valutazione;
+
 
     public RecensioneController (ViewImpl view, QueryRecensione queryRecensione){
         this.view = view;
@@ -46,7 +55,25 @@ public class RecensioneController {
 
     @FXML
     public void newRecensione() {
-        /* */
+        try {
+            this.queryRecensione.addRecensione(Cf.getText(), commento.getText(), codice_mostra.getText(),
+                    Integer.parseInt(valutazione.getText()));
+            Cf.clear();
+            commento.clear();
+            valutazione.clear();
+            codice_mostra.clear();
+            this.refreshRecensione();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            Cf.clear();
+            Cf.setPromptText("Errore di inserimento");
+            Cf.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalArgumentException(e);
+        } catch (SQLException e) {
+            Cf.clear();
+            Cf.setPromptText("Errore di inserimento");
+            Cf.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
