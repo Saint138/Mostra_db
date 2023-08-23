@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Random;
+
 import it.unibo.mostra.db.entity.Turno;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,7 +67,64 @@ public class QueryDipendenti {
         
     }
 
-   /*  public void addReceptionist(String matricola, String nome, String cognome, String email, Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
+    public void addDipendente (String matricola, String nome, String cognome, String email, boolean guardia, boolean guida,
+    boolean commesso_souvenir, boolean receptionist, boolean magazzieniere, Integer stipendio){
+        Random rand = new Random();
+        final String query = "INSERT INTO Dipendente(matricola,nome,cognome,email,guardia, commesso_souvenir,guida,magazziniere,receptionist)"
+                                + "VALUES (?,?,?,?,?,?,?,?,?)" ;
+            try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, matricola);
+            stmt.setString(2, nome);
+            stmt.setString(3, cognome);
+            stmt.setString(4, email);
+            stmt.setBoolean(5, guardia);
+            stmt.setBoolean(6, guida);
+            stmt.setBoolean(7, commesso_souvenir);
+            stmt.setBoolean(8, magazzieniere);
+            stmt.setBoolean(9, receptionist);
+            stmt.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("Dipendente già presete");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+      
+        if(guardia){
+            try {
+                this.addGuardia(matricola, stipendio,"GRD"+ Integer.toString(rand.nextInt(1000000,9999999)));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else if (guida){
+            try {
+                this.addGuida(matricola, stipendio, "GUI"+ Integer.toString(rand.nextInt(1000000,9999999)));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else if (commesso_souvenir){
+            try {
+                this.addCommesso(matricola, stipendio, "CMM"+ Integer.toString(rand.nextInt(1000000,9999999)));
+            } 
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else if (magazzieniere){
+            try {
+                this.addMagazziniere(matricola, stipendio, "MGZ"+ Integer.toString(rand.nextInt(1000000,9999999)));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else if (receptionist){
+            try {
+                this.addReceptionist(matricola, stipendio, "RCP"+ Integer.toString(rand.nextInt(1000000,9999999)));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+     private void addReceptionist(String matricola ,Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Membro_Receptionist (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -78,28 +137,9 @@ public class QueryDipendenti {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        final String query2 =  "INSERT INTO Dipendente (MATRICOLA, NOME, COGNOME, EMAIL, GUARDIA, GUIDA , COMMESSO_SOUVENIR, RECEPITIONIST, MAGAZZINIERE) "
-        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement stmt = connection.prepareStatement(query2)) {
-            stmt.setString(1, matricola);
-            stmt.setString(2, nome);
-            stmt.setString(3, cognome);
-            stmt.setString(4, email);
-            stmt.setBoolean(5, false);
-            stmt.setBoolean(6, false);
-            stmt.setBoolean(7, false);
-            stmt.setBoolean(8, true);
-            stmt.setBoolean(9, false);
-            stmt.executeUpdate();
-        } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("Dipendente già presete");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
-    public void addGuida(String matricola, String nome, String cognome, String email, Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
+    private void addGuida(String matricola ,Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Guida (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -112,28 +152,10 @@ public class QueryDipendenti {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        final String query2 =  "INSERT INTO Dipendente (MATRICOLA, NOME, COGNOME, EMAIL, GUARDIA, GUIDA , COMMESSO_SOUVENIR, RECEPITIONIST, MAGAZZINIERE) "
-        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement stmt = connection.prepareStatement(query2)) {
-            stmt.setString(1, matricola);
-            stmt.setString(2, nome);
-            stmt.setString(3, cognome);
-            stmt.setString(4, email);
-            stmt.setBoolean(5, false);
-            stmt.setBoolean(6, true);
-            stmt.setBoolean(7, false);
-            stmt.setBoolean(8, false);
-            stmt.setBoolean(9, false);
-            stmt.executeUpdate();
-        } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("Dipendente già presete");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        
     }
 
-    public void addGuardia(String matricola, String nome, String cognome, String email, Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
+    private void addGuardia(String matricola ,Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Membro_Guardia (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -146,28 +168,10 @@ public class QueryDipendenti {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        final String query2 =  "INSERT INTO Dipendente (MATRICOLA, NOME, COGNOME, EMAIL, GUARDIA, GUIDA , COMMESSO_SOUVENIR, RECEPITIONIST, MAGAZZINIERE) "
-        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement stmt = connection.prepareStatement(query2)) {
-            stmt.setString(1, matricola);
-            stmt.setString(2, nome);
-            stmt.setString(3, cognome);
-            stmt.setString(4, email);
-            stmt.setBoolean(5, true);
-            stmt.setBoolean(6, false);
-            stmt.setBoolean(7, false);
-            stmt.setBoolean(8, false);
-            stmt.setBoolean(9, false);
-            stmt.executeUpdate();
-        } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("Dipendente già presete");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        
     }
 
-    public void addCommesso(String matricola, String nome, String cognome, String email, Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
+    private void addCommesso(String matricola ,Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Membro_Commesso (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -180,29 +184,10 @@ public class QueryDipendenti {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        final String query2 =  "INSERT INTO Dipendente (MATRICOLA, NOME, COGNOME, EMAIL, GUARDIA, GUIDA , COMMESSO_SOUVENIR, RECEPITIONIST, MAGAZZINIERE) "
-        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement stmt = connection.prepareStatement(query2)) {
-            stmt.setString(1, matricola);
-            stmt.setString(2, nome);
-            stmt.setString(3, cognome);
-            stmt.setString(4, email);
-            stmt.setBoolean(5, false);
-            stmt.setBoolean(6, false);
-            stmt.setBoolean(7, true);
-            stmt.setBoolean(8, false);
-            stmt.setBoolean(9, false);
-            stmt.executeUpdate();
-        } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("Dipendente già presete");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    
     }
 
-    public void addMagazziniere(String matricola, String nome, String cognome, String email, Integer stipendio,
-            String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
+    private void addMagazziniere(String matricola ,Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Receptionist (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
                 + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -215,28 +200,10 @@ public class QueryDipendenti {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        final String query2 = "INSERT INTO Dipendente (MATRICOLA, NOME, COGNOME, EMAIL, GUARDIA, GUIDA , COMMESSO_SOUVENIR, RECEPITIONIST, MAGAZZINIERE) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement stmt = connection.prepareStatement(query2)) {
-            stmt.setString(1, matricola);
-            stmt.setString(2, nome);
-            stmt.setString(3, cognome);
-            stmt.setString(4, email);
-            stmt.setBoolean(5, false);
-            stmt.setBoolean(6, false);
-            stmt.setBoolean(7, false);
-            stmt.setBoolean(8, false);
-            stmt.setBoolean(9, true);
-            stmt.executeUpdate();
-        } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("Dipendente già presete");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }*/
+       
+    }
     
-    public  ObservableList<Turno> refreshTurniDipendente(String matricola) {
+    private  ObservableList<Turno> refreshTurniDipendente(String matricola) {
          final String query = "Select codice_turno, data_turno,ora_inizio,ora_fine,codice_mostra "
                 + " FROM Turno "
                 + "WHERE matricola=? ";
