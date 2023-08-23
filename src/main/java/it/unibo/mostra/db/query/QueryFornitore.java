@@ -2,8 +2,14 @@ package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+
+
+import it.unibo.mostra.db.entity.Fornitore;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class QueryFornitore {
     
@@ -30,4 +36,22 @@ public class QueryFornitore {
             e.printStackTrace();
         }
     }
+
+     public  ObservableList<Fornitore> refreshFornitore() {
+        final String query = "Select codice_fornitore, nome , email, numero_telefono "
+               + " FROM Fornitore ";
+       try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+           final ResultSet rs = stmt.executeQuery();
+
+           final ObservableList<Fornitore> list = FXCollections.observableArrayList();
+           while (rs.next()) {
+               list.add(new Fornitore(rs.getString("codice_fornitore"), rs.getString("nome"), rs.getString("email"),
+                       rs.getString("numero_telefono")));
+           }
+           return list;
+       } catch (SQLException e) {
+           e.printStackTrace();
+           return null;
+       }
+   }
 }
