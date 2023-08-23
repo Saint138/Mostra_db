@@ -87,17 +87,19 @@ public class QueryMostra {
     }
     //inserire una nuova mostra
      */
-    public void addMostra(String nome, String città, Integer numeroOpere, String data, String codiceMostra, Integer valore) 
+    public void addMostra(String nome, String città, Integer numeroOpere, String data_inizio, String codiceMostra, Integer valore,String data_fine) 
                             throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Mostra (NOME, CITTA, NUMERO_OPERE, DATA , CODICE_MOSTRA, VALORE) "
-                            + "VALUES (?, ?, ?, ?, ?, ?)";
+        final String query = "INSERT INTO Mostra (NOME, CITTA, NUMERO_OPERE, DATA_INIZIO , CODICE_MOSTRA, VALORE,DATA_FINE) "
+                            + "VALUES (?, ?, ?, ?, ?, ?,?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome);
             stmt.setString(2, città);
             stmt.setInt(3, numeroOpere);
-            stmt.setString(4, data);
+            stmt.setString(4, data_inizio);
             stmt.setString(5, codiceMostra);
             stmt.setFloat(6, valore);
+            stmt.setString(4, data_fine);
+
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("mostra già inserita");
