@@ -143,7 +143,7 @@ public class ViewImpl implements View {
     @Override
     public void setAdminView() {
        try {
-            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/turniDipendenteView.fxml"));
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/AdminView.fxml"));
             loader.setController(new AdminViewController(this,queryVisita,queryOpera,queryMostra,queryFornitore,queryDipendenti,queryUtente,queryVendita,queryArtista,queryPresenza));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);

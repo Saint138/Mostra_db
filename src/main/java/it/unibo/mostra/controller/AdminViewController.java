@@ -61,23 +61,24 @@ public class AdminViewController {
     @FXML
     private TableView<Opera> tabOpere;
     @FXML
-    private TableView<Opera> tabMostre;
+    private TableView<Mostra> tabMostre;
     @FXML
-    private TableView<Opera> tabArtisti;
+    private TableView<Artista> tabArtisti;
     @FXML
-    private TableView<Opera> tabDipendenti;
+    private TableView<Dipendente> tabDipendenti;
     @FXML
-    private TableView<Opera> tabTurni;
+    private TableView<Turno> tabTurni;
     @FXML
-    private TableView<Opera> tabVendite;
+    private TableView<Vendita> tabVendite;
     @FXML
-    private TableView<Opera> tabVisite;
+    private TableView<Visita> tabVisite;
     @FXML
-    private TableView<Opera> tabFornitori;
+    private TableView<Fornitore> tabFornitori;
     @FXML
-    private TableView<Opera> tabPresenze;
+    private TableView<Presenza> tabPresenze;
 
     private String[] tipiDipendenti = {"Guardia", "Receptionist", "Guida", "Souvenir", "Magazziniere"};
+    private String[] tipiContratto = {"Contratto_Guardia", "Contratto_Receptionist", "Contratto_Guida", "Contratto_Souvenir", "Contratto_Magazziniere"};
 
         
 
@@ -95,112 +96,144 @@ public class AdminViewController {
         this.queryVendita = queryVendita;
         this.queryPresenza = queryPresenza;
     }
-    
+
+    @FXML
     public void addOpera() {
 
     }
-    
+
+    @FXML
     public void removeOpera() {
 
     }
-    
+
+    @FXML
     public void refreshOpere() {
 
     }
-    
+
+    @FXML
     public void addMostra() {
 
     }
-    
+
+    @FXML
     public void removeMostra() {
 
     }
-    
+
+    @FXML
     public void refreshMostre() {
 
     }
-    
+
+    @FXML
     public void addArtista() {
 
     }
-    
+
+    @FXML
     public void removeArtista() {
 
     }
-    
+
+    @FXML
     public void refreshArtisti() {
 
     }
-    
+
+    @FXML
     public void addDipendente() {
 
     }
-    
+
+    @FXML
     public void removeDipendente() {
 
     }
-    
+
+    @FXML
     public void refreshDipendenti() {
 
     }
-    
+
+    @FXML
     public void addTurno() {
 
     }
-    
+
+    @FXML
     public void removeTurno() {
 
     }
-    
+
+    @FXML
     public void refreshTurni() {
 
     }
-    
+
+    @FXML
     public void addFornitore() {
 
     }
-    
+
+    @FXML
     public void removeFornitore() {
 
     }
-    
+
+    @FXML
     public void refreshFornitori() {
 
     }
-    
+
+    @FXML
     public void addVisita() {
 
     }
-    
+
+    @FXML
     public void removeVisita() {
 
     }
-    
+
+    @FXML
     public void refreshVisite() {
 
     }
-    
+
+    @FXML
     public void addVendita() {
 
     }
-    
+
+    @FXML
     public void removeVendita() {
 
     }
-    
+
+    @FXML
     public void refreshVendite() {
 
     }
-    
+
+    @FXML
     public void addPresenza() {
 
     }
-    
+
+    @FXML
     public void removePresenza() {
 
     }
-    
+
+    @FXML
     public void refreshPresenze() {
-        
+
+    }
+
+    @FXML
+    public void goBack() {
+          this.view.setMainView();
     }
 }

@@ -5,17 +5,18 @@ import java.util.Set;
 import it.unibo.mostra.utils.Pair;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class AdminLoginController{
 
-     private String user;
+    private String user;
     private String pass;
     private ViewImpl view;
     private Set<Pair<String, String>> admin;
      
-    @FXML TextField username;
-    @FXML TextField password;
+    @FXML private TextField username;
+    @FXML private PasswordField password;
 
     /**
      * Constructor for the controller.
