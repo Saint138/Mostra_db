@@ -31,7 +31,7 @@ public class QueryRecensione {
         Date date = new Date (System.currentTimeMillis ());
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, cod );
-            stmt.setDate(2, date);
+            stmt.setTimestamp(2, DateAdapter.dateToSqlDate(date));
             stmt.setInt(3, val);
             stmt.setString(4, commento);
             stmt.setString(5, Cf);
