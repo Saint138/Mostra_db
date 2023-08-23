@@ -19,7 +19,7 @@ public class QueryDipendenti {
         this.connection = connection;
     }
 
-    public void addReceptionist(String matricola, String nome, String cognome, String email, Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
+   /*  public void addReceptionist(String matricola, String nome, String cognome, String email, Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Membro_Receptionist (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -208,5 +208,5 @@ public class QueryDipendenti {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 }
