@@ -139,6 +139,7 @@
                               <TextField fx:id="nome_dipendente" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
                               <TextField fx:id="cognome_dipendente" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
                               <TextField fx:id="email_dipendente" prefHeight="26.0" prefWidth="201.0" promptText="email*" />
+                              <TextField fx:id="stipendio" prefHeight="26.0" prefWidth="201.0" promptText="stipendio*" />
                               <CheckBox fx:id="guardia" mnemonicParsing="false" prefHeight="18.0" prefWidth="70.0" text="Guardia">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
