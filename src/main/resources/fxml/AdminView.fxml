@@ -30,6 +30,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                              <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -64,6 +65,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -90,12 +92,13 @@
                   </BorderPane>
                </content>
           </Tab>
-            <Tab fx:id="tabArtisti" text="Artista">
+            <Tab fx:id="Artisti" text="Artista">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -129,6 +132,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -161,6 +165,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -188,12 +193,13 @@
                   </BorderPane>
                </content>
             </Tab>
-            <Tab fx:id="tabVendite" text="Vendita">
+            <Tab fx:id="Vendite" text="Vendita">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -225,6 +231,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -257,6 +264,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -288,6 +296,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -302,7 +311,7 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removePresenza" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Presenza" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshPresenza" prefHeight="26.0" prefWidth="202.0" text="Refresh Presenza" />
+                              <Button mnemonicParsing="false" onAction="#refreshPresenze" prefHeight="26.0" prefWidth="202.0" text="Refresh Presenza" />
                            </children>
                         </FlowPane>
                      </left>
