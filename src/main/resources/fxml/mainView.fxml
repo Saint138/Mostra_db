@@ -40,5 +40,15 @@
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
       </Button>
+      <Button layoutX="668.0" layoutY="530.0" mnemonicParsing="false" onAction="#goAdminLoginView" prefHeight="26.0" prefWidth="89.0" text="Admin">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="43.0" layoutY="530.0" mnemonicParsing="false" onAction="#goDipendenteLoginView" prefHeight="26.0" prefWidth="89.0" text="Dipendente">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

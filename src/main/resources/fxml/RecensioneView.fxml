@@ -33,5 +33,6 @@
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
       </Button>
+      <TextField fx:id="cf" layoutX="77.0" layoutY="155.0" prefHeight="26.0" prefWidth="264.0" promptText="Codice Fiscale" />
    </children>
 </AnchorPane>
