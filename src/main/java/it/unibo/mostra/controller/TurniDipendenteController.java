@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import it.unibo.mostra.db.entity.Turno;
 import it.unibo.mostra.db.query.QueryDipendenti;
+import it.unibo.mostra.db.query.QueryTurno;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -14,14 +15,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class TurniDipendenteController {
     
     private ViewImpl view;
-    private QueryDipendenti queryDipendenti;
+    private QueryTurno queryTurno;
     @FXML
     private TextField matricola;
     @FXML
     private TableView<Turno> tabTurniDipendente;
 
-    public TurniDipendenteController(ViewImpl view, QueryDipendenti queryDipendenti) {
-        this.queryDipendenti = queryDipendenti;
+    public TurniDipendenteController(ViewImpl view, QueryTurno queryTurno) {
+        this.queryTurno = queryTurno;
         this.view = view;
     }
     
@@ -43,7 +44,7 @@ public class TurniDipendenteController {
         TableColumn<Turno, String> codiceMostra = new TableColumn<>("Codice Mostra");
         codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codice_mostra"));
         this.tabTurniDipendente.getColumns().addAll(Arrays.asList(codiceTurno, dataTurno, oraInizio, oraFine, codiceMostra));
-        this.tabTurniDipendente.setItems(this.queryDipendenti.refreshTurniDipendente(this.matricola.getText()));
+        this.tabTurniDipendente.setItems(this.queryTurno.refreshTurniDipendente(this.matricola.getText()));
     }
 
 }
