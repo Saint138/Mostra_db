@@ -32,6 +32,7 @@ public class ViewImpl implements View {
     private QueryVendita queryVendita;
     private QueryArtista queryArtista;
     private QueryPresenza queryPresenza;
+    private QueryTurno queryTurno;
     /**
      * Constructor for the view.
      * 
@@ -144,7 +145,7 @@ public class ViewImpl implements View {
     public void setAdminView() {
        try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/AdminView.fxml"));
-            loader.setController(new AdminViewController(this,queryVisita,queryOpera,queryMostra,queryFornitore,queryDipendenti,queryUtente,queryVendita,queryArtista,queryPresenza));
+            loader.setController(new AdminViewController(this,queryVisita,queryOpera,queryMostra,queryFornitore,queryDipendenti,queryUtente,queryVendita,queryArtista,queryPresenza,queryTurno));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
