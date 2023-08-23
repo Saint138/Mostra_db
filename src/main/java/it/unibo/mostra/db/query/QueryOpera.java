@@ -13,7 +13,8 @@ public class QueryOpera {
         this.connection = connection;
     }
 
-    public void addOpera(String nomeArtista, String nomeOpera, String codiceVendita, String annoRealizzazione, String dimensioni, String tecnica, String descrizione) throws SQLException, SQLIntegrityConstraintViolationException {
+    public void addOpera(String nomeArtista, String nomeOpera, String codiceVendita, String annoRealizzazione, String dimensioni,
+                         String tecnica, String descrizione) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Mostra (NOME_ARTE, NOME, CODICE_VENDITA, ANNO_REALIZZAZIONE , DIMENSIONI, TECNICA, DESCRIZIONE) "
                             + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -29,6 +30,25 @@ public class QueryOpera {
             System.out.println("Opera già inserita");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void removeOpera(String nomeArtista, String nomeOpera ){
+        final String query = "DELETE FROM Opera WHERE nome_arte=? AND nome=?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, nomeArtista);
+            statement.setString(2, nomeOpera);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+         final String query2 = "DELETE FROM Presenza WHERE nome_arte=? AND nome=?";
+        try (PreparedStatement statement = connection.prepareStatement(query2)) {
+            statement.setString(1, nomeArtista);
+            statement.setString(2, nomeOpera);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
         }
     }
 }
