@@ -102,9 +102,9 @@
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="nome_arte" prefHeight="26.0" prefWidth="201.0" promptText="nome_arte*" />
+                              <TextField fx:id="nome_arte_artista" prefHeight="26.0" prefWidth="201.0" promptText="nome_arte*" />
                               <TextField fx:id="nome_artista" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
-                              <TextField fx:id="cognome" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
+                              <TextField fx:id="cognome_artista" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
                               <TextField fx:id="data_di_nascita" prefHeight="26.0" prefWidth="201.0" promptText="data di nascita*" />
                               <TextField fx:id="data_decesso" prefHeight="26.0" prefWidth="201.0" promptText="data decesso" />
                               <TextField fx:id="breve_biografia" prefHeight="26.0" prefWidth="201.0" promptText="breve biografia*" />
@@ -136,9 +136,9 @@
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
                               <TextField fx:id="matricola" prefHeight="26.0" prefWidth="201.0" promptText="matricola*" />
-                              <TextField fx:id="nome_opera1" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
-                              <TextField fx:id="codice_vendita1" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
-                              <TextField fx:id="anno_realizzazione1" prefHeight="26.0" prefWidth="201.0" promptText="email*" />
+                              <TextField fx:id="nome_dipendente" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
+                              <TextField fx:id="cognome_dipendente" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
+                              <TextField fx:id="email_dipendente" prefHeight="26.0" prefWidth="201.0" promptText="email*" />
                               <ChoiceBox fx:id="ruolo" prefHeight="26.0" prefWidth="202.0" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#addDipendente" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Dipendente" />
@@ -170,8 +170,8 @@
                               <TextField fx:id="codice_turno" prefHeight="26.0" prefWidth="201.0" promptText="Codice turno*" />
                               <TextField fx:id="data_turno" prefHeight="26.0" prefWidth="201.0" promptText="data turno*" />
                               <TextField fx:id="ora_inizio" prefHeight="26.0" prefWidth="201.0" promptText="ora inizio*" />
-                              <TextField fx:id="ora_fine1" prefHeight="26.0" prefWidth="201.0" promptText="ora fine*" />
-                              <TextField fx:id="codice_mostra" prefHeight="26.0" prefWidth="201.0" promptText="codice mostra*" />
+                              <TextField fx:id="ora_fine" prefHeight="26.0" prefWidth="201.0" promptText="ora fine*" />
+                              <TextField fx:id="codice_mostra_turno" prefHeight="26.0" prefWidth="201.0" promptText="codice mostra*" />
                               <ChoiceBox fx:id="tipoCodice" prefHeight="26.0" prefWidth="202.0" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#addTurno" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Turno" />
@@ -200,21 +200,21 @@
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="codice_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice vendita*" />
+                              <TextField fx:id="codice_vendita_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice vendita*" />
                               <TextField fx:id="data_vendita" prefHeight="26.0" prefWidth="201.0" promptText="data vendita*" />
                               <TextField fx:id="importo" prefHeight="26.0" prefWidth="201.0" promptText="importo*" />
-                              <TextField fx:id="codice_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore*" />
+                              <TextField fx:id="codice_fornitore_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore*" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#addFornitore" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitore" />
+                              <Button mnemonicParsing="false" onAction="#addVendita" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitore" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#removeFornitore" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Fornitore" />
+                              <Button mnemonicParsing="false" onAction="#removeVendita" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Fornitore" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshFornitori" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitore" />
+                              <Button mnemonicParsing="false" onAction="#refreshVendite" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitore" />
                            </children>
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView fx:id="tabDipendenti2" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="tabVendite" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
@@ -263,14 +263,14 @@
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="codice_fornitori" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore" />
+                              <TextField fx:id="codice_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore" />
                               <TextField fx:id="nome_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
                               <TextField fx:id="email_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="email*" />
                               <TextField fx:id="numero_telefono" prefHeight="26.0" prefWidth="201.0" promptText="numero telefono*" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#addFornitori" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitori" />
+                              <Button mnemonicParsing="false" onAction="#addFornitore" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitori" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#removeFornitori" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Fornitori" />
+                              <Button mnemonicParsing="false" onAction="#removeFornitore" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Fornitori" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#refreshFornitori" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitori" />
                            </children>
