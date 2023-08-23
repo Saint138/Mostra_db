@@ -24,6 +24,12 @@ public class Dipendente {
         this.matricola = matricola;
     }
     
+    public Dipendente ( String matricola, String nome, String cognome, String email){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.matricola = matricola;
+    }
     public String getNome() {
         return nome;
     }
