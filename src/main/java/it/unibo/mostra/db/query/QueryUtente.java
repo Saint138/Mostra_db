@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import it.unibo.mostra.db.entity.UtentiPiùAttivi;
-import it.unibo.mostra.utils.DateAdapter;
-import it.unibo.mostra.db.entity.Recensione;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -21,7 +19,7 @@ public class QueryUtente {
         this.connection = connection;
     }
 
-    public void addUtente(String CF, String email, String nome, String cognome){
+    public void addUtente(String CF, String email, String nome, String cognome) throws SQLException, SQLIntegrityConstraintViolationException {
          final String query = "INSERT INTO Visitatore(nome,cognome,email,CF)"
                              + "VALUES (?, ?, ?, ?)";
         

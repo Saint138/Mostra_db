@@ -87,8 +87,9 @@ public class QueryMostra {
     
     }
     //inserire una nuova mostra
-    
-    public void addMostra(String nome, String città, Integer numeroOpere, String data, String codiceMostra, Integer valore) throws SQLException, SQLIntegrityConstraintViolationException {
+     */
+    public void addMostra(String nome, String città, Integer numeroOpere, String data, String codiceMostra, Integer valore) 
+                            throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Mostra (NOME, CITTA, NUMERO_OPERE, DATA , CODICE_MOSTRA, VALORE) "
                             + "VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -105,7 +106,7 @@ public class QueryMostra {
             e.printStackTrace();
         }
     }
-    */
+   
     public ObservableList<RefreshMostra> refreshMostra(){
         final String query = "SELECT nome,codice_mostra,città,data_inizio,data_fine "
                             + "FROM Mostra ";
@@ -122,7 +123,38 @@ public class QueryMostra {
                             } catch (final SQLException e) {
                                 throw new IllegalStateException("Cannot execute the query!", e);
                             
+                            }
     }
-}
 
+    public void removeMostra(String codiceMostra) throws SQLException {
+        final String query = "DELETE FROM Mostra WHERE codice_mostra=?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, codiceMostra);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+        final String query2 = "DELETE FROM Visita WHERE codice_mostra=?";
+          try (PreparedStatement statement = connection.prepareStatement(query2)) {
+            statement.setString(1, codiceMostra);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+         final String query3 = "DELETE FROM Turno WHERE codice_mostra=?";
+          try (PreparedStatement statement = connection.prepareStatement(query3)) {
+            statement.setString(1, codiceMostra);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+         final String query4 = "DELETE FROM Presenza WHERE codice_mostra=?";
+          try (PreparedStatement statement = connection.prepareStatement(query4)) {
+            statement.setString(1, codiceMostra);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+         
+    }
 }
