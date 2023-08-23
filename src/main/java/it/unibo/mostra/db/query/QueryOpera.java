@@ -51,4 +51,19 @@ public class QueryOpera {
             throw new IllegalStateException(e);
         }
     }
+
+    public void updateOpereMostre(){
+        
+       final String query =   "UPDATE Mostra"
+                             + "SET numero_opere = (SELECT COUNT(P.codice_mostra) as opere"
+                             + "FROM presenza P "
+                             + "WHERE Mostra.codice_mostra = P.codice_mostra)";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
 }
