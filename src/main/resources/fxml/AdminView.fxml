@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -30,7 +30,6 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -65,7 +64,6 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -92,22 +90,21 @@
                   </BorderPane>
                </content>
           </Tab>
-            <Tab fx:id="Artisti" text="Artista">
+            <Tab text="Artista">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="nome_arte_artista" prefHeight="26.0" prefWidth="201.0" promptText="nome_arte*" />
+                              <TextField fx:id="nome_arte" prefHeight="26.0" prefWidth="201.0" promptText="nome_arte*" />
                               <TextField fx:id="nome_artista" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
-                              <TextField fx:id="cognome_artista" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
+                              <TextField fx:id="cognome" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
                               <TextField fx:id="data_di_nascita" prefHeight="26.0" prefWidth="201.0" promptText="data di nascita*" />
                               <TextField fx:id="data_decesso" prefHeight="26.0" prefWidth="201.0" promptText="data decesso" />
                               <TextField fx:id="breve_biografia" prefHeight="26.0" prefWidth="201.0" promptText="breve biografia*" />
@@ -182,34 +179,91 @@
                   </BorderPane>
                </content>
             </Tab>
-            <Tab fx:id="Vendite" text="Vendita">
+            <Tab text="Turno">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                           <Separator prefHeight="18.0" prefWidth="200.0" />
+                              <Separator prefHeight="18.0" prefWidth="200.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Separator prefHeight="28.0" prefWidth="200.0" />
+                              <TextField fx:id="codice_turno" prefHeight="26.0" prefWidth="201.0" promptText="Codice turno*" />
+                              <TextField fx:id="data_turno" prefHeight="26.0" prefWidth="201.0" promptText="data turno*" />
+                              <TextField fx:id="ora_inizio" prefHeight="26.0" prefWidth="201.0" promptText="ora inizio*" />
+                              <TextField fx:id="ora_fine1" prefHeight="26.0" prefWidth="201.0" promptText="ora fine*" />
+                              <TextField fx:id="codice_mostra" prefHeight="26.0" prefWidth="201.0" promptText="codice mostra*" />
+                              <CheckBox fx:id="guardia1" mnemonicParsing="false" prefHeight="18.0" prefWidth="70.0" text="Guardia">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="guida1" mnemonicParsing="false" prefHeight="18.0" prefWidth="70.0" text="Guida">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="souvenir1" mnemonicParsing="false" prefHeight="18.0" prefWidth="82.0" text="Souvenir">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="magazziniere1" mnemonicParsing="false" prefHeight="18.0" prefWidth="104.0" text="Magazziniere">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="receptionist1" mnemonicParsing="false" prefHeight="18.0" prefWidth="110.0" text="Receptionist">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <Separator prefHeight="18.0" prefWidth="200.0" />
+                              <Button mnemonicParsing="false" onAction="#addTurno" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Turno" />
+                              <Separator prefHeight="18.0" prefWidth="200.0" />
+                              <Button mnemonicParsing="false" onAction="#removeTurno" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Turno" />
+                              <Separator prefHeight="47.0" prefWidth="200.0" />
+                              <Button mnemonicParsing="false" onAction="#refreshTurni" prefHeight="26.0" prefWidth="202.0" text="Refresh Turni" />
+                           </children>
+                        </FlowPane>
+                     </left>
+                     <center>
+                        <TableView fx:id="tabTurni" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+            <Tab text="Vendita">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <left>
+                        <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="codice_vendita_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice vendita*" />
+                              <TextField fx:id="codice_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice vendita*" />
                               <TextField fx:id="data_vendita" prefHeight="26.0" prefWidth="201.0" promptText="data vendita*" />
                               <TextField fx:id="importo" prefHeight="26.0" prefWidth="201.0" promptText="importo*" />
-                              <TextField fx:id="codice_fornitore_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore*" />
+                              <TextField fx:id="codice_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore*" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#addVendita" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitore" />
+                              <Button mnemonicParsing="false" onAction="#addFornitore" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitore" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#removeVendita" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Fornitore" />
+                              <Button mnemonicParsing="false" onAction="#removeFornitore" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Fornitore" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshVendite" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitore" />
+                              <Button mnemonicParsing="false" onAction="#refreshFornitori" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitore" />
                            </children>
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView fx:id="tabVendite" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="tabDipendenti2" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
@@ -220,7 +274,6 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -253,14 +306,13 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="codice_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore" />
+                              <TextField fx:id="codice_fornitori" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore" />
                               <TextField fx:id="nome_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
                               <TextField fx:id="email_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="email*" />
                               <TextField fx:id="numero_telefono" prefHeight="26.0" prefWidth="201.0" promptText="numero telefono*" />
@@ -285,7 +337,6 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
