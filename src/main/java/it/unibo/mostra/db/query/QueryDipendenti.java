@@ -227,7 +227,7 @@ public class QueryDipendenti {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     
     public  ObservableList<Turno> refreshTurniDipendente(String matricola) {
          final String query = "Select codice_turno, data_turno,ora_inizio,ora_fine,codice_mostra "
@@ -247,5 +247,5 @@ public class QueryDipendenti {
             e.printStackTrace();
             return null;
         }
-    }*/
+    }
 }
