@@ -1,22 +1,20 @@
 package it.unibo.mostra.view;
 
 import java.sql.Connection;
-
-import javax.security.auth.login.LoginContext;
-
 import it.unibo.mostra.controller.HomeController;
 import it.unibo.mostra.controller.AdminLoginController;
+import it.unibo.mostra.controller.AdminViewController;
 import it.unibo.mostra.controller.BiglietteriaController;
 import it.unibo.mostra.controller.DipendenteLoginController;
 import it.unibo.mostra.controller.MainViewController;
 import it.unibo.mostra.controller.RecensioneController;
 import it.unibo.mostra.controller.RicercaController;
+import it.unibo.mostra.controller.TurniDipendenteController;
 import it.unibo.mostra.db.query.*;
 import it.unibo.mostra.view.api.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ViewImpl implements View {
@@ -31,6 +29,7 @@ public class ViewImpl implements View {
     private QueryVisita queryVisita;
     private QueryRicerca queryRicerca;
     private QueryBiglietteria queryBiglietteria;
+    private QueryVendita queryVendita;
     /**
      * Constructor for the view.
      * 
@@ -140,16 +139,23 @@ public class ViewImpl implements View {
     }
 
     @Override
-    public void setAdminAdd() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setAdminAdd'");
+    public void setAdminView() {/* 
+       try {
+            final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/turniDipendenteView.fxml"));
+            loader.setController(new AdminViewController(this,queryVisita,queryOpera,queryMostra,queryFornitore,queryDipendenti,queryUtente,queryVendita));
+            final Parent root = loader.load();
+            final Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Override
     public void setDipendenteTurni() {
         try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/turniDipendenteView.fxml"));
-            loader.setController(new HomeController(this));
+            loader.setController(new TurniDipendenteController(this,queryDipendenti));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);

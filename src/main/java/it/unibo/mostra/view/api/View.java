@@ -20,7 +20,7 @@ public interface View {
 
     void setRecensioneView();
 
-    void setAdminAdd();
+    void setAdminView();
 
     void setDipendenteTurni();
 }
