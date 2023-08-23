@@ -19,7 +19,9 @@ public class Mostra {
         this.data_inizio = data_inizio;
         this.data_fine = data_fine;
     }
-    public Mostra(String città,String data_inizio, String data_fine, String codiceMostra, Integer valore, Integer numero_opere ){
+
+    public Mostra(String città, String data_inizio, String data_fine, String codiceMostra, Integer valore,
+            Integer numero_opere) {
         this.città = città;
         this.numero_opere = numero_opere;
         this.codiceMostra = codiceMostra;
@@ -27,6 +29,8 @@ public class Mostra {
         this.data_inizio = data_inizio;
         this.data_fine = data_fine;
     }
+
+    
 
     public String getNome(){
         return nome;
