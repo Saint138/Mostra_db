@@ -203,7 +203,7 @@ public class QueryDipendenti {
        
     }
     
-    private  ObservableList<Turno> refreshTurniDipendente(String matricola) {
+    public  ObservableList<Turno> refreshTurniDipendente(String matricola) {
          final String query = "Select codice_turno, data_turno,ora_inizio,ora_fine,codice_mostra "
                 + " FROM Turno "
                 + "WHERE matricola=? ";
