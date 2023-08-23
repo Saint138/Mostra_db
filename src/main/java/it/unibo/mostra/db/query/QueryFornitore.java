@@ -16,7 +16,7 @@ public class QueryFornitore {
     //inserire una nuovo fornitore
   
     public void addFornitore(String codice_fornitore, String nome, String cognome, String email, String numero_telefono) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Mostra (CODICE_FORNITORE, NOME, COGNOME, EMAIL , NUMERO_TELEFONO) "
+        final String query = "INSERT INTO Fornitore (CODICE_FORNITORE, NOME, COGNOME, EMAIL , NUMERO_TELEFONO) "
                             + "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, codice_fornitore);
