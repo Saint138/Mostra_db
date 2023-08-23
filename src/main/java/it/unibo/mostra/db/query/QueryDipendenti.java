@@ -2,8 +2,12 @@ package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import it.unibo.mostra.db.entity.Turno;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class QueryDipendenti {
@@ -151,9 +155,10 @@ public class QueryDipendenti {
         }
     }
 
-    public void addMagazziniere(String matricola, String nome, String cognome, String email, Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
+    public void addMagazziniere(String matricola, String nome, String cognome, String email, Integer stipendio,
+            String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Receptionist (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
-                            + "VALUES (?, ?, ?)";
+                + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, stipendio);
             stmt.setString(2, codContratto);
@@ -164,8 +169,8 @@ public class QueryDipendenti {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        final String query2 =  "INSERT INTO Dipendente (MATRICOLA, NOME, COGNOME, EMAIL, GUARDIA, GUIDA , COMMESSO_SOUVENIR, RECEPITIONIST, MAGAZZINIERE) "
-        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        final String query2 = "INSERT INTO Dipendente (MATRICOLA, NOME, COGNOME, EMAIL, GUARDIA, GUIDA , COMMESSO_SOUVENIR, RECEPITIONIST, MAGAZZINIERE) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(query2)) {
             stmt.setString(1, matricola);
@@ -182,6 +187,26 @@ public class QueryDipendenti {
             System.out.println("Dipendente già presete");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public  ObservableList<Turno> refreshTurniDipendente(String matricola) {
+         final String query = "Select codice_turno, data_turno,ora_inizio,ora_fine,codice_mostra "
+                + " FROM Turno "
+                + "WHERE matricola=? ";
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            stmt.setString(1, matricola);
+            final ResultSet rs = stmt.executeQuery();
+
+            final ObservableList<Turno> list = FXCollections.observableArrayList();
+            while (rs.next()) {
+                list.add(new Turno(rs.getString("codice_turno"), rs.getString("data_turno"), rs.getString("ora_inizio"),
+                        rs.getString("ora_fine"), rs.getString("codice_mostra")));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
