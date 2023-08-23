@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
-import it.unibo.mostra.db.entity.Recensione;
 import it.unibo.mostra.db.entity.RefreshMostra;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -157,4 +156,5 @@ public class QueryMostra {
         }
          
     }
+
 }

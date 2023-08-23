@@ -43,7 +43,7 @@ public class QueryRecensione {
             e.printStackTrace();
         }
     }
-/* 
+
     public ObservableList<Recensione> visulizzaRecensioniMostra(String codiceMostra){
         final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.codice, R.valutazione, R.commento"
                             + "FROM Recensione R"
@@ -56,7 +56,7 @@ public class QueryRecensione {
             final ObservableList<Recensione> list = FXCollections.observableArrayList();
             while(rs.next()){
                 list.add(new Recensione(rs.getString("V.nome"), rs.getString("V.cognome"), rs.getString("R.codice"),rs.getString("R.commento"), 
-                                               rs.getInt("R.valutazione"), rs.getString("data_recensione"),));
+                                               rs.getInt("R.valutazione"), rs.getString("R.data_recensione")));
             }
             return list;
         } catch (SQLException e) {
@@ -66,7 +66,7 @@ public class QueryRecensione {
 
     }
 
-    public ObservableList<Recensione>aRecensioniUtente(String CF){
+    public ObservableList<Recensione> RecensioniUtente(String CF){
         final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.valutazione, R.commento, M.nome"
                             + "FROM Recensione R"
                             + "JOIN Visitatore V on R.CF = V.CF"
@@ -89,7 +89,7 @@ public class QueryRecensione {
         }
 
     }
-
+/* 
     public ObservableList<Recensione> visulizzaRecensioniPerData(String data){
         final String query = "SELECT  V.nome,V.cognome, M.nome, R.valutazione, R.commento"
                             + "FROM Recensione R"

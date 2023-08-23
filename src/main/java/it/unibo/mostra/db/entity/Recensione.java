@@ -11,13 +11,32 @@ public class Recensione {
     private String nomeMostra;
     private String dataRecensione;
 
-    public Recensione (String nome,String cognome, String cod, String commento, Integer val,  String dataRecensione,String nomeMostra){
+    public Recensione (String nome,String cognome, String cod, Integer val, String commento  ,String dataRecensione,String nomeMostra){
         this.cod = cod;
         this.nomeMostra = nomeMostra;
         this.valutazione = val;
         this.commento = commento;
         this.nome = nome;
         this.cognome = cognome;
+        this.dataRecensione = dataRecensione;
+    }
+
+    public Recensione (String nome,String cognome, String cod,  String commento, Integer val,  String dataRecensione){
+        this.nome = nome ;
+        this.cognome = cognome;
+        this.cod = cod;
+        this.commento = commento; 
+        this.valutazione = val ;
+        this.dataRecensione = dataRecensione;
+    }
+
+    public Recensione (String nome,String cognome, String nomeMostra,  String cod, Integer val,  String commento,  String dataRecensione ){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.nomeMostra = nomeMostra;
+        this.cod = cod;
+        this.valutazione = val;
+        this.commento = commento;
         this.dataRecensione = dataRecensione;
     }
 
