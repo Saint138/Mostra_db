@@ -348,10 +348,11 @@ public class AdminViewController {
     public void addVisita() { 
         try{
             queryVisita.addVisita(codice_visita.getText(),ora_inizio_visita.getText(), data_visita.getText(),
-                                    codice_contratto_guida.getText());
+                                    codice_mostra_visita.getText(),codice_contratto_guida.getText());
             codice_visita.clear();
             ora_inizio_visita.clear();
             data_visita.clear();
+            codice_mostra_visita.clear();
             codice_contratto_guida.clear();
             this.refreshVisite();
         } catch (SQLIntegrityConstraintViolationException e) {
@@ -378,8 +379,27 @@ public class AdminViewController {
     }
 
     @FXML
-    public void addVendita() {
-
+    public void addVendita() { 
+        try{
+            queryVendita.addVendita(codice_vendita_vendita.getText(),data_vendita.getText(), Float.parseFloat(importo.getText()),
+                                    codice_fornitore_vendita.getText());
+            codice_vendita_vendita.clear();
+            data_vendita.clear();
+            importo.clear();
+            codice_fornitore_vendita.clear();
+            codice_contratto_guida.clear();
+            this.refreshVendite();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            codice_vendita_vendita.clear();
+            codice_vendita_vendita.setPromptText("Errore di inserimento");
+            codice_vendita_vendita.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalArgumentException(e);
+        } catch (SQLException e) {
+            codice_vendita_vendita.clear();
+            codice_vendita_vendita.setPromptText("Errore di inserimento");
+            codice_vendita_vendita.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
@@ -393,8 +413,24 @@ public class AdminViewController {
     }
 
     @FXML
-    public void addPresenza() {
-
+    public void addPresenza() { 
+        try{
+            queryPresenza.addPresenza(codice_mostra_presenza.getText(),nome_arte_presenza.getText(), nome_opera_presenza.getText());
+            codice_mostra_presenza.clear();
+            nome_arte_presenza.clear();
+            nome_opera_presenza.clear();
+            this.refreshPresenze();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            codice_mostra_presenza.clear();
+            codice_mostra_presenza.setPromptText("Errore di inserimento");
+            codice_mostra_presenza.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalArgumentException(e);
+        } catch (SQLException e) {
+            codice_mostra_presenza.clear();
+            codice_mostra_presenza.setPromptText("Errore di inserimento");
+            codice_mostra_presenza.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
