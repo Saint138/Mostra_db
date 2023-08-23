@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Random;
 
+import it.unibo.mostra.db.entity.Dipendente;
 import it.unibo.mostra.db.entity.Turno;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -203,23 +204,21 @@ public class QueryDipendenti {
        
     }
     
-    public  ObservableList<Turno> refreshTurniDipendente(String matricola) {
-         final String query = "Select codice_turno, data_turno,ora_inizio,ora_fine,codice_mostra "
-                + " FROM Turno "
-                + "WHERE matricola=? ";
-        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
-            stmt.setString(1, matricola);
-            final ResultSet rs = stmt.executeQuery();
+    public  ObservableList<Dipendente> refreshDipendente() {
+        final String query = "Select nome, cognome , email, matricola "
+               + " FROM Dipendente ";
+       try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+           final ResultSet rs = stmt.executeQuery();
 
-            final ObservableList<Turno> list = FXCollections.observableArrayList();
-            while (rs.next()) {
-                list.add(new Turno(rs.getString("codice_turno"), rs.getString("data_turno"), rs.getString("ora_inizio"),
-                        rs.getString("ora_fine"), rs.getString("codice_mostra")));
-            }
-            return list;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+           final ObservableList<Dipendente> list = FXCollections.observableArrayList();
+           while (rs.next()) {
+               list.add(new Dipendente(rs.getString("matricola"), rs.getString("nome"), rs.getString("cognome"),
+                       rs.getString("email")));
+           }
+           return list;
+       } catch (SQLException e) {
+           e.printStackTrace();
+           return null;
+       }
+   }
 }
