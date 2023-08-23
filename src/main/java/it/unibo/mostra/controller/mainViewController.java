@@ -2,7 +2,7 @@ package it.unibo.mostra.controller;
 
 import java.util.Arrays;
 
-import it.unibo.mostra.db.entity.refreshMostra;
+import it.unibo.mostra.db.entity.RefreshMostra;
 import it.unibo.mostra.db.query.QueryMostra;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ public class MainViewController {
     
     private ViewImpl view;
     private QueryMostra queryMain;
-    @FXML private TableView<refreshMostra> refreshMostraView;
+    @FXML private TableView<RefreshMostra> refreshMostraView;
 
     public MainViewController(ViewImpl view, QueryMostra queryMain) {
         this.queryMain = queryMain;
@@ -37,15 +37,15 @@ public class MainViewController {
     @FXML
     public void refreshMostra() {
         this.refreshMostraView.getColumns().clear();
-        TableColumn<refreshMostra, String> nomeMostra = new TableColumn<>("Nome mostra");
+        TableColumn<RefreshMostra, String> nomeMostra = new TableColumn<>("Nome mostra");
         nomeMostra.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        TableColumn<refreshMostra, String> codiceMostra = new TableColumn<>("Codice Mostra");
+        TableColumn<RefreshMostra, String> codiceMostra = new TableColumn<>("Codice Mostra");
         codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codiceMostra"));
-        TableColumn<refreshMostra, String> città = new TableColumn<>("Città");
+        TableColumn<RefreshMostra, String> città = new TableColumn<>("Città");
         città.setCellValueFactory(new PropertyValueFactory<>("città"));
-        TableColumn<refreshMostra, String> dataInizio = new TableColumn<>("Data Inizio");
+        TableColumn<RefreshMostra, String> dataInizio = new TableColumn<>("Data Inizio");
         dataInizio.setCellValueFactory(new PropertyValueFactory<>("dataInizio"));
-        TableColumn<refreshMostra, String> dataFine = new TableColumn<>("Data Fine");
+        TableColumn<RefreshMostra, String> dataFine = new TableColumn<>("Data Fine");
         dataFine.setCellValueFactory(new PropertyValueFactory<>("dataFine"));
         this.refreshMostraView.getColumns()
                 .addAll(Arrays.asList(nomeMostra, codiceMostra, città, dataInizio, dataFine));

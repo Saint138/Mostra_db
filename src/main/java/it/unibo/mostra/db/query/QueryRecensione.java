@@ -1,6 +1,7 @@
 package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Random;
 
 import it.unibo.mostra.db.entity.Recensione;
+import it.unibo.mostra.utils.DateAdapter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -23,15 +25,17 @@ public class QueryRecensione {
 
   
     public void addRecensione(String Cf, String commento, String codMostra, Integer val) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Mostra (CODICE_RECENSIONE, CF, COMMENTO, CODICE_MOSTRA , VALUTAZIONE) "
+        final String query = "INSERT INTO Mostra (codice_recensione,data_recensione,valutazione,commento,cf,codice_mostra) "
                             + "VALUES (?, ?, ?, ?, ?)";
         String cod = 'A'+ Integer.toString(rand.nextInt(1000, 9999));
+        Date date = new Date (System.currentTimeMillis ());
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, cod );
-            stmt.setString(2, Cf);
-            stmt.setString(3, commento);
-            stmt.setString(4, codMostra);
-            stmt.setInt(5, val);
+            stmt.setDate(2, date);
+            stmt.setInt(3, val);
+            stmt.setString(4, commento);
+            stmt.setString(5, Cf);
+            stmt.setString(6, codMostra);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("Recensione già inserita");

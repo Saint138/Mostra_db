@@ -11,9 +11,9 @@ public class Recensione {
     private String nomeMostra;
     private String dataRecensione;
 
-    public Recensione (String nome,String cognome, String cod, String commento, Integer val,  String dataRecensione,String codMostra){
+    public Recensione (String nome,String cognome, String cod, String commento, Integer val,  String dataRecensione,String nomeMostra){
         this.cod = cod;
-        this.codMostra = codMostra;
+        this.nomeMostra = nomeMostra;
         this.valutazione = val;
         this.commento = commento;
         this.nome = nome;

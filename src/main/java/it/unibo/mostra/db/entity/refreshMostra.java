@@ -1,6 +1,6 @@
 package it.unibo.mostra.db.entity;
 
-public class refreshMostra {
+public class RefreshMostra {
     private String nome;
     private String codice_mostra;
     private String città;
@@ -8,7 +8,7 @@ public class refreshMostra {
     private String data_fine;
     
 
-    public refreshMostra(String nome, String codice_mostra,String città,String data_inizio, String data_fine) {
+    public RefreshMostra(String nome, String codice_mostra,String città,String data_inizio, String data_fine) {
         this.nome = nome;
         this.codice_mostra = codice_mostra;
         this.città = città;
