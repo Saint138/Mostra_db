@@ -5,16 +5,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
 
 import it.unibo.mostra.db.entity.*;
-import it.unibo.mostra.db.query.QueryArtista;
-import it.unibo.mostra.db.query.QueryDipendenti;
-import it.unibo.mostra.db.query.QueryFornitore;
-import it.unibo.mostra.db.query.QueryMostra;
-import it.unibo.mostra.db.query.QueryOpera;
-import it.unibo.mostra.db.query.QueryPresenza;
-import it.unibo.mostra.db.query.QueryTurno;
-import it.unibo.mostra.db.query.QueryUtente;
-import it.unibo.mostra.db.query.QueryVendita;
-import it.unibo.mostra.db.query.QueryVisita;
+import it.unibo.mostra.db.query.*;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -29,7 +20,7 @@ public class AdminViewController {
     private QueryMostra queryMostra;
     private QueryFornitore queryFornitore;
     private QueryOpera queryOpera;
-    private QueryUtente queryUtente;
+    private QueryVisitatore queryVisitatore;
     private QueryVisita queryVisita;
     private QueryVendita queryVendita;
     private QueryArtista queryArtista;
@@ -61,6 +52,10 @@ public class AdminViewController {
     //presenza
     @FXML
     private TextField codice_mostra_presenza, nome_arte_presenza, nome_opera_presenza;
+    // visitatore
+    @FXML
+    private TextField cf_visitatore;
+
 
     @FXML
     private CheckBox guida;
@@ -102,9 +97,22 @@ public class AdminViewController {
     private TableView<Fornitore> tabFornitori;
     @FXML
     private TableView<Presenza> tabPresenze;
+    @FXML
+    private TableView<Visitatore> tabMostreNegative;
+    @FXML
+    private TableView<Visitatore> tabClassificaMostre;
+    @FXML
+    private TableView<Visitatore> tabGuadagnoTotale;
+    @FXML
+    private TableView<Visitatore> tabBigliettiTotali;
+    @FXML
+    private TableView<Visitatore> tabListaFornitoriPiuAttivi;
+    @FXML
+    private TableView<Visitatore> tabListaUtentiPiuAttivi;
+    
 
     public AdminViewController(ViewImpl view, QueryVisita queryVisita, QueryOpera queryOpera, QueryMostra queryMostra,
-            QueryFornitore queryFornitore, QueryDipendenti queryDipendenti, QueryUtente queryUtente,
+            QueryFornitore queryFornitore, QueryDipendenti queryDipendenti, QueryVisitatore queryVisitatore,
             QueryVendita queryVendita, QueryArtista queryArtista, QueryPresenza queryPresenza,QueryTurno queryTurno) {
         this.view = view;
         this.queryDipendenti = queryDipendenti;
@@ -112,7 +120,7 @@ public class AdminViewController {
         this.queryFornitore = queryFornitore;
         this.queryMostra = queryMostra;
         this.queryOpera = queryOpera;
-        this.queryUtente = queryUtente;
+        this.queryVisitatore = queryVisitatore;
         this.queryVisita = queryVisita;
         this.queryVendita = queryVendita;
         this.queryPresenza = queryPresenza;
@@ -293,22 +301,7 @@ public class AdminViewController {
 
     @FXML
     public void refreshArtisti() {
-         this.tabArtisti.getColumns().clear();
-        TableColumn<Artista, String> nomeArte = new TableColumn<>("Nome d'arte");
-        nomeArte.setCellValueFactory(new PropertyValueFactory<>("nome_arte"));
-        TableColumn<Artista, String> nome = new TableColumn<>("Nome");
-        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        TableColumn<Artista, String> cognome = new TableColumn<>("Cognome");
-        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
-        TableColumn<Artista, String> dataNascita = new TableColumn<>("Data di nascita");
-        dataNascita.setCellValueFactory(new PropertyValueFactory<>("data_di_nascita"));
-        TableColumn<Artista, String> dataDecesso = new TableColumn<>("Decesso");
-        dataDecesso.setCellValueFactory(new PropertyValueFactory<>("data_decesso"));
-        TableColumn<Artista, String> biografia = new TableColumn<>("Biografia");
-        biografia.setCellValueFactory(new PropertyValueFactory<>("breve_biografia"));
-        this.tabArtisti.getColumns()
-                .addAll(Arrays.asList(nomeArte, nome, cognome, dataNascita, dataDecesso, biografia));
-        this.tabArtisti.setItems(this.queryArtista.refreshArtista());
+
     }
 
     @FXML
@@ -575,6 +568,56 @@ public class AdminViewController {
     public void refreshPresenze() {
 
     }
+
+    @FXML
+    public void removeVisitatore() {
+        try {
+            this.queryVisitatore.removeUtente(cf_visitatore.getText());
+            cf_visitatore.clear();
+            
+            this.refreshVisitatori();
+        } catch (SQLException e) {
+            cf_visitatore.clear();
+            cf_visitatore.setPromptText("Errore di rimozione");
+            cf_visitatore.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
+    }
+    @FXML
+    public void refreshVisitatori() {
+
+    }
+
+    @FXML
+    public void viewMostrenegative() {
+
+    }
+
+    @FXML
+    public void viewClassificaMostre() {
+
+    }
+
+    @FXML
+    public void viewGuadagnoMostre() {
+
+    }
+
+    @FXML
+    public void viewTotaleBiglietti() {
+
+    }
+
+    @FXML
+    public void viewFornitoriPiuAttivi() {
+
+    }
+    
+    @FXML
+    public void viewUtentiPiuAttivi() {
+
+    }
+    
 
     @FXML
     public void goBack() {
