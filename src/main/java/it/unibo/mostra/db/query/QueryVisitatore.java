@@ -10,16 +10,16 @@ import it.unibo.mostra.db.entity.UtentiPiùAttivi;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class QueryUtente {
+public class QueryVisitatore {
        
     private Connection connection;
     
 
-    public QueryUtente(Connection connection) {
+    public QueryVisitatore(Connection connection) {
         this.connection = connection;
     }
 
-    public void addUtente(String CF, String email, String nome, String cognome) throws SQLException, SQLIntegrityConstraintViolationException {
+    public void addVisitatore(String CF, String email, String nome, String cognome) throws SQLException, SQLIntegrityConstraintViolationException {
          final String query = "INSERT INTO Visitatore(nome,cognome,email,CF)"
                              + "VALUES (?, ?, ?, ?)";
         
