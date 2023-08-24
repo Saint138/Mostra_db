@@ -57,4 +57,29 @@ public class QueryUtente {
         }
 
     }
+
+    public void removeUtente(String cf)  throws SQLException {
+        final String query = "DELETE FROM Visitatore WHERE cf=?  ";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, cf);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+        final String query2 = "DELETE FROM Biglietto WHERE cf=?  ";
+        try (PreparedStatement statement = connection.prepareStatement(query2)) {
+            statement.setString(1, cf);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+        final String query3 = "DELETE FROM Recensione WHERE cf=?  ";
+        try (PreparedStatement statement = connection.prepareStatement(query3)) {
+            statement.setString(1, cf);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+
+    }
 }
