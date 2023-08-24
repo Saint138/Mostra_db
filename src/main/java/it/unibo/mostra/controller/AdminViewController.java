@@ -148,7 +148,23 @@ public class AdminViewController {
 
     @FXML
     public void removeOpera() {
-
+         try {
+            this.queryOpera.removeOpera(nome_arte.getText(), nome_opera.getText());
+            nome_arte.clear();
+            nome_opera.clear();
+            codice_vendita.clear();
+            anno_realizzazione.clear();
+            dimensioni.clear();
+            tecnica.clear();
+            descrizione.clear();
+            this.refreshOpere();
+            this.refreshPresenze();
+        } catch (SQLException e) {
+            nome_arte.clear();
+            nome_arte.setPromptText("Errore di rimozione");
+            nome_arte.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
@@ -183,7 +199,20 @@ public class AdminViewController {
 
     @FXML
     public void removeMostra() {
-
+        try {
+            this.queryMostra.removeMostra(codice_mostra.getText());
+            codice_mostra.clear();
+            nome_mostra.clear();
+            città.clear();
+            data_inizio.clear();
+            data_fine.clear();
+            this.refreshMostre();
+        } catch (SQLException e) {
+            codice_mostra.clear();
+            codice_mostra.setPromptText("Errore di rimozione");
+            codice_mostra.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
@@ -230,7 +259,21 @@ public class AdminViewController {
 
     @FXML
     public void removeArtista() {
-
+         try {
+            this.queryArtista.removeArtista(nome_arte_artista.getText());
+            nome_arte_artista.clear();
+            nome_artista.clear();
+            cognome_artista.clear();
+            data_di_nascita.clear();
+            data_decesso.clear();
+            breve_biografia.clear();
+            this.refreshArtisti();
+        } catch (SQLException e) {
+            nome_arte_artista.clear();
+            nome_arte_artista.setPromptText("Errore di rimozione");
+            nome_arte_artista.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
@@ -269,7 +312,21 @@ public class AdminViewController {
 
     @FXML
     public void removeDipendente() {
-
+        
+        try {
+            this.queryDipendenti.removeDipendenti(matricola.getText());
+            matricola.clear();
+            nome_dipendente.clear();
+            cognome_dipendente.clear();
+            email_dipendente.clear();
+            stipendio.clear();
+            this.refreshDipendenti();
+        } catch (SQLException e) {
+            matricola.clear();
+            matricola.setPromptText("Errore di rimozione");
+            matricola.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
@@ -295,11 +352,16 @@ public class AdminViewController {
             codice_turno.clear();
         try{
             queryTurno.addTurno(codice_turno.getText(),data_turno.getText(), ora_inizio.getText(),
-                                    ora_fine.getText(),codice_mostra_turno.getText() ); 
+                                    ora_fine.getText(),codice_mostra_turno.getText(),guida_turno.isSelected(),guardia_turno.isSelected(),magazziniere_turno.isSelected(),receptionist_turno.isSelected(),souvenir_turno.isSelected() ); 
             data_turno.clear();
             ora_inizio.clear();
             ora_fine.clear();
             codice_mostra_turno.clear();
+             guida_turno.setSelected(false);
+            guardia_turno.setSelected(false);
+            magazziniere_turno.setSelected(false);
+            receptionist_turno.setSelected(false);
+            souvenir_turno.setSelected(false);
             this.refreshTurni();
         } catch (SQLIntegrityConstraintViolationException e) {
             codice_turno.clear();
@@ -316,7 +378,20 @@ public class AdminViewController {
 
     @FXML
     public void removeTurno() {
-
+        try {
+            this.queryTurno.removeTurno(codice_turno.getText());
+            codice_turno.clear();
+            data_turno.clear();
+            ora_inizio.clear();
+            ora_fine.clear();
+            codice_mostra_turno.clear();
+            this.refreshTurni();
+        } catch (SQLException e) {
+            codice_turno.clear();
+            codice_turno.setPromptText("Errore di rimozione");
+            codice_turno.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
@@ -345,11 +420,6 @@ public class AdminViewController {
             codice_fornitore.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalStateException(e);
         }
-    }
-
-    @FXML
-    public void removeFornitore() {
-
     }
 
     @FXML
@@ -382,8 +452,21 @@ public class AdminViewController {
     }
 
     @FXML
-    public void removeVisita() {
-
+    public void removeVisita() { 
+        try {
+            this.queryVisita.removeVisita(codice_turno.getText());
+            codice_visita.clear();
+            ora_inizio_visita.clear();
+            data_visita.clear();
+            codice_mostra_visita.clear();
+            codice_contratto_guida.clear();
+            this.refreshVisite();
+        } catch (SQLException e) {
+            codice_visita.clear();
+            codice_visita.setPromptText("Errore di rimozione");
+            codice_visita.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML
@@ -392,10 +475,11 @@ public class AdminViewController {
     }
 
     @FXML
-    public void addVendita() { 
-        try{
-            queryVendita.addVendita(codice_vendita_vendita.getText(),data_vendita.getText(), Float.parseFloat(importo.getText()),
-                                    codice_fornitore_vendita.getText());
+    public void addVendita() {
+        try {
+            queryVendita.addVendita(codice_vendita_vendita.getText(), data_vendita.getText(),
+                    Float.parseFloat(importo.getText()),
+                    codice_fornitore_vendita.getText());
             codice_vendita_vendita.clear();
             data_vendita.clear();
             importo.clear();
@@ -414,14 +498,9 @@ public class AdminViewController {
             throw new IllegalStateException(e);
         }
     }
-
+    
     @FXML
-    public void removeVendita() {
-
-    }
-
-    @FXML
-    public void refreshVendite() {
+    public void refreshVendite() { 
 
     }
 
@@ -448,7 +527,18 @@ public class AdminViewController {
 
     @FXML
     public void removePresenza() {
-
+        try {
+            this.queryPresenza.removePresenza(codice_mostra_presenza.getText(), nome_arte_presenza.getText(), nome_opera_presenza.getText());
+            codice_mostra_presenza.clear();
+            nome_arte_presenza.clear();
+            nome_opera_presenza.clear();
+            this.refreshPresenze();
+        } catch (SQLException e) {
+            codice_mostra_presenza.clear();
+            codice_mostra_presenza.setPromptText("Errore di rimozione");
+            codice_mostra_presenza.setStyle("-fx-prompt-text-fill: red;");
+            throw new IllegalStateException(e);
+        }
     }
 
     @FXML

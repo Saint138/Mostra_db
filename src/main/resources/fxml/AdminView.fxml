@@ -238,7 +238,7 @@
                   </BorderPane>
                </content>
             </Tab>
-            <Tab text="Vendita">
+             <Tab text="Vendita">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
@@ -255,16 +255,15 @@
                               <TextField fx:id="importo" prefHeight="26.0" prefWidth="201.0" promptText="importo*" />
                               <TextField fx:id="codice_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore*" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#addFornitore" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitore" />
+                              <Button mnemonicParsing="false" onAction="#addVendita" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Vendita" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#removeFornitore" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Fornitore" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshFornitori" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitore" />
+                              <Button mnemonicParsing="false" onAction="#refreshVendite" prefHeight="26.0" prefWidth="202.0" text="Refresh Vendite" />
                            </children>
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView fx:id="tabDipendenti2" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="tabVendite" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
@@ -301,7 +300,7 @@
                   </BorderPane>
                </content>
             </Tab>
-            <Tab text="Fornitore">
+           <Tab text="Fornitore">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
@@ -318,9 +317,8 @@
                               <TextField fx:id="email_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="email*" />
                               <TextField fx:id="numero_telefono" prefHeight="26.0" prefWidth="201.0" promptText="numero telefono*" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#addFornitore" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitori" />
+                              <Button mnemonicParsing="false" onAction="#addFornitori" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitori" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#removeFornitore" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Fornitori" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#refreshFornitori" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitori" />
                            </children>
