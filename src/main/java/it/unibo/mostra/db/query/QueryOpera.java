@@ -39,7 +39,7 @@ public class QueryOpera {
     }
 
     public void removeOpera(String nomeArtista, String nomeOpera ) throws SQLException {
-        final String query = "DELETE FROM Opera WHERE nome_arte=? AND nome=?";
+         final String query = "DELETE FROM Presenza WHERE nome_arte=? AND nome=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, nomeArtista);
             statement.setString(2, nomeOpera);
@@ -47,8 +47,8 @@ public class QueryOpera {
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-         final String query2 = "DELETE FROM Presenza WHERE nome_arte=? AND nome=?";
-        try (PreparedStatement statement = connection.prepareStatement(query2)) {
+        final String query1 = "DELETE FROM Opera WHERE nome_arte=? AND nome=?";
+        try (PreparedStatement statement = connection.prepareStatement(query1)) {
             statement.setString(1, nomeArtista);
             statement.setString(2, nomeOpera);
             statement.executeUpdate();
