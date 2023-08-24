@@ -8,7 +8,6 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Random;
 
 import it.unibo.mostra.db.entity.Dipendente;
-import it.unibo.mostra.db.entity.Turno;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -22,7 +21,7 @@ public class QueryDipendenti {
         this.connection = connection;
     }
 
-    public void removeDipendenti(String matricola, String codContratto){
+    public void removeDipendenti(String matricola)  throws SQLException{
         final String query = "DELETE FROM Dipendete WHERE matricola=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, matricola);
@@ -69,7 +68,7 @@ public class QueryDipendenti {
     }
 
     public void addDipendente (String matricola, String nome, String cognome, String email, boolean guardia, boolean guida,
-    boolean commesso_souvenir, boolean receptionist, boolean magazzieniere, Integer stipendio){
+    boolean commesso_souvenir, boolean receptionist, boolean magazzieniere, Integer stipendio) throws SQLIntegrityConstraintViolationException, SQLException {
         Random rand = new Random();
         final String query = "INSERT INTO Dipendente(matricola,nome,cognome,email,guardia, commesso_souvenir,guida,magazziniere,receptionist)"
                                 + "VALUES (?,?,?,?,?,?,?,?,?)" ;

@@ -19,7 +19,7 @@ public class QueryTurno {
         this.connection = connection;
     }
 
-    public void addTurno(String codice_turno, String data_turno, String ora_inizio, String ora_fine, String codice_mostra, String codice_guardia, String codice_commesso, String codice_magazziniere, String codice_receptionist){
+    public void addTurno(String codice_turno, String data_turno, String ora_inizio, String ora_fine, String codice_mostra,boolean codice_guida, boolean codice_guardia,  boolean codice_magazziniere, boolean codice_receptionist,boolean codice_souvenir) throws SQLIntegrityConstraintViolationException, SQLException{
         final String query = "INSERT INTO Turno(codice_turno, data_turno, ora_inizio, ora_fine, codice_mostra, codice_contratto, codice_contratto_receptionist, codice_contratto_guardia, codice_contratto_magazziniere) "
                             + "values (?,?,?,?,?,?,?,?,?)";
           try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -29,9 +29,11 @@ public class QueryTurno {
             stmt.setString(4, ora_fine);
             stmt.setString(5, codice_mostra);
             stmt.setString(6, ora_inizio);
-            stmt.setString(7, codice_commesso);
-            stmt.setString(8, codice_receptionist);
-            stmt.setString(9, codice_guardia);
+            stmt.setBoolean(7, codice_souvenir);
+            stmt.setBoolean(8, codice_receptionist);
+            stmt.setBoolean(9, codice_guardia);
+            stmt.setBoolean(8, codice_guida);
+            stmt.setBoolean(9, codice_magazziniere);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("Dipendente già presete");
@@ -40,7 +42,7 @@ public class QueryTurno {
         }
     }           
 
-    public void removeTurno(String cod){
+    public void removeTurno(String cod) throws SQLException {
         final String query = "DELETE FROM Turno WHERE codice_turno=? ";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, cod);

@@ -29,7 +29,7 @@ public class QueryPresenza {
         }
     }
 
-    public void removeOpera(String nomeArtista, String nomeOpera, String codiceMostra){
+    public void removePresenza(String nomeArtista, String nomeOpera, String codiceMostra)  throws SQLException {
         final String query = "DELETE FROM Presenza WHERE nome_arte=? AND codice_mostra=? AND nome=? ";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, nomeArtista);

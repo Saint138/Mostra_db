@@ -32,7 +32,7 @@ public class QueryVisita {
         }
     }
 
-    public void removeVisita(String codiceVisita){
+    public void removeVisita(String codiceVisita)  throws SQLException{
         final String query = "DELETE FROM Visita WHERE codice_visita=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, codiceVisita);
