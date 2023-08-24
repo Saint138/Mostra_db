@@ -2,7 +2,7 @@ package it.unibo.mostra.controller;
 
 
 import java.util.Arrays;
-import it.unibo.mostra.db.entity.refreshBiglietteria;
+import it.unibo.mostra.db.entity.RefreshBiglietteria;
 import it.unibo.mostra.db.query.QueryBiglietteria;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ public class BiglietteriaController {
     
     private ViewImpl view;
     private QueryBiglietteria queryBiglietteria;
-    @FXML private TableView<refreshBiglietteria> refreshBiglietteriaView;
+    @FXML private TableView<RefreshBiglietteria> refreshBiglietteriaView;
     
     public BiglietteriaController(ViewImpl view, QueryBiglietteria queryBiglietteria) {
         this.view = view;
@@ -24,18 +24,18 @@ public class BiglietteriaController {
     @FXML
     public void refreshBiglietteria() {
         this.refreshBiglietteriaView.getColumns().clear();
-       TableColumn<refreshBiglietteria, String> nome = new TableColumn<>("Nome mostra");
+        TableColumn<RefreshBiglietteria, String> nome = new TableColumn<>("Nome");
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        TableColumn<refreshBiglietteria, String> codice_visita = new TableColumn<>("Codice Visita");
-        codice_visita.setCellValueFactory(new PropertyValueFactory<>("codice_visita"));
-        TableColumn<refreshBiglietteria, String> data_inizio = new TableColumn<>("data Inizio");
-        data_inizio.setCellValueFactory(new PropertyValueFactory<>("data_inizio"));
-        TableColumn<refreshBiglietteria, String> data_fine = new TableColumn<>("Data Fine");
-        data_fine.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
-        TableColumn<refreshBiglietteria, Float> prezzo = new TableColumn<>("prezzo");
+        TableColumn<RefreshBiglietteria, String> codiceVisita = new TableColumn<>("Codice Visita ");
+        codiceVisita.setCellValueFactory(new PropertyValueFactory<>("codiceVisita"));
+        TableColumn<RefreshBiglietteria, String> dataInizio = new TableColumn<>("Data Inizio");
+        dataInizio.setCellValueFactory(new PropertyValueFactory<>("dataInizio"));
+        TableColumn<RefreshBiglietteria, String> dataFine = new TableColumn<>("Data Fine");
+        dataFine.setCellValueFactory(new PropertyValueFactory<>("dataFine"));
+        TableColumn<RefreshBiglietteria, Float> prezzo = new TableColumn<>("prezzo");
         prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
-        System.out.println("fatto");
-        this.refreshBiglietteriaView.getColumns().addAll(Arrays.asList(nome, codice_visita, data_inizio, data_fine, prezzo));
+        this.refreshBiglietteriaView.getColumns()
+                .addAll(Arrays.asList(nome,codiceVisita,dataInizio, dataFine, prezzo));
         this.refreshBiglietteriaView.setItems(this.queryBiglietteria.refreshBiglietteria());
     }
 

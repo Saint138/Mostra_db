@@ -99,17 +99,17 @@ public class AdminViewController {
     @FXML
     private TableView<Presenza> tabPresenze;
     @FXML
-    private TableView<Visitatore> tabMostreNegative;
+    private TableView<Mostra> tabMostreNegative;
     @FXML
-    private TableView<Visitatore> tabClassificaMostre;
+    private TableView<Mostra> tabClassificaMostre;
     @FXML
-    private TableView<Visitatore> tabGuadagnoTotale;
+    private TableView<GuadagnoMostraTotale> tabGuadagnoTotale;
     @FXML
-    private TableView<Visitatore> tabBigliettiTotali;
+    private TableView<EntitaBigliettiTotali> tabBigliettiTotali;
     @FXML
-    private TableView<Visitatore> tabListaFornitoriPiuAttivi;
+    private TableView<FornitoriPiuAttivi> tabListaFornitoriPiuAttivi;
     @FXML
-    private TableView<Visitatore> tabListaUtentiPiuAttivi;
+    private TableView<UtentiPiùAttivi> tabListaUtentiPiuAttivi;
     
 
     public AdminViewController(ViewImpl view, QueryVisita queryVisita, QueryOpera queryOpera, QueryMostra queryMostra,
@@ -320,7 +320,7 @@ public class AdminViewController {
         TableColumn<Artista, String> breveBiografia = new TableColumn<>("Breve Biografia");
         breveBiografia.setCellValueFactory(new PropertyValueFactory<>("breveBiografia"));
         this.tabArtisti.getColumns()
-                .addAll(Arrays.asList(nomeArte, nome, cognome, dataNascita,dataDecesso, breveBiografia));
+                .addAll(Arrays.asList(nomeArte, nome, cognome, dataNascita, dataDecesso, breveBiografia));
         this.tabArtisti.setItems(this.queryArtista.refreshArtista());
     }
 
@@ -439,7 +439,20 @@ public class AdminViewController {
 
     @FXML
     public void refreshTurni() {
-
+        this.tabTurni.getColumns().clear();
+        TableColumn<Turno, String> codiceTurno = new TableColumn<>("Codice Turno");
+        codiceTurno.setCellValueFactory(new PropertyValueFactory<>("codiceTurno"));
+        TableColumn<Turno, String> dataTurno = new TableColumn<>("Data Turno");
+        dataTurno.setCellValueFactory(new PropertyValueFactory<>("dataTurno"));
+        TableColumn<Turno, String> oraInizio = new TableColumn<>("Ora Inizio");
+        oraInizio.setCellValueFactory(new PropertyValueFactory<>("oraInizio"));
+        TableColumn<Turno, String> oraFine = new TableColumn<>("Ora fine");
+        oraFine.setCellValueFactory(new PropertyValueFactory<>("oraFine"));
+        TableColumn<Turno, String> codiceMostra = new TableColumn<>("Codice Mostra");
+        codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codiceMostra"));
+        this.tabTurni.getColumns()
+                .addAll(Arrays.asList(codiceTurno, dataTurno, oraInizio, oraFine, codiceMostra));
+        this.tabTurni.setItems(this.queryTurno.refreshTurni());
     }
 
     @FXML
@@ -524,7 +537,7 @@ public class AdminViewController {
         TableColumn<Visita, Integer> partecipanti = new TableColumn<>("Numero partecipanti");
         partecipanti.setCellValueFactory(new PropertyValueFactory<>("numero_partecipanti"));
         TableColumn<Visita, String> mostra = new TableColumn<>("Mostra");
-        mostra.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        mostra.setCellValueFactory(new PropertyValueFactory<>("nome_mostra"));
         this.tabVisite.getColumns()
                 .addAll(Arrays.asList(codice, data, ora, partecipanti, mostra));
         this.tabVisite.setItems(this.queryVisita.refreshVisita());
@@ -622,7 +635,7 @@ public class AdminViewController {
     }
 
     @FXML
-    public void viewMostrenegative() {
+    public void viewMostreNegative() {
 
     }
 
@@ -633,22 +646,49 @@ public class AdminViewController {
 
     @FXML
     public void viewGuadagnoMostre() {
+        this.tabGuadagnoTotale.getColumns().clear();
+        TableColumn<GuadagnoMostraTotale, String> nome = new TableColumn<>("Codice Fornitore");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<GuadagnoMostraTotale, String> valore = new TableColumn<>("valore ");
+        valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
 
+        this.tabGuadagnoTotale.getColumns()
+                .addAll(Arrays.asList(nome,valore));
+        this.tabGuadagnoTotale.setItems(this.queryMostra.GuadagnoMostra());
     }
 
     @FXML
     public void viewTotaleBiglietti() {
-
+        
     }
 
     @FXML
     public void viewFornitoriPiuAttivi() {
-
+        this.tabListaFornitoriPiuAttivi.getColumns().clear();
+        TableColumn<FornitoriPiuAttivi, String> codiceFornitore = new TableColumn<>("Codice Fornitore");
+        codiceFornitore.setCellValueFactory(new PropertyValueFactory<>("codiceFornitore"));
+        TableColumn<FornitoriPiuAttivi, String> nome = new TableColumn<>("nome ");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<FornitoriPiuAttivi, Integer> numeroVendite = new TableColumn<>("numeroVendite");
+        numeroVendite.setCellValueFactory(new PropertyValueFactory<>("numeroVendite"));
+        
+        this.tabListaFornitoriPiuAttivi.getColumns()
+                .addAll(Arrays.asList(nome,codiceFornitore,numeroVendite));
+        this.tabListaFornitoriPiuAttivi.setItems(this.queryFornitore.FornitoriPiuAttivi());
     }
     
     @FXML
     public void viewUtentiPiuAttivi() {
-
+        this.tabListaUtentiPiuAttivi.getColumns().clear();
+        TableColumn<UtentiPiùAttivi, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<UtentiPiùAttivi, String> cognome = new TableColumn<>("Cognome ");
+        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        TableColumn<UtentiPiùAttivi, Integer> conteggioRecensioni = new TableColumn<>("Numero Recensioni");
+        conteggioRecensioni.setCellValueFactory(new PropertyValueFactory<>("conteggioRecensioni"));
+        this.tabListaUtentiPiuAttivi.getColumns()
+                .addAll(Arrays.asList(nome, cognome, conteggioRecensioni));
+        this.tabListaUtentiPiuAttivi.setItems(this.queryVisitatore.UtentiPiùAttivi());
     }
     
 
