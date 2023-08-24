@@ -2,36 +2,36 @@ package it.unibo.mostra.db.entity;
 
 public class Turno {
 
-    private String codice_turno;
-    private String data_turno;
-    private String ora_inizio;
-    private String ora_fine;
-    private String codice_mostra;
+    private String codiceTurno;
+    private String dataTurno;
+    private String oraInizio;
+    private String oraFine;
+    private String codiceMostra;
 
-    public Turno(String codice_turno, String data_turno, String ora_inizio, String ora_fine, String codice_mostra) {
-        this.codice_turno = codice_turno;
-        this.data_turno = data_turno;
-        this.ora_inizio = ora_inizio;
-        this.ora_fine = ora_fine;
-        this.codice_mostra = codice_mostra;
+    public Turno(String codiceTurno, String dataTurno, String oraInizio, String oraFine, String codiceMostra) {
+        this.codiceTurno = codiceTurno;
+        this.dataTurno = dataTurno;
+        this.oraInizio = oraInizio;
+        this.oraFine = oraFine;
+        this.codiceMostra = codiceMostra;
     }
     
     public String getCodiceTurno() {
-        return this.codice_turno;
+        return this.codiceTurno;
     }
 
     public String getDataTurno() {
-        return this.data_turno;
+        return this.dataTurno;
     }
 
     public String getOraInizio() {
-        return this.ora_inizio;
+        return this.oraInizio;
     }
 
     public String getOraFine() {
-        return this.ora_fine;
+        return this.oraFine;
     }
     public String getCodiceMostra() {
-        return this.codice_mostra;
+        return this.codiceMostra;
     }
 }

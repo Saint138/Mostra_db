@@ -8,7 +8,7 @@ public class Artista {
     private String dataDecesso;
     private String breveBiografia;
 
-    public Artista(String nome, String nomeArte, String cognome, String dataNascita, String dataDecesso,
+    public Artista(String nomeArte,String nome,  String cognome, String dataNascita, String dataDecesso,
             String breveBiografia) {
         this.nome = nome;
         this.nomeArte = nomeArte;
@@ -28,7 +28,7 @@ public class Artista {
     }
 
 
-    public String getnomeArte() {
+    public String getNomeArte() {
         return nomeArte;
     }
 

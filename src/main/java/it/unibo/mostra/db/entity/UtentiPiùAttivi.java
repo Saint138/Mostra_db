@@ -19,7 +19,7 @@ public class UtentiPiùAttivi {
         return this.cognome;
     }
 
-    public Integer getNumeroRecensioni(){
+    public Integer getConteggioRecensioni(){
         return this.conteggioRecensioni;
     }
 }
