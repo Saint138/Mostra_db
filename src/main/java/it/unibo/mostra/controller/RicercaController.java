@@ -21,7 +21,11 @@ public class RicercaController {
     @FXML private TextField nome_mostra;
     @FXML private TableView<Artista> viewRicercaArtista;
     @FXML private TableView<Opera> viewRicercaOpera;
-    @FXML private TableView<Mostra> viewRicercaMostra;
+    @FXML
+    private TableView<Mostra> viewRicercaMostra;
+    @FXML private TableView<Opera> tabClassificaOpere;
+    @FXML private TableView<Mostra> tabClassificaMostre;
+
 
     
     public RicercaController(ViewImpl view, QueryRicerca queryRicerca) {
@@ -75,22 +79,31 @@ public class RicercaController {
 
      @FXML
      public void ricercaMostra() {
-        this.viewRicercaMostra.getColumns().clear();
-        TableColumn<Mostra, String> città = new TableColumn<>("Città");
-        città.setCellValueFactory(new PropertyValueFactory<>("città"));
-        TableColumn<Mostra, String> dataInizio = new TableColumn<>("Data Inizio");
-        dataInizio.setCellValueFactory(new PropertyValueFactory<>("data_inizio"));
-        TableColumn<Mostra, String> dataFine = new TableColumn<>("Data Fine");
-        dataFine.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
-        TableColumn<Mostra, String> codiceMostra = new TableColumn<>("Codice Mostra");
-        codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codice_mostra"));
-        TableColumn<Mostra, Integer> valore = new TableColumn<>("Valore");
-        valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
-        TableColumn<Mostra, Integer> numeroOpere = new TableColumn<>("Numero Opere");
-        numeroOpere.setCellValueFactory(new PropertyValueFactory<>("numero_opere"));
-        this.viewRicercaMostra.getColumns()
-                .addAll(Arrays.asList(città, dataInizio, dataFine, codiceMostra, valore,numeroOpere));
-        this.viewRicercaMostra.setItems(this.queryRicerca.viewRicercaMostra(this.nome_mostra.getText()));
-        this.nome_mostra.clear();
+             this.viewRicercaMostra.getColumns().clear();
+             TableColumn<Mostra, String> città = new TableColumn<>("Città");
+             città.setCellValueFactory(new PropertyValueFactory<>("città"));
+             TableColumn<Mostra, String> dataInizio = new TableColumn<>("Data Inizio");
+             dataInizio.setCellValueFactory(new PropertyValueFactory<>("data_inizio"));
+             TableColumn<Mostra, String> dataFine = new TableColumn<>("Data Fine");
+             dataFine.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
+             TableColumn<Mostra, String> codiceMostra = new TableColumn<>("Codice Mostra");
+             codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codice_mostra"));
+             TableColumn<Mostra, Integer> valore = new TableColumn<>("Valore");
+             valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
+             TableColumn<Mostra, Integer> numeroOpere = new TableColumn<>("Numero Opere");
+             numeroOpere.setCellValueFactory(new PropertyValueFactory<>("numero_opere"));
+             this.viewRicercaMostra.getColumns()
+                             .addAll(Arrays.asList(città, dataInizio, dataFine, codiceMostra, valore, numeroOpere));
+             this.viewRicercaMostra.setItems(this.queryRicerca.viewRicercaMostra(this.nome_mostra.getText()));
+             this.nome_mostra.clear();
+     }
+
+     public void viewClassificaOpere() {
+
+     }
+     
+     public void viewClassificaMostre(){
+        
      }
 }
+

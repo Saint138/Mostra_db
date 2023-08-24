@@ -184,15 +184,15 @@ public class AdminViewController {
         TableColumn<Opera, String> nome = new TableColumn<>("Nome Opera");
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         TableColumn<Opera, String> data = new TableColumn<>("Data");
-        data.setCellValueFactory(new PropertyValueFactory<>("data_realizzazione"));
-        TableColumn<Opera, String> dim = new TableColumn<>("Dimensioni");
-        dim.setCellValueFactory(new PropertyValueFactory<>("dimensioni"));
+        data.setCellValueFactory(new PropertyValueFactory<>("anno_realizzazione"));
+        TableColumn<Opera, String> dimensioni = new TableColumn<>("Dimensioni");
+        dimensioni.setCellValueFactory(new PropertyValueFactory<>("dimensioni"));
         TableColumn<Opera, String> tecnica = new TableColumn<>("Tecnica");
         tecnica.setCellValueFactory(new PropertyValueFactory<>("tecnica"));
         TableColumn<Opera, String> descrizione = new TableColumn<>("Descrizione");
         descrizione.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
         this.tabOpere.getColumns()
-                .addAll(Arrays.asList(nomeArtista, nome, data, dim, tecnica, descrizione));
+                .addAll(Arrays.asList(nomeArtista, nome, data, dimensioni, tecnica, descrizione));
         this.tabOpere.setItems(this.queryOpera.refreshOpera());
     }
 

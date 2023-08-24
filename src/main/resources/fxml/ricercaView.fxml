@@ -45,25 +45,27 @@
                   </BorderPane>
                </content>
             </Tab>
-          <Tab text="Opera">
+           <Tab text="Opera">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
                         <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Separator prefHeight="160.0" prefWidth="206.0" />
+                              <Separator prefHeight="85.0" prefWidth="206.0" />
                               <TextField fx:id="nome_opera" prefHeight="44.0" prefWidth="206.0" promptText="Nome Opera" />
                               <Button mnemonicParsing="false" onAction="#ricercaOpera" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
                                  <font>
                                     <Font name="Baskerville Old Face" size="14.0" />
                                  </font>
                               </Button>
-                              <Separator prefHeight="234.0" prefWidth="206.0" />
+                              <Separator prefHeight="94.0" prefWidth="206.0" />
+                              <Button mnemonicParsing="false" onAction="#viewClassificaOpere" prefHeight="26.0" prefWidth="206.0" text="Classifica Valore Opere" />
+                              <TableView fx:id="tabClassificaOpere" prefHeight="188.0" prefWidth="206.0" />
                            </children>
                         </FlowPane>
                      </left>
                      <center>
-                        <TableView fx:id="viewRicercaOpera" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="viewRicercaOpera" prefHeight="394.0" prefWidth="407.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </content>
@@ -74,14 +76,16 @@
                      <left>
                         <FlowPane alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="483.0" prefWidth="203.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Separator prefHeight="160.0" prefWidth="206.0" />
+                              <Separator prefHeight="85.0" prefWidth="206.0" />
                               <TextField fx:id="nome_mostra" prefHeight="44.0" prefWidth="206.0" promptText="Nome Mostra" />
                               <Button mnemonicParsing="false" onAction="#ricercaMostra" prefHeight="43.0" prefWidth="206.0" text="RICERCA">
                                  <font>
                                     <Font name="Baskerville Old Face" size="14.0" />
                                  </font>
                               </Button>
-                              <Separator prefHeight="234.0" prefWidth="206.0" />
+                              <Separator prefHeight="94.0" prefWidth="206.0" />
+                              <Button mnemonicParsing="false" onAction="#viewClassificaMostre" prefHeight="26.0" prefWidth="206.0" text="Classifica Valore Opere" />
+                              <TableView fx:id="tabClassificaMostre" prefHeight="188.0" prefWidth="206.0" />
                            </children>
                         </FlowPane>
                      </left>
