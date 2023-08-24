@@ -360,6 +360,53 @@
                   </BorderPane>
                </content>
             </Tab>
+            <Tab text="Visitatori">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <left>
+                        <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Separator prefHeight="18.0" prefWidth="200.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <Separator prefHeight="27.0" prefWidth="200.0" />
+                              <TextField fx:id="cf_visitatore" prefHeight="26.0" prefWidth="201.0" promptText="codice fiscale*" />
+                              <Separator prefHeight="18.0" prefWidth="200.0" />
+                              <Button mnemonicParsing="false" onAction="#removeVisitatore" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Visitatori" />
+                              <Separator prefHeight="47.0" prefWidth="200.0" />
+                              <Button mnemonicParsing="false" onAction="#refreshVisitatori" prefHeight="26.0" prefWidth="202.0" text="Refresh Visitatori" />
+                           </children>
+                        </FlowPane>
+                     </left>
+                     <center>
+                        <TableView fx:id="tabVisitatori" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+            <Tab text="Statistiche">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tabMostreNegative" layoutX="19.0" layoutY="48.0" prefHeight="119.0" prefWidth="238.0" />
+                        <TableView fx:id="tabClassificaMostre" layoutX="287.0" layoutY="47.0" prefHeight="121.0" prefWidth="194.0" />
+                        <TableView fx:id="tabGuadagnoTotale" layoutX="14.0" layoutY="306.0" prefHeight="136.0" prefWidth="235.0" />
+                        <TableView fx:id="tabBigliettiTotali" layoutX="515.0" layoutY="47.0" prefHeight="121.0" prefWidth="220.0" />
+                        <Button layoutX="20.0" layoutY="19.0" mnemonicParsing="false" onAction="#viewMostrenegative" prefHeight="28.0" prefWidth="237.0" text="Mostre con almeno 5 recensioni negative (val. &lt; 5)" />
+                        <Button layoutX="287.0" layoutY="19.0" mnemonicParsing="false" onAction="#viewClassificaMostre" prefHeight="28.0" prefWidth="194.0" text="Classifica mostre meglio recensite" />
+                        <Button layoutX="14.0" layoutY="278.0" mnemonicParsing="false" onAction="#viewGuadagnoMostre" prefHeight="28.0" prefWidth="235.0" text="Guadagno totale delle mostre" />
+                        <Button layoutX="515.0" layoutY="19.0" mnemonicParsing="false" onAction="#viewTotaleBiglietti" prefHeight="28.0" prefWidth="219.0" text="Totale biglietti per mostra" />
+                        <Button layoutX="284.0" layoutY="278.0" mnemonicParsing="false" onAction="#viewFornitoriPiuAttivi" prefHeight="28.0" prefWidth="201.0" text="Lista fornitori più attivi" />
+                        <TableView fx:id="tabListaFornitoriPiuAttivi" layoutX="284.0" layoutY="306.0" prefHeight="133.0" prefWidth="201.0" />
+                        <Button layoutX="515.0" layoutY="278.0" mnemonicParsing="false" onAction="#viewUtentiPiuAttivi" prefHeight="28.0" prefWidth="219.0" text="Lista utenti più attivi" />
+                        <TableView fx:id="tabListaUtentiPiuAttivi" layoutX="515.0" layoutY="306.0" prefHeight="132.0" prefWidth="220.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
       <Button layoutX="365.0" layoutY="558.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="70.0" text="Back">
