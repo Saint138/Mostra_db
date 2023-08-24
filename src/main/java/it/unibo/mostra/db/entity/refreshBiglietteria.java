@@ -1,17 +1,17 @@
 package it.unibo.mostra.db.entity;
 
-public class refreshBiglietteria {
+public class RefreshBiglietteria {
     private String nome;
-    private String codice_visita;
+    private String codiceVisita;
     private Float prezzo;
-    private String data_inizio;
-    private String data_fine;
+    private String dataInizio;
+    private String dataFine;
     
-    public refreshBiglietteria(String nome, String codice_visita, String data_inizio, String data_fine, Float prezzo) {
+    public RefreshBiglietteria(String nome, String codiceVisita, String dataInizio, String dataFine, Float prezzo) {
         this.nome = nome;
-        this.codice_visita = codice_visita;
-        this.data_inizio = data_inizio;
-        this.data_fine = data_fine;
+        this.codiceVisita = codiceVisita;
+        this.dataInizio = dataInizio;
+        this.dataFine = dataFine;
         this.prezzo = prezzo;
     }
 
@@ -20,15 +20,15 @@ public class refreshBiglietteria {
     }
 
     public String getCodiceVisita() {
-        return codice_visita;
+        return codiceVisita;
     }
 
     public String getDataInizio() {
-        return data_inizio;
+        return dataInizio;
     }
 
     public String getDataFine() {
-        return data_fine;
+        return dataFine;
     }
 
     public Float getPrezzo() {
