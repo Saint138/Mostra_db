@@ -22,13 +22,6 @@ public class QueryDipendenti {
     }
 
     public void removeDipendenti(String matricola)  throws SQLException{
-        final String query = "DELETE FROM Dipendete WHERE matricola=?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, matricola);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
         final String query2 = "DELETE FROM Guida WHERE matricola=?";
         try (PreparedStatement statement = connection.prepareStatement(query2)) {
             statement.setString(1, matricola);
@@ -64,7 +57,13 @@ public class QueryDipendenti {
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-        
+          final String query = "DELETE FROM Dipendente WHERE matricola=?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, matricola);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     public void addDipendente (String matricola, String nome, String cognome, String email, boolean guardia, boolean guida,
@@ -188,7 +187,7 @@ public class QueryDipendenti {
     }
 
     private void addMagazziniere(String matricola ,Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Receptionist (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
+        final String query = "INSERT INTO Membro_magazziniere (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
                 + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, stipendio);
