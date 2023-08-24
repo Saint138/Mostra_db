@@ -546,10 +546,10 @@ public class AdminViewController {
     @FXML
     public void addVendita() {
         try {
-            queryVendita.addVendita(codice_vendita_vendita.getText(), data_vendita.getText(),
+            queryVendita.addVendita(codice_vendita.getText(), data_vendita.getText(),
                     Float.parseFloat(importo.getText()),
                     codice_fornitore_vendita.getText());
-            codice_vendita_vendita.clear();
+            codice_vendita.clear();
             data_vendita.clear();
             importo.clear();
             codice_fornitore_vendita.clear();
@@ -570,7 +570,18 @@ public class AdminViewController {
     
     @FXML
     public void refreshVendite() { 
-
+        this.tabVendite.getColumns().clear();
+        TableColumn<Vendita, String> codice = new TableColumn<>("Codice");
+        codice.setCellValueFactory(new PropertyValueFactory<>("codice_vendita"));
+        TableColumn<Vendita, String> data = new TableColumn<>("Data");
+        data.setCellValueFactory(new PropertyValueFactory<>("data_vendita"));
+        TableColumn<Vendita, Float> importo= new TableColumn<>("Importo");
+        importo.setCellValueFactory(new PropertyValueFactory<>("importo"));
+        TableColumn<Vendita, String> fornitore = new TableColumn<>("Fornitore");
+        fornitore.setCellValueFactory(new PropertyValueFactory<>("nome_fornitore"));
+        this.tabVendite.getColumns()
+                .addAll(Arrays.asList(codice, data, importo, fornitore));
+        this.tabVendite.setItems(this.queryVendita.refreshVendita());
     }
 
     @FXML
