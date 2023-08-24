@@ -524,7 +524,7 @@ public class AdminViewController {
         TableColumn<Visita, Integer> partecipanti = new TableColumn<>("Numero partecipanti");
         partecipanti.setCellValueFactory(new PropertyValueFactory<>("numero_partecipanti"));
         TableColumn<Visita, String> mostra = new TableColumn<>("Mostra");
-        mostra.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        mostra.setCellValueFactory(new PropertyValueFactory<>("nome_mostra"));
         this.tabVisite.getColumns()
                 .addAll(Arrays.asList(codice, data, ora, partecipanti, mostra));
         this.tabVisite.setItems(this.queryVisita.refreshVisita());
@@ -557,7 +557,18 @@ public class AdminViewController {
     
     @FXML
     public void refreshVendite() { 
-
+        this.tabVisite.getColumns().clear();
+        TableColumn<Vendita, String> codice = new TableColumn<>("Codice");
+        codice.setCellValueFactory(new PropertyValueFactory<>("codice_vendita"));
+        TableColumn<Vendita, String> data = new TableColumn<>("Data");
+        data.setCellValueFactory(new PropertyValueFactory<>("data_vendita"));
+        TableColumn<Vendita, Float> importo= new TableColumn<>("Importo");
+        importo.setCellValueFactory(new PropertyValueFactory<>("importo"));
+        TableColumn<Vendita, String> fornitore = new TableColumn<>("Fornitore");
+        fornitore.setCellValueFactory(new PropertyValueFactory<>("nome_fornitore"));
+        this.tabVendite.getColumns()
+                .addAll(Arrays.asList(codice, data, importo, fornitore));
+        this.tabVendite.setItems(this.queryVendita.refreshVendita());
     }
 
     @FXML

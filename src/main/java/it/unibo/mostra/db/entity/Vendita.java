@@ -4,10 +4,10 @@ public class Vendita {
     private String codice_vendita;
     private String data_vendita;
     private float importo;
-    private String codice_fornitore;
+    private String fornitore;
 
-    public Vendita(String codice_vendita, String data_vendita, float importo, String codice_fornitore) {
-        this.codice_fornitore = codice_fornitore;
+    public Vendita(String codice_vendita, String data_vendita, float importo, String fornitore) {
+        this.fornitore = fornitore;
         this.codice_vendita = codice_vendita;
         this.importo = importo;
         this.data_vendita = data_vendita;
@@ -17,8 +17,8 @@ public class Vendita {
         return this.codice_vendita;
     }
 
-    public String getCodice_fornitore() {
-        return this.codice_fornitore;
+    public String getfornitore() {
+        return this.fornitore;
     }
 
     public String getData_vendita() {
