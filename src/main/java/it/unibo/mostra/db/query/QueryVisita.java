@@ -31,4 +31,21 @@ public class QueryVisita {
             e.printStackTrace();
         }
     }
+
+    public void removeVisita(String codiceVisita){
+        final String query = "DELETE FROM Visita WHERE codice_visita=?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, codiceVisita);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+         final String query2 = "DELETE FROM Biglietto WHERE codice_visita=?";
+        try (PreparedStatement statement = connection.prepareStatement(query2)) {
+            statement.setString(1, codiceVisita);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+    }
 }
