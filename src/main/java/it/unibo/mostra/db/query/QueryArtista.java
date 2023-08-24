@@ -2,10 +2,15 @@ package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
+import it.unibo.mostra.db.entity.Artista;
+import it.unibo.mostra.db.entity.refreshBiglietteria;
 import it.unibo.mostra.utils.DateAdapter;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class QueryArtista {
 
@@ -56,5 +61,24 @@ public class QueryArtista {
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
+    }
+     public ObservableList<Artista> refreshArtista(){
+        final String query = "SELECT DISTINCT  A.nome_arte,A.nome, A.cognome, A.data_di_nascita, A.data_decesso, A.breve_biografia"
+                            + "FROM Artista A";
+                        
+                            try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+                                final ResultSet rs = stmt.executeQuery();
+                    
+                                final ObservableList<Artista> tab = FXCollections.observableArrayList();
+                                while (rs.next()) {
+                                    tab.add(new Artista(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("cognome"),
+                                            rs.getString("data_di_nascita"), rs.getString("data_decesso"), rs.getString("breve_biografia")));
+                                                              
+                                }
+                                return tab;
+                            } catch (final SQLException e) {
+                                throw new IllegalStateException("Cannot execute the query!", e);
+                            }
+                            
     }
 }
