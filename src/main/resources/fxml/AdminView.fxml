@@ -30,6 +30,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -64,6 +65,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -96,6 +98,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -129,6 +132,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -244,6 +248,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -274,6 +279,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -306,6 +312,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
@@ -317,7 +324,7 @@
                               <TextField fx:id="email_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="email*" />
                               <TextField fx:id="numero_telefono" prefHeight="26.0" prefWidth="201.0" promptText="numero telefono*" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#addFornitori" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitori" />
+                              <Button mnemonicParsing="false" onAction="#addFornitore" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitori" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#refreshFornitori" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitori" />
@@ -336,6 +343,7 @@
                      <left>
                         <FlowPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                           <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* = OBBLIGATORIO" wrappingWidth="203.73672485351562">
                                  <font>
                                     <Font size="16.0" />
