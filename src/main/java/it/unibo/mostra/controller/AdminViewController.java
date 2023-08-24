@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import it.unibo.mostra.db.entity.*;
 import it.unibo.mostra.db.query.*;
+import it.unibo.mostra.utils.DateAdapter;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -199,8 +200,10 @@ public class AdminViewController {
     public void addMostra() {
        
         try{
-            queryMostra.addMostra(nome_mostra.getText(),città.getText(), data_inizio.getText(),
-                                    codice_mostra.getText(),data_fine.getText());
+            queryMostra.addMostra(nome_mostra.getText(),città.getText(), DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_inizio.getText()).get()),
+                                    codice_mostra.getText(),DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_fine.getText()).get()));
+        
+        
             nome_mostra.clear();
             città.clear();
             data_inizio.clear();
@@ -208,11 +211,13 @@ public class AdminViewController {
             codice_mostra.clear();
             this.refreshMostre();
         } catch (SQLIntegrityConstraintViolationException e) {
+            e.getCause();
             nome_mostra.clear();
             nome_mostra.setPromptText("Errore di inserimento");
             nome_mostra.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalArgumentException(e);
         } catch (SQLException e) {
+            e.getCause();
             nome_mostra.clear();
             nome_mostra.setPromptText("Errore di inserimento");
             nome_mostra.setStyle("-fx-prompt-text-fill: red;");
