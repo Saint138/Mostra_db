@@ -169,7 +169,22 @@ public class AdminViewController {
 
     @FXML
     public void refreshOpere() {
-
+        this.tabOpere.getColumns().clear();
+        TableColumn<Opera, String> nomeArtista = new TableColumn<>("Nome Artista");
+        nomeArtista.setCellValueFactory(new PropertyValueFactory<>("nome_arte"));
+        TableColumn<Opera, String> nome = new TableColumn<>("Nome Opera");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Opera, String> data = new TableColumn<>("Data");
+        data.setCellValueFactory(new PropertyValueFactory<>("data_realizzazione"));
+        TableColumn<Opera, String> dim = new TableColumn<>("Dimensioni");
+        dim.setCellValueFactory(new PropertyValueFactory<>("dimensioni"));
+        TableColumn<Opera, String> tecnica = new TableColumn<>("Tecnica");
+        tecnica.setCellValueFactory(new PropertyValueFactory<>("tecnica"));
+        TableColumn<Opera, String> descrizione = new TableColumn<>("Descrizione");
+        descrizione.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
+        this.tabOpere.getColumns()
+                .addAll(Arrays.asList(nomeArtista, nome, data, dim, tecnica, descrizione));
+        this.tabOpere.setItems(this.queryOpera.refreshOpera());
     }
 
     @FXML
