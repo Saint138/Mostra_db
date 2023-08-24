@@ -38,7 +38,7 @@ public class Opera {
     public String getNomeOpera(){
         return this.nomeOpera;
     }
-    public String getNomeArtista(){
+    public String getNomeArte(){
         return this.nomeArte;
     }
     public String getCodiceVendita(){

@@ -64,8 +64,8 @@ public class QueryArtista {
         }
     }
      public ObservableList<Artista> refreshArtista(){
-        final String query = "SELECT DISTINCT  A.nome_arte,A.nome, A.cognome, A.data_di_nascita, A.data_decesso, A.breve_biografia"
-                            + "FROM Artista A";
+        final String query = "SELECT nome_arte, nome, cognome, data_di_nascita, data_decesso, breve_biografia "
+                            + "FROM Artista ";
                         
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();

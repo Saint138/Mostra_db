@@ -1,35 +1,35 @@
 package it.unibo.mostra.db.entity;
 
 public class Artista {
-    private String nome_arte;
+    private String nomeArte;
     private String nome;
     private String cognome;
-    private String data_di_nascita;
-    private String data_decesso;
-    private String breve_biografia;
+    private String dataNascita;
+    private String dataDecesso;
+    private String breveBiografia;
 
-    public Artista(String nome, String nome_arte, String cognome, String data_di_nascita, String data_decesso,
-            String breve_biografia) {
+    public Artista(String nome, String nomeArte, String cognome, String dataNascita, String dataDecesso,
+            String breveBiografia) {
         this.nome = nome;
-        this.nome_arte = nome_arte;
+        this.nomeArte = nomeArte;
         this.cognome = cognome;
-        this.data_di_nascita = data_di_nascita;
-        this.data_decesso = data_decesso;
-        this.breve_biografia = breve_biografia;
+        this.dataNascita = dataNascita;
+        this.dataDecesso = dataDecesso;
+        this.breveBiografia = breveBiografia;
 
     }
-       public Artista(String nome,String cognome,String data_di_nascita,String data_decesso,String breve_biografia) {
+       public Artista(String nome,String cognome,String dataNascita,String dataDecesso,String breveBiografia) {
         this.nome = nome;
         this.cognome = cognome;
-        this.data_di_nascita = data_di_nascita;
-        this.data_decesso = data_decesso;
-        this.breve_biografia = breve_biografia;
+        this.dataNascita = dataNascita;
+        this.dataDecesso = dataDecesso;
+        this.breveBiografia = breveBiografia;
 
     }
 
 
-    public String getNome_arte() {
-        return nome_arte;
+    public String getnomeArte() {
+        return nomeArte;
     }
 
     public String getNome() {
@@ -40,15 +40,15 @@ public class Artista {
         return cognome;
     }
 
-    public String getData_di_nascita() {
-        return data_di_nascita;
+    public String getDataNascita() {
+        return dataNascita;
     }
 
-    public String getData_decesso() {
-        return data_decesso;
+    public String getDataDecesso() {
+        return dataDecesso;
     }
-    public String getBreve_biografia() {
-        return breve_biografia;
+    public String getBreveBiografia() {
+        return breveBiografia;
     }
     
 }

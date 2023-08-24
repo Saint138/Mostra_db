@@ -72,8 +72,8 @@ public class QueryOpera {
     }
 
     public ObservableList<Opera> refreshOpera() {
-        final String query = "SELECT DISTINCT O.nome_arte,O.nome, O.anno_realizzazione, O.dimensioni, O.tecnica, O.descrizione"
-                            + "FROM Opera O";
+        final String query = "SELECT nome_arte, nome, anno_realizzazione, dimensioni, tecnica, descrizione "
+                            + "FROM Opera ";
 
          try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                 final ResultSet rs = stmt.executeQuery();

@@ -179,12 +179,12 @@ public class AdminViewController {
     @FXML
     public void refreshOpere() {
         this.tabOpere.getColumns().clear();
-        TableColumn<Opera, String> nomeArtista = new TableColumn<>("Nome Artista");
-        nomeArtista.setCellValueFactory(new PropertyValueFactory<>("nome_arte"));
-        TableColumn<Opera, String> nome = new TableColumn<>("Nome Opera");
-        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        TableColumn<Opera, String> data = new TableColumn<>("Data");
-        data.setCellValueFactory(new PropertyValueFactory<>("anno_realizzazione"));
+        TableColumn<Opera, String> nomeArte = new TableColumn<>("Nome Artista");
+        nomeArte.setCellValueFactory(new PropertyValueFactory<>("nomeArte"));
+        TableColumn<Opera, String> nomeOpera = new TableColumn<>("Nome Opera");
+        nomeOpera.setCellValueFactory(new PropertyValueFactory<>("nomeOpera"));
+        TableColumn<Opera, String> annoRealizzazione = new TableColumn<>("Data");
+        annoRealizzazione.setCellValueFactory(new PropertyValueFactory<>("annoRealizzazione"));
         TableColumn<Opera, String> dimensioni = new TableColumn<>("Dimensioni");
         dimensioni.setCellValueFactory(new PropertyValueFactory<>("dimensioni"));
         TableColumn<Opera, String> tecnica = new TableColumn<>("Tecnica");
@@ -192,7 +192,7 @@ public class AdminViewController {
         TableColumn<Opera, String> descrizione = new TableColumn<>("Descrizione");
         descrizione.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
         this.tabOpere.getColumns()
-                .addAll(Arrays.asList(nomeArtista, nome, data, dimensioni, tecnica, descrizione));
+                .addAll(Arrays.asList(nomeArte, nomeOpera, annoRealizzazione, dimensioni, tecnica, descrizione));
         this.tabOpere.setItems(this.queryOpera.refreshOpera());
     }
 
@@ -306,7 +306,22 @@ public class AdminViewController {
 
     @FXML
     public void refreshArtisti() {
-
+        this.tabArtisti.getColumns().clear();
+        TableColumn<Artista, String> nomeArte = new TableColumn<>("Nome Arte");
+        nomeArte.setCellValueFactory(new PropertyValueFactory<>("nomeArte"));
+        TableColumn<Artista, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Artista, String> cognome = new TableColumn<>("Cognome");
+        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        TableColumn<Artista, String> dataDecesso = new TableColumn<>("Data Decesso");
+        dataDecesso.setCellValueFactory(new PropertyValueFactory<>("dataDecesso"));
+        TableColumn<Artista, String> dataNascita = new TableColumn<>("Data Nascita");
+        dataNascita.setCellValueFactory(new PropertyValueFactory<>("dataNascita"));
+        TableColumn<Artista, String> breveBiografia = new TableColumn<>("Breve Biografia");
+        breveBiografia.setCellValueFactory(new PropertyValueFactory<>("breveBiografia"));
+        this.tabArtisti.getColumns()
+                .addAll(Arrays.asList(nomeArte, nome, cognome, dataNascita,dataDecesso, breveBiografia));
+        this.tabArtisti.setItems(this.queryArtista.refreshArtista());
     }
 
     @FXML
