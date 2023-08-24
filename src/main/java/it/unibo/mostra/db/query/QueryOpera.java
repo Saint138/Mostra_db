@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import it.unibo.mostra.db.entity.Opera;
-import it.unibo.mostra.db.entity.Recensione;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

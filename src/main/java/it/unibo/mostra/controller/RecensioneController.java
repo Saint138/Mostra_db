@@ -6,7 +6,6 @@ import java.util.Arrays;
 
 import it.unibo.mostra.db.entity.Recensione;
 import it.unibo.mostra.db.query.QueryRecensione;
-import it.unibo.mostra.utils.DateAdapter;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;

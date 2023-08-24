@@ -3,7 +3,6 @@ package it.unibo.mostra.controller;
 import java.util.Arrays;
 
 import it.unibo.mostra.db.entity.Turno;
-import it.unibo.mostra.db.query.QueryDipendenti;
 import it.unibo.mostra.db.query.QueryTurno;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
