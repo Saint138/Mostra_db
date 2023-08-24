@@ -18,6 +18,14 @@ public class Opera {
         this.tecnica = tecnica;
         this.descrizione = descrizione;
     }
+       public Opera(String nomeArte, String nomeOpera, String annoRealizzazione, String dimensioni, String tecnica, String descrizione ){
+        this.annoRealizzazione = annoRealizzazione;
+        this.nomeArte = nomeArte;
+        this.nomeOpera = nomeOpera;
+        this.dimensioni = dimensioni;
+        this.tecnica = tecnica;
+        this.descrizione = descrizione;
+    }
     
     public Opera(String nomeArte, String annoRealizzazione, String dimensioni, String tecnica, String descrizione ){
             this.annoRealizzazione = annoRealizzazione;
