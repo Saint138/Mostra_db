@@ -533,10 +533,10 @@ public class AdminViewController {
     @FXML
     public void addVendita() {
         try {
-            queryVendita.addVendita(codice_vendita_vendita.getText(), data_vendita.getText(),
+            queryVendita.addVendita(codice_vendita.getText(), data_vendita.getText(),
                     Float.parseFloat(importo.getText()),
                     codice_fornitore_vendita.getText());
-            codice_vendita_vendita.clear();
+            codice_vendita.clear();
             data_vendita.clear();
             importo.clear();
             codice_fornitore_vendita.clear();
@@ -557,7 +557,7 @@ public class AdminViewController {
     
     @FXML
     public void refreshVendite() { 
-        this.tabVisite.getColumns().clear();
+        this.tabVendite.getColumns().clear();
         TableColumn<Vendita, String> codice = new TableColumn<>("Codice");
         codice.setCellValueFactory(new PropertyValueFactory<>("codice_vendita"));
         TableColumn<Vendita, String> data = new TableColumn<>("Data");

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import it.unibo.mostra.db.entity.Vendita;
-import it.unibo.mostra.db.entity.Visita;
 import it.unibo.mostra.utils.DateAdapter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,7 +36,7 @@ public class QueryVendita {
     }
 
        public  ObservableList<Vendita> refreshVendita() {
-        final String query = "Select V.codice_vendita, V.data_vendita, V.importo, F.nome as nome_fornitore "
+        final String query = "Select V.codice_vendita, V.data_vendita, V.importo, F.nome as nome_fornitore"
                + " FROM Vendita V, Fornitore F "
                + " WHERE V.codice_fornitore = F.codice_fornitore ";
        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
