@@ -278,7 +278,22 @@ public class AdminViewController {
 
     @FXML
     public void refreshArtisti() {
-
+         this.tabArtisti.getColumns().clear();
+        TableColumn<Artista, String> nomeArte = new TableColumn<>("Nome d'arte");
+        nomeArte.setCellValueFactory(new PropertyValueFactory<>("nome_arte"));
+        TableColumn<Artista, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Artista, String> cognome = new TableColumn<>("Cognome");
+        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        TableColumn<Artista, String> dataNascita = new TableColumn<>("Data di nascita");
+        dataNascita.setCellValueFactory(new PropertyValueFactory<>("data_di_nascita"));
+        TableColumn<Artista, String> dataDecesso = new TableColumn<>("Decesso");
+        dataDecesso.setCellValueFactory(new PropertyValueFactory<>("data_decesso"));
+        TableColumn<Artista, String> biografia = new TableColumn<>("Biografia");
+        biografia.setCellValueFactory(new PropertyValueFactory<>("breve_biografia"));
+        this.tabArtisti.getColumns()
+                .addAll(Arrays.asList(nomeArte, nome, cognome, dataNascita, dataDecesso, biografia));
+        this.tabArtisti.setItems(this.queryArtista.refreshArtista());
     }
 
     @FXML
