@@ -2,8 +2,14 @@ package it.unibo.mostra.db.query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+
+import it.unibo.mostra.db.entity.Opera;
+import it.unibo.mostra.db.entity.Recensione;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class QueryOpera {
     
@@ -65,5 +71,24 @@ public class QueryOpera {
             throw new IllegalStateException(e);
         }
     }
+
+    public ObservableList<Opera> refreshOpera() {
+        final String query = "SELECT DISTINCT O.nome_arte,O.nome, O.anno_realizzazione, O.dimensioni, O.tecnica, O.descrizione"
+                            + "FROM Opera O";
+
+         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+                final ResultSet rs = stmt.executeQuery();
+                final ObservableList<Opera> tab = FXCollections.observableArrayList();
+                 while (rs.next()) {
+                                    tab.add(new Opera(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("anno_realizzazione"),
+                                            rs.getString("dimensioni"), rs.getString("tecnica"), rs.getString("descrizione")));
+                                                              
+                                }
+                                return tab;
+    }
+      catch (final SQLException e) {
+                                throw new IllegalStateException("Cannot execute the query!", e);
+     }                    
+}
 
 }
