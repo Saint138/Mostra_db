@@ -7,6 +7,7 @@ public class Visita {
     private int numero_partecipanti;
     private String codice_mostra;
     private String codice_contratto;
+    private String nome_mostra;
 
     public Visita(String codice_visita, float ora_inizio, String data_visita, int numero_partecipanti,
             String codice_mostra, String codice_contratto) {
@@ -16,6 +17,14 @@ public class Visita {
         this.codice_visita = codice_visita;
         this.numero_partecipanti = numero_partecipanti;
         this.data_visita = data_visita;
+    }
+
+    public Visita ( String codice_visita, float ora_inizio, String data_visita, int numero_partecipanti, String nome_mostra){
+        this.ora_inizio = ora_inizio;
+        this.codice_visita = codice_visita;
+        this.numero_partecipanti = numero_partecipanti;
+        this.data_visita = data_visita;
+        this.nome_mostra = nome_mostra;
     }
 
     public String getCodice_visita() {
@@ -28,6 +37,10 @@ public class Visita {
 
     public String getData_visita() {
         return this.data_visita;
+    }
+
+    public String getNome_mostra() {
+        return this.nome_mostra;
     }
 
     public int getNumero_partecipanti(){

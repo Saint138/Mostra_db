@@ -514,7 +514,20 @@ public class AdminViewController {
 
     @FXML
     public void refreshVisite() {
-
+        this.tabVisite.getColumns().clear();
+        TableColumn<Visita, String> codice = new TableColumn<>("Codice");
+        codice.setCellValueFactory(new PropertyValueFactory<>("codice_visita"));
+        TableColumn<Visita, String> data = new TableColumn<>("Data");
+        data.setCellValueFactory(new PropertyValueFactory<>("data_visita"));
+        TableColumn<Visita, Float> ora= new TableColumn<>("Orario");
+        ora.setCellValueFactory(new PropertyValueFactory<>("ora_inizio"));
+        TableColumn<Visita, Integer> partecipanti = new TableColumn<>("Numero partecipanti");
+        partecipanti.setCellValueFactory(new PropertyValueFactory<>("numero_partecipanti"));
+        TableColumn<Visita, String> mostra = new TableColumn<>("Mostra");
+        mostra.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        this.tabVisite.getColumns()
+                .addAll(Arrays.asList(codice, data, ora, partecipanti, mostra));
+        this.tabVisite.setItems(this.queryVisita.refreshVisita());
     }
 
     @FXML
