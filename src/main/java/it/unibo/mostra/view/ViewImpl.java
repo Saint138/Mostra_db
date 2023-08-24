@@ -15,6 +15,7 @@ import it.unibo.mostra.view.api.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ViewImpl implements View {
@@ -25,7 +26,7 @@ public class ViewImpl implements View {
     private QueryFornitore queryFornitore;
     private QueryOpera queryOpera;
     private QueryRecensione queryRecensione;
-    private QueryUtente queryUtente;
+    private QueryVisitatore queryVisitatore;
     private QueryVisita queryVisita;
     private QueryRicerca queryRicerca;
     private QueryBiglietteria queryBiglietteria;
@@ -41,7 +42,7 @@ public class ViewImpl implements View {
     public ViewImpl(final Stage primaryStage) {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("MostraDb");
-        /*primaryStage.getIcons().add(new Image(ClassLoader.getSystemResource("images/Logo.png").toExternalForm()));*/
+        primaryStage.getIcons().add(new Image(ClassLoader.getSystemResource("images/logo.jpg").toExternalForm()));
         primaryStage.centerOnScreen();
         primaryStage.setResizable(false);
         this.setHomeView();
@@ -93,7 +94,7 @@ public class ViewImpl implements View {
     public void setMainView() {
         try{
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/MainView.fxml"));
-            loader.setController(new MainViewController(this, queryMostra));
+            loader.setController(new MainViewController(this, queryMostra,queryVisitatore));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -145,7 +146,7 @@ public class ViewImpl implements View {
     public void setAdminView() {
        try {
             final var loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/AdminView.fxml"));
-            loader.setController(new AdminViewController(this,queryVisita,queryOpera,queryMostra,queryFornitore,queryDipendenti,queryUtente,queryVendita,queryArtista,queryPresenza,queryTurno));
+            loader.setController(new AdminViewController(this,queryVisita,queryOpera,queryMostra,queryFornitore,queryDipendenti,queryVisitatore,queryVendita,queryArtista,queryPresenza,queryTurno));
             final Parent root = loader.load();
             final Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -174,7 +175,7 @@ public class ViewImpl implements View {
         this.queryFornitore = new QueryFornitore(connection);
         this.queryDipendenti = new QueryDipendenti(connection);
         this.queryMostra = new QueryMostra(connection);
-        this.queryUtente = new QueryUtente(connection);
+        this.queryVisitatore = new QueryVisitatore(connection);
         this.queryVisita = new QueryVisita(connection);
         this.queryOpera = new QueryOpera(connection);
     }
