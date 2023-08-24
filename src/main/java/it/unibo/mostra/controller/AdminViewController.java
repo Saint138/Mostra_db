@@ -348,11 +348,11 @@ public class AdminViewController {
 
     @FXML
     public void addTurno() {
-        //da errore perchè in addTurno ho aggiunto i codici contratto per ogni specializzazione, non saprei come gestirli qui però
-            codice_turno.clear();
+            
         try{
             queryTurno.addTurno(codice_turno.getText(),data_turno.getText(), ora_inizio.getText(),
                                     ora_fine.getText(),codice_mostra_turno.getText(),guida_turno.isSelected(),guardia_turno.isSelected(),magazziniere_turno.isSelected(),receptionist_turno.isSelected(),souvenir_turno.isSelected() ); 
+            codice_turno.clear();
             data_turno.clear();
             ora_inizio.clear();
             ora_fine.clear();
