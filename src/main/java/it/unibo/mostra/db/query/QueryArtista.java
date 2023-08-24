@@ -69,7 +69,6 @@ public class QueryArtista {
                         
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();
-                    
                                 final ObservableList<Artista> tab = FXCollections.observableArrayList();
                                 while (rs.next()) {
                                     tab.add(new Artista(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("cognome"),

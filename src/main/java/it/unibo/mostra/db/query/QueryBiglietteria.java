@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Random;
 
-import it.unibo.mostra.db.entity.refreshBiglietteria;
+import it.unibo.mostra.db.entity.RefreshBiglietteria;
 import it.unibo.mostra.utils.DateAdapter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,17 +42,17 @@ public class QueryBiglietteria {
         }
     }
 
-    public ObservableList<refreshBiglietteria> refreshBiglietteria(){
-        final String query = "SELECT DISTINCT  M.nome,V.codice_visita,M.data_inizio,M.data_fine,B.prezzo"
-                            + "FROM Mostra M,Visita V,Biglietto B "
-                            + "WHERE M.codice_mostra=V.codice_mostra ";
+    public ObservableList<RefreshBiglietteria> refreshBiglietteria(){
+        final String query = "SELECT M.nome, V.codice_visita, M.data_inizio, M.data_fine, B.prezzo "
+                            + "FROM Mostra M, Visita V, Biglietto B "
+                            + "WHERE M.codice_mostra = V.codice_mostra ";
                         
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();
                     
-                                final ObservableList<refreshBiglietteria> tab = FXCollections.observableArrayList();
+                                final ObservableList<RefreshBiglietteria> tab = FXCollections.observableArrayList();
                                 while (rs.next()) {
-                                    tab.add(new refreshBiglietteria(rs.getString("nome"), rs.getString("codice_visita"), rs.getString("data_inizio"),
+                                    tab.add(new RefreshBiglietteria(rs.getString("nome"), rs.getString("codice_visita"), rs.getString("data_inizio"),
                                             rs.getString("data_fine"), rs.getFloat("prezzo")));
                                                               
                                 }

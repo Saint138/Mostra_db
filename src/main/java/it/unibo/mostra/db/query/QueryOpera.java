@@ -73,7 +73,7 @@ public class QueryOpera {
 
     public ObservableList<Opera> refreshOpera() {
         final String query = "SELECT nome_arte, nome, anno_realizzazione, dimensioni, tecnica, descrizione "
-                            + "FROM Opera ";
+                            + " FROM Opera ";
 
          try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                 final ResultSet rs = stmt.executeQuery();

@@ -53,12 +53,31 @@ public class QueryTurno {
 
     }
 
-     public  ObservableList<Turno> refreshTurniDipendente(String matricola) {
-         final String query = "Select codice_turno, data_turno,ora_inizio,ora_fine,codice_mostra "
+    public ObservableList<Turno> refreshTurniDipendente(String matricola) {
+        final String query = "Select codice_turno, data_turno, ora_inizio, ora_fine, codice_mostra "
                 + " FROM Turno "
                 + "WHERE matricola=? ";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             stmt.setString(1, matricola);
+            final ResultSet rs = stmt.executeQuery();
+
+            final ObservableList<Turno> list = FXCollections.observableArrayList();
+            while (rs.next()) {
+                list.add(new Turno(rs.getString("codice_turno"), rs.getString("data_turno"), rs.getString("ora_inizio"),
+                        rs.getString("ora_fine"), rs.getString("codice_mostra")));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public  ObservableList<Turno> refreshTurni() {
+         final String query = "SELECT codice_turno, data_turno, ora_inizio, ora_fine, codice_mostra "
+                + " FROM Turno ";
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            
             final ResultSet rs = stmt.executeQuery();
 
             final ObservableList<Turno> list = FXCollections.observableArrayList();

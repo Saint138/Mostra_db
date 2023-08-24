@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
 
-import it.unibo.mostra.db.entity.RefreshMostra;
-import it.unibo.mostra.utils.DateAdapter;
+import it.unibo.mostra.db.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -64,21 +63,23 @@ public class QueryMostra {
             return null;
         }
     
-    }
-    public ObservableList<Recensione> GuadagnoMostra(String codice_mostra){
-        final String query = " Select SUM(B.prezzo) as guadagno"
-                            + "FROM Biglietto B,Visita V,Mostra M"
-                            + "WHERE B.codice_visita = V.codice_visita"
-                            + "AND V.codice_mostra = ?";
+    } */
+
+    public ObservableList<GuadagnoMostraTotale> GuadagnoMostra(){
+        final String query = " SELECT M.nome AS nome_mostra, SUM(B.prezzo) AS valore"
+                            + " FROM MOSTRA M"
+                            + " JOIN VISITA V ON M.codice_mostra = V.codice_mostra"
+                            + " JOIN BIGLIETTO B ON V.codice_visita = B.codice_visita"
+                            + " GROUP BY M.nome"
+                            + " ORDER BY valore DESC;";
         
     
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
-            stmt.setString(1, codice_mostra);
             final ResultSet rs = stmt.executeQuery();
     
-            final ObservableList<Recensione> list = FXCollections.observableArrayList();
+            final ObservableList<GuadagnoMostraTotale> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new Recensione(rs.getString("M.nome")));
+                list.add(new GuadagnoMostraTotale(rs.getString("nome_mostra"),rs.getString("valore")));
             }
             return list;
         } catch (SQLException e) {
@@ -88,7 +89,7 @@ public class QueryMostra {
     
     }
     //inserire una nuova mostra
-     */
+    
     public void addMostra(String nome, String città, Timestamp data_inizio, String codiceMostra,Timestamp data_fine) 
                             throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO MOSTRA (nome, città, data_inizio, data_fine, codice_mostra, numero_opere, valore) "

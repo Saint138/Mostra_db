@@ -8,6 +8,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 
 import it.unibo.mostra.db.entity.Fornitore;
+import it.unibo.mostra.db.entity.FornitoriPiuAttivi;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -37,21 +38,42 @@ public class QueryFornitore {
         }
     }
 
-     public  ObservableList<Fornitore> refreshFornitore() {
+    public ObservableList<Fornitore> refreshFornitore() {
         final String query = "Select codice_fornitore, nome , email, numero_telefono "
-               + " FROM Fornitore ";
-       try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
-           final ResultSet rs = stmt.executeQuery();
+                + " FROM Fornitore ";
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
 
-           final ObservableList<Fornitore> list = FXCollections.observableArrayList();
-           while (rs.next()) {
-               list.add(new Fornitore(rs.getString("codice_fornitore"), rs.getString("nome"), rs.getString("email"),
-                       rs.getString("numero_telefono")));
-           }
-           return list;
-       } catch (SQLException e) {
-           e.printStackTrace();
-           return null;
-       }
+            final ObservableList<Fornitore> list = FXCollections.observableArrayList();
+            while (rs.next()) {
+                list.add(new Fornitore(rs.getString("codice_fornitore"), rs.getString("nome"), rs.getString("email"),
+                        rs.getString("numero_telefono")));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<FornitoriPiuAttivi> FornitoriPiuAttivi() {
+        final String query = "SELECT F.codice_fornitore, F.nome, COUNT(V.codice_vendita) AS numero_vendite "
+        + "FROM FORNITORE F "
+        + "JOIN VENDITA V ON F.codice_fornitore = V.codice_fornitore "
+        + "GROUP BY F.codice_fornitore, F.nome "
+        + "ORDER BY numero_vendite DESC ";
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
+
+            final ObservableList<FornitoriPiuAttivi> list = FXCollections.observableArrayList();
+            while(rs.next()){
+                list.add(new FornitoriPiuAttivi(rs.getString("nome"), rs.getString("codice_fornitore"),
+                                               rs.getInt("numero_vendite")));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
    }
 }

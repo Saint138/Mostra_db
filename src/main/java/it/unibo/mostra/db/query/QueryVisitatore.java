@@ -36,18 +36,18 @@ public class QueryVisitatore {
     }
     
     public ObservableList<UtentiPiùAttivi> UtentiPiùAttivi(){
-        final String query = "SELECT  V.nome,V.cognome,V.CF, COUNT(R.codice_recensione) as conteggio_recensioni"
-                            + "FROM Recensione R"
-                            + "JOIN Visitatore V on R.CF = V.CF"
-                            + "GROUP BY V.nome,V.cognome,V.CF"
-                            + "ORDER BY conteggio_recensioni DESC"
-                            + "LIMIT 5";
+        final String query = "SELECT  V.nome, V.cognome, V.CF, COUNT(R.codice_recensione) as conteggio_recensioni "
+        + "FROM Recensione R "
+        + "JOIN Visitatore V on R.CF = V.CF "
+        + "GROUP BY V.nome, V.cognome, V.CF "
+        + "ORDER BY conteggio_recensioni DESC "
+        + "LIMIT 5";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
 
             final ObservableList<UtentiPiùAttivi> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new UtentiPiùAttivi(rs.getString("V.nome"), rs.getString("V.cognome"),
+                list.add(new UtentiPiùAttivi(rs.getString("nome"), rs.getString("cognome"),
                                                rs.getInt("conteggio_recensioni")));
             }
             return list;
