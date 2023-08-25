@@ -120,10 +120,12 @@ public class AdminViewController {
         this.queryDipendenti = queryDipendenti;
         this.queryArtista = queryArtista;
         this.queryFornitore = queryFornitore;
+        System.out.println(queryMostra);
         this.queryMostra = queryMostra;
         this.queryOpera = queryOpera;
         this.queryVisitatore = queryVisitatore;
         this.queryVisita = queryVisita;
+        System.out.println(queryVendita);
         this.queryVendita = queryVendita;
         this.queryPresenza = queryPresenza;
         this.queryTurno = queryTurno;
@@ -572,16 +574,16 @@ public class AdminViewController {
     @FXML
     public void refreshVendite() { 
         this.tabVendite.getColumns().clear();
-        TableColumn<Vendita, String> codice_vendita = new TableColumn<>("Codice");
-        codice_vendita.setCellValueFactory(new PropertyValueFactory<>("codice_vendita"));
-        TableColumn<Vendita, String> data_vendita = new TableColumn<>("Data");
-        data_vendita.setCellValueFactory(new PropertyValueFactory<>("data_vendita"));
+        TableColumn<Vendita, String> codiceVendita = new TableColumn<>("Codice Vendita");
+        codiceVendita.setCellValueFactory(new PropertyValueFactory<>("codiceVendita"));
+        TableColumn<Vendita, String> dataVendita = new TableColumn<>("Data");
+        dataVendita.setCellValueFactory(new PropertyValueFactory<>("dataVendita"));
         TableColumn<Vendita, Float> importo= new TableColumn<>("Importo");
         importo.setCellValueFactory(new PropertyValueFactory<>("importo"));
-        TableColumn<Vendita, String> codice_fornitore = new TableColumn<>("Codice_fornitore");
-        codice_fornitore.setCellValueFactory(new PropertyValueFactory<>("codice_fornitore"));
+        TableColumn<Vendita, String> codiceFornitore = new TableColumn<>("Codice Fornitore");
+        codiceFornitore.setCellValueFactory(new PropertyValueFactory<>("codiceFornitore"));
         this.tabVendite.getColumns()
-                .addAll(Arrays.asList(codice_vendita, data_vendita, importo, codice_fornitore));
+                .addAll(Arrays.asList(codiceVendita, dataVendita, importo, codiceFornitore));
         this.tabVendite.setItems(this.queryVendita.refreshVendita());
     }
 

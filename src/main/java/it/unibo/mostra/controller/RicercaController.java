@@ -3,6 +3,7 @@ package it.unibo.mostra.controller;
 import java.util.Arrays;
 
 import it.unibo.mostra.db.entity.Artista;
+import it.unibo.mostra.db.entity.ClassificaOpere;
 import it.unibo.mostra.db.entity.Mostra;
 import it.unibo.mostra.db.entity.Opera;
 import it.unibo.mostra.db.query.QueryRicerca;
@@ -23,7 +24,7 @@ public class RicercaController {
     @FXML private TableView<Opera> viewRicercaOpera;
     @FXML
     private TableView<Mostra> viewRicercaMostra;
-    @FXML private TableView<Opera> tabClassificaOpere;
+    @FXML private TableView<ClassificaOpere> tabClassificaOpere;
     @FXML private TableView<Mostra> tabClassificaMostre;
 
 
@@ -82,28 +83,43 @@ public class RicercaController {
              this.viewRicercaMostra.getColumns().clear();
              TableColumn<Mostra, String> città = new TableColumn<>("Città");
              città.setCellValueFactory(new PropertyValueFactory<>("città"));
-             TableColumn<Mostra, String> dataInizio = new TableColumn<>("Data Inizio");
-             dataInizio.setCellValueFactory(new PropertyValueFactory<>("data_inizio"));
-             TableColumn<Mostra, String> dataFine = new TableColumn<>("Data Fine");
-             dataFine.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
-             TableColumn<Mostra, String> codiceMostra = new TableColumn<>("Codice Mostra");
-             codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codice_mostra"));
+             TableColumn<Mostra, String> data_inizio = new TableColumn<>("Data Inizio");
+             data_inizio.setCellValueFactory(new PropertyValueFactory<>("data_inizio"));
+             TableColumn<Mostra, String> data_fine = new TableColumn<>("Data Fine");
+             data_fine.setCellValueFactory(new PropertyValueFactory<>("data_fine"));
+             TableColumn<Mostra, String> codice_mostra = new TableColumn<>("Codice Mostra");
+             codice_mostra.setCellValueFactory(new PropertyValueFactory<>("codice_mostra"));
              TableColumn<Mostra, Integer> valore = new TableColumn<>("Valore");
              valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
-             TableColumn<Mostra, Integer> numeroOpere = new TableColumn<>("Numero Opere");
-             numeroOpere.setCellValueFactory(new PropertyValueFactory<>("numero_opere"));
+             TableColumn<Mostra, Integer> numero_opere = new TableColumn<>("Numero Opere");
+             numero_opere.setCellValueFactory(new PropertyValueFactory<>("numero_opere"));
              this.viewRicercaMostra.getColumns()
-                             .addAll(Arrays.asList(città, dataInizio, dataFine, codiceMostra, valore, numeroOpere));
+                             .addAll(Arrays.asList(città, data_inizio, data_fine, codice_mostra, valore, numero_opere));
              this.viewRicercaMostra.setItems(this.queryRicerca.viewRicercaMostra(this.nome_mostra.getText()));
-             this.nome_mostra.clear();
+             nome_mostra.clear();
+            
      }
 
      public void viewClassificaOpere() {
-
+          this.tabClassificaOpere.getColumns().clear();
+        TableColumn<ClassificaOpere, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<ClassificaOpere, Integer> valore = new TableColumn<>("valore ");
+        valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
+        this.tabClassificaOpere.getColumns()
+                .addAll(Arrays.asList(nome, valore));
+        this.tabClassificaOpere.setItems(this.queryRicerca.classificaValoreOpera());
      }
      
      public void viewClassificaMostre(){
-        
+        this.tabClassificaMostre.getColumns().clear();
+        TableColumn<Mostra, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Mostra, Integer> valore = new TableColumn<>("valore ");
+        valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
+        this.tabClassificaMostre.getColumns()
+                .addAll(Arrays.asList(nome, valore));
+        this.tabClassificaMostre.setItems(this.queryRicerca.classificaValoreMostra());
      }
 }
 
