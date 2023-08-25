@@ -27,7 +27,7 @@ public class QueryBiglietteria {
         Date data = new Date (System.currentTimeMillis ());
 
         final String query = "INSERT INTO Biglietto (CF, codice_biglietto, prezzo, data_biglietto, codice_visita) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                + " VALUES (?, ?, ?, ?, ?, ?, ?);";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1,  CF);
             statement.setString(2, cod);
@@ -44,8 +44,8 @@ public class QueryBiglietteria {
 
     public ObservableList<RefreshBiglietteria> refreshBiglietteria(){
         final String query = "SELECT M.nome, V.codice_visita, M.data_inizio, M.data_fine, B.prezzo "
-                            + "FROM Mostra M, Visita V, Biglietto B "
-                            + "WHERE M.codice_mostra = V.codice_mostra ";
+                            + " FROM Mostra M, Visita V, Biglietto B"
+                + " WHERE M.codice_mostra = V.codice_mostra;";
                         
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();

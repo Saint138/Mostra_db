@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import it.unibo.mostra.db.entity.UtentiPiùAttivi;
+import it.unibo.mostra.db.entity.Visitatore;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -21,7 +22,7 @@ public class QueryVisitatore {
 
     public void addVisitatore(String CF, String email, String nome, String cognome) throws SQLException, SQLIntegrityConstraintViolationException {
          final String query = "INSERT INTO Visitatore(nome,cognome,email,CF)"
-                             + "VALUES (?, ?, ?, ?)";
+                             + " VALUES (?, ?, ?, ?)";
         
          try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome);
@@ -36,12 +37,12 @@ public class QueryVisitatore {
     }
     
     public ObservableList<UtentiPiùAttivi> UtentiPiùAttivi(){
-        final String query = "SELECT  V.nome, V.cognome, V.CF, COUNT(R.codice_recensione) as conteggio_recensioni "
-        + "FROM Recensione R "
-        + "JOIN Visitatore V on R.CF = V.CF "
-        + "GROUP BY V.nome, V.cognome, V.CF "
-        + "ORDER BY conteggio_recensioni DESC "
-        + "LIMIT 5";
+        final String query = "SELECT  V.nome, V.cognome, V.CF, COUNT(R.codice_recensione) as conteggio_recensioni"
+        + " FROM Recensione R"
+        + " JOIN Visitatore V on R.CF = V.CF"
+        + " GROUP BY V.nome, V.cognome, V.CF"
+        + " ORDER BY conteggio_recensioni DESC"
+        + " LIMIT 5";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
 
@@ -58,7 +59,7 @@ public class QueryVisitatore {
 
     }
 
-    public void removeUtente(String cf)  throws SQLException {
+    public void removeUtente(String cf) throws SQLException {
         final String query = "DELETE FROM Visitatore WHERE cf=?  ";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, cf);
@@ -81,5 +82,23 @@ public class QueryVisitatore {
             throw new IllegalStateException(e);
         }
 
+    }
+    
+    public ObservableList<Visitatore> refreshVisitatori() {
+        final String query = "Select CF, nome , cognome, email "
+                + " FROM Visitatore ";
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
+
+            final ObservableList<Visitatore> list = FXCollections.observableArrayList();
+            while (rs.next()) {
+                list.add(new Visitatore(rs.getString("cf"), rs.getString("nome"), rs.getString("cognome"),
+                        rs.getString("email")));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

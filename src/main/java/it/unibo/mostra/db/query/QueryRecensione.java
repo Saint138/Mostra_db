@@ -25,8 +25,8 @@ public class QueryRecensione {
 
   
     public void addRecensione(String Cf, String commento, String codMostra, Integer val) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Mostra (codice_recensione,data_recensione,valutazione,commento,cf,codice_mostra) "
-                            + "VALUES (?, ?, ?, ?, ?)";
+        final String query = " INSERT INTO Mostra (codice_recensione,data_recensione,valutazione,commento,cf,codice_mostra) "
+                            + " VALUES (?, ?, ?, ?, ?)";
         String cod = 'A'+ Integer.toString(rand.nextInt(1000, 9999));
         Date date = new Date (System.currentTimeMillis ());
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -45,10 +45,10 @@ public class QueryRecensione {
     }
 
     public ObservableList<Recensione> visulizzaRecensioniMostra(String codiceMostra){
-        final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.codice, R.valutazione, R.commento"
-                            + "FROM Recensione R"
-                            + "JOIN Visitatore V on R.CF = V.CF"
-                            + "WHERE R.codice_mostra= ?";
+        final String query = " SELECT  V.nome,V.cognome, R.data_recensione, R.codice, R.valutazione, R.commento"
+                            + " FROM Recensione R"
+                            + " JOIN Visitatore V on R.CF = V.CF"
+                            + " WHERE R.codice_mostra= ?";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             stmt.setString(1, codiceMostra);
             final ResultSet rs = stmt.executeQuery();
@@ -68,10 +68,10 @@ public class QueryRecensione {
 
     public ObservableList<Recensione> RecensioniUtente(String CF){
         final String query = "SELECT  V.nome,V.cognome, R.data_recensione, R.valutazione, R.commento, M.nome"
-                            + "FROM Recensione R"
-                            + "JOIN Visitatore V on R.CF = V.CF"
-                            + "JOIN  Mostra M on R.codice_mostra = M.codice_mostra"
-                            + "WHERE V.CF= ?";
+                            + " FROM Recensione R"
+                            + " JOIN Visitatore V on R.CF = V.CF"
+                            + " JOIN  Mostra M on R.codice_mostra = M.codice_mostra"
+                            + " WHERE V.CF= ?";
                             
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             stmt.setString(1, CF);
@@ -91,9 +91,9 @@ public class QueryRecensione {
     }
 
     public ObservableList<Recensione> refreshRecensione() {
-        final String query = "SELECT DISTINCT V.nome,V.cognome, V.CF, R.data_recensione, R.codice_recensione, R.valutazione, R.commento,  R.codice_mostra"
-                            + "FROM Recensione R, Visitatore V"
-                            + "WHERE R.CF = V.CF";
+        final String query = " SELECT DISTINCT V.nome, V.cognome, V.CF, R.data_recensione, R.codice_recensione, R.valutazione, R.commento,  R.codice_mostra"
+                            + " FROM Recensione R, Visitatore V"
+                            + " WHERE R.CF = V.CF";
 
          try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                 final ResultSet rs = stmt.executeQuery();

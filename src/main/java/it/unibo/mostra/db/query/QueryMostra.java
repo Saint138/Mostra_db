@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
-
 import it.unibo.mostra.db.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,19 +18,20 @@ public class QueryMostra {
         this.connection = connection;
     }
 
-    /* 
-    public ObservableList<Recensione> MediaRecensioniMostra(){
-        final String query = "SELECT M.nome, COUNT( R.codice_recensione) as numero_recensioni, AVG(R.valutazione) as media"
-                            + "FROM Mostra M"
-                            + "JOIN Recensione R on M.codice_mostra = R.codice_mostra"
-                            + "GROUP BY M.nome";
+    
+    public ObservableList<MediaRecensioniMostra> MediaRecensioni(){
+         final String query = " SELECT M.nome AS mostra, AVG(R.valutazione) AS media_valutazione"
+                            + " FROM MOSTRA M"
+                            + " LEFT JOIN RECENSIONE R ON M.codice_mostra = R.codice_mostra"
+                            + " GROUP BY M.nome"
+                            + " ORDER BY media_valutazione DESC;";
     
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
     
-            final ObservableList<Recensione> list = FXCollections.observableArrayList();
+            final ObservableList<MediaRecensioniMostra> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new Recensione(rs.getString("M.nome"), rs.getString("numero_recensioni"),rs.getString("media")));
+                list.add(new MediaRecensioniMostra(rs.getString("mostra"), rs.getFloat("media_valutazione")));
             }
             return list;
         } catch (SQLException e) {
@@ -41,21 +41,20 @@ public class QueryMostra {
     
     }
     
-    public ObservableList<Recensione> RecensioniNegativeMostra(){
-        final String query = "SELECT M.nome"
-                            + "FROM Mostra M"
-                            + "JOIN Recensione R ON M.codice_mostra = R.codice_mostra"
-                            + "WHERE R.valutazione <= 5"
-                            + "GROUP BY M.nome"
-                            + "HAVING COUNT(*) >= 5";
-        
+    public ObservableList<NumeroRecensioniNegative> RecensioniNegativeMostra(){
+        final String query = " SELECT M.nome AS mostra, COUNT(R.codice_recensione) AS recensioni_negative"
+                            + " FROM Mostra M"
+                            + " JOIN RECENSIONE R ON M.codice_mostra = R.codice_mostra"
+                            + " WHERE R.valutazione < 5"
+                            + " GROUP BY M.nome"
+                            + " ORDER BY recensioni_negative DESC;";
     
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
     
-            final ObservableList<Recensione> list = FXCollections.observableArrayList();
+            final ObservableList<NumeroRecensioniNegative> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new Recensione(rs.getString("M.nome")));
+                list.add(new NumeroRecensioniNegative(rs.getString("nome"), rs.getInt("recensioni_negative")));
             }
             return list;
         } catch (SQLException e) {
@@ -63,7 +62,31 @@ public class QueryMostra {
             return null;
         }
     
-    } */
+    } 
+
+     public ObservableList<BigliettiMostraTotale> BigliettiTotali(){
+        final String query = " SELECT M.nome AS mostra, COUNT(B.codice_biglietto) AS biglietti_venduti"
+                            + " FROM MOSTRA M"
+                            + " JOIN VISITA V ON M.codice_mostra = V.codice_mostra"
+                            + " JOIN BIGLIETTO B ON V.codice_visita = B.codice_visita"
+                            + " GROUP BY M.nome;";
+        
+    
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
+    
+            final ObservableList<BigliettiMostraTotale> list = FXCollections.observableArrayList();
+            while(rs.next()){
+                list.add(new BigliettiMostraTotale(rs.getString("nome_mostra"),rs.getInt("biglietti_venduti")));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    
+    }
+
 
     public ObservableList<GuadagnoMostraTotale> GuadagnoMostra(){
         final String query = " SELECT M.nome AS nome_mostra, SUM(B.prezzo) AS valore"
@@ -93,7 +116,7 @@ public class QueryMostra {
     public void addMostra(String nome, String città, Timestamp data_inizio, String codiceMostra,Timestamp data_fine) 
                             throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO MOSTRA (nome, città, data_inizio, data_fine, codice_mostra, numero_opere, valore) "
-                            + "VALUES (?, ?, ?, ?, ?, ?,?)";
+                + " VALUES (?, ?, ?, ?, ?, ?, ?);";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome);
             stmt.setString(2, città);
@@ -113,7 +136,7 @@ public class QueryMostra {
    
     public ObservableList<RefreshMostra> refreshMostra(){
         final String query = "SELECT nome,codice_mostra,città,data_inizio,data_fine "
-                            + "FROM Mostra ";
+                            + " FROM Mostra ";
 
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();

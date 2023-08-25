@@ -21,8 +21,8 @@ public class QueryArtista {
 
     public void addArtista(String nome, String nome_arte, String cognome, String data_di_nascita, String data_decesso,
     String breve_biografia) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Artista (nome_arte,nome,cognome,data_di_nascita,data_decesso,breve_biografia) "
-                            + "VALUES (?, ?, ?, ?, ?,?)";
+        final String query = "INSERT INTO Artista (nome_arte,nome,cognome,data_di_nascita,data_decesso,breve_biografia)"
+                + " VALUES (?, ?, ?, ?, ?,?);";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome_arte);
             stmt.setString(2, nome);
@@ -40,14 +40,14 @@ public class QueryArtista {
 
     public void removeArtista(String nome_arte) throws SQLException{
     
-         final String query = "DELETE FROM Opera WHERE nome_arte=?";
+        final String query = "DELETE FROM Opera WHERE nome_arte=?;";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, nome_arte);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-        final String query2 = "DELETE FROM Presenza WHERE nome_arte=?";
+        final String query2 = "DELETE FROM Presenza WHERE nome_arte=?;";
         try (PreparedStatement statement = connection.prepareStatement(query2)) {
             statement.setString(1, nome_arte);
             statement.executeUpdate();
@@ -55,7 +55,7 @@ public class QueryArtista {
             throw new IllegalStateException(e);
         }
 
-        final String query3 = "DELETE FROM Artista WHERE nome_arte=? ";
+        final String query3 = "DELETE FROM Artista WHERE nome_arte=?, ";
         try (PreparedStatement statement = connection.prepareStatement(query3)) {
             statement.setString(1, nome_arte);
             statement.executeUpdate();
@@ -64,8 +64,8 @@ public class QueryArtista {
         }
     }
      public ObservableList<Artista> refreshArtista(){
-        final String query = "SELECT nome_arte, nome, cognome, data_di_nascita, data_decesso, breve_biografia "
-                            + "FROM Artista ";
+        final String query = "SELECT nome_arte, nome, cognome, data_di_nascita, data_decesso, breve_biografia"
+                + " FROM Artista; ";
                         
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();
