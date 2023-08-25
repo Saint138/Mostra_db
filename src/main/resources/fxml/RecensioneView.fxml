@@ -22,7 +22,7 @@
          </font>
       </Button>
       <TextField fx:id="testo" layoutX="77.0" layoutY="208.0" prefHeight="187.0" prefWidth="264.0" promptText="Inserisci Testo" />
-      <TextField fx:id="codice_mostra" layoutX="77.0" layoutY="182.0" prefHeight="26.0" prefWidth="264.0" promptText="codice_mostra" />
+      <TextField fx:id="codice_mostra" layoutX="77.0" layoutY="158.0" prefHeight="26.0" prefWidth="264.0" promptText="codice_mostra" />
       <Button layoutX="139.0" layoutY="395.0" mnemonicParsing="false" onAction="#newRecensione" prefHeight="26.0" prefWidth="140.0" text="Invia">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
@@ -33,6 +33,7 @@
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="cf" layoutX="77.0" layoutY="155.0" prefHeight="26.0" prefWidth="264.0" promptText="Codice Fiscale" />
+      <TextField fx:id="cf" layoutX="77.0" layoutY="131.0" prefHeight="26.0" prefWidth="264.0" promptText="Codice Fiscale" />
+      <TextField fx:id="valutazione" layoutX="77.0" layoutY="182.0" prefHeight="26.0" prefWidth="264.0" promptText="valutazione*" />
    </children>
 </AnchorPane>

@@ -84,7 +84,7 @@
                                  </font>
                               </Button>
                               <Separator prefHeight="94.0" prefWidth="206.0" />
-                              <Button mnemonicParsing="false" onAction="#viewClassificaMostre" prefHeight="26.0" prefWidth="206.0" text="Classifica Valore Opere" />
+                              <Button mnemonicParsing="false" onAction="#viewClassificaMostre" prefHeight="26.0" prefWidth="206.0" text="Classifica Valore Mostre" />
                               <TableView fx:id="tabClassificaMostre" prefHeight="188.0" prefWidth="206.0" />
                            </children>
                         </FlowPane>

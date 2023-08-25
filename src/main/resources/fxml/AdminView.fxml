@@ -72,13 +72,13 @@
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="nome_mostra" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
+                              <TextField fx:id="nome_mostra" prefHeight="26.0" prefWidth="201.0" promptText="nome mostra*" />
                               <TextField fx:id="città" prefHeight="26.0" prefWidth="201.0" promptText="città*" />
                               <TextField fx:id="data_inizio" prefHeight="26.0" prefWidth="201.0" promptText="data inizio*" />
                               <TextField fx:id="data_fine" prefHeight="26.0" prefWidth="201.0" promptText="data fine*" />
                               <TextField fx:id="codice_mostra" prefHeight="26.0" prefWidth="201.0" promptText="codice mostra*" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#addMostra" prefHeight="26.0" prefWidth="202.0" text="Aggiugni Mostra" />
+                              <Button mnemonicParsing="false" onAction="#addMostra" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Mostra" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removeMostra" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Mostra" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
