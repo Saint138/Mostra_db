@@ -22,13 +22,14 @@ public class QueryVisitatore {
 
     public void addVisitatore(String CF, String email, String nome, String cognome) throws SQLException, SQLIntegrityConstraintViolationException {
          final String query = "INSERT INTO Visitatore(nome,cognome,email,CF)"
-                             + " VALUES (?, ?, ?, ?)";
+                             + "VALUES (?, ?, ?, ?)";
         
          try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome);
             stmt.setString(2, cognome);
             stmt.setString(3, email);
             stmt.setString(4, CF);
+            stmt.executeUpdate();
          }  catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("utente già registrato");
          } catch (SQLException e) {
@@ -60,13 +61,7 @@ public class QueryVisitatore {
     }
 
     public void removeUtente(String cf) throws SQLException {
-        final String query = "DELETE FROM Visitatore WHERE cf=?  ";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, cf);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
+
         final String query2 = "DELETE FROM Biglietto WHERE cf=?  ";
         try (PreparedStatement statement = connection.prepareStatement(query2)) {
             statement.setString(1, cf);
@@ -76,6 +71,13 @@ public class QueryVisitatore {
         }
         final String query3 = "DELETE FROM Recensione WHERE cf=?  ";
         try (PreparedStatement statement = connection.prepareStatement(query3)) {
+            statement.setString(1, cf);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+        final String query = "DELETE FROM Visitatore WHERE cf=?  ";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, cf);
             statement.executeUpdate();
         } catch (SQLException e) {

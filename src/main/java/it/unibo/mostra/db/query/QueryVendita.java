@@ -28,6 +28,7 @@ public class QueryVendita {
             stmt.setTimestamp(2, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_vendita).get()));
             stmt.setFloat(3, importo);
             stmt.setString(4, codice_fornitore);
+            stmt.executeUpdate();
          }  catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("vendita già inserita");
          } catch (SQLException e) {

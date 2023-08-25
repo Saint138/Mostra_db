@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
 import it.unibo.mostra.db.entity.*;
+import it.unibo.mostra.utils.DateAdapter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -113,19 +114,18 @@ public class QueryMostra {
     }
     //inserire una nuova mostra
     
-    public void addMostra(String nome, String città, Timestamp data_inizio, String codiceMostra,Timestamp data_fine) 
+    public void addMostra(String nome, String città, String data_inizio, String codiceMostra,String data_fine) 
                             throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO MOSTRA (nome, città, data_inizio, data_fine, codice_mostra, numero_opere, valore) "
-                + " VALUES (?, ?, ?, ?, ?, ?, ?);";
+                + " VALUES (?, ?, ?, ?, ?, ?, ? )";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome);
             stmt.setString(2, città);
-            stmt.setTimestamp(3, data_inizio);
-            stmt.setTimestamp(4, data_fine);
+            stmt.setTimestamp(3, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_inizio).get()));
+            stmt.setTimestamp(4, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_fine).get()));
             stmt.setString(5, codiceMostra);
             stmt.setFloat(6, 0);
             stmt.setInt(7, 0);
-
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("mostra già inserita");

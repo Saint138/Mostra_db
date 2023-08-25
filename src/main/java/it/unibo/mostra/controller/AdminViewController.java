@@ -201,8 +201,8 @@ public class AdminViewController {
     public void addMostra() {
        
         try{
-            queryMostra.addMostra(nome_mostra.getText(),città.getText(), DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_inizio.getText()).get()),
-                                    codice_mostra.getText(),DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_fine.getText()).get()));
+            queryMostra.addMostra(nome_mostra.getText(),città.getText(), data_inizio.getText(),
+                                    codice_mostra.getText(),data_fine.getText());
         
         
             nome_mostra.clear();
