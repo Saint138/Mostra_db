@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-
 import it.unibo.mostra.db.entity.Opera;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +20,7 @@ public class QueryOpera {
     public void addOpera(String nomeArtista, String nomeOpera, String codiceVendita, String annoRealizzazione, String dimensioni,
                          String tecnica, String descrizione) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Mostra (NOME_ARTE, NOME, CODICE_VENDITA, ANNO_REALIZZAZIONE , DIMENSIONI, TECNICA, DESCRIZIONE) "
-                            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                            + " VALUES (?, ?, ?, ?, ?, ?, ?);";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nomeArtista);
             stmt.setString(2, nomeOpera);
@@ -62,7 +61,7 @@ public class QueryOpera {
        final String query =   "UPDATE Mostra"
                              + "SET numero_opere = (SELECT COUNT(P.codice_mostra) as opere"
                              + "FROM presenza P "
-                             + "WHERE Mostra.codice_mostra = P.codice_mostra)";
+                             + "WHERE Mostra.codice_mostra = P.codice_mostra);";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.executeUpdate();
@@ -73,21 +72,22 @@ public class QueryOpera {
 
     public ObservableList<Opera> refreshOpera() {
         final String query = "SELECT nome_arte, nome, anno_realizzazione, dimensioni, tecnica, descrizione "
-                            + " FROM Opera ";
+                + " FROM Opera;";
 
-         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
-                final ResultSet rs = stmt.executeQuery();
-                final ObservableList<Opera> tab = FXCollections.observableArrayList();
-                 while (rs.next()) {
-                                    tab.add(new Opera(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("anno_realizzazione"),
-                                            rs.getString("dimensioni"), rs.getString("tecnica"), rs.getString("descrizione")));
-                                                              
-                                }
-                                return tab;
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
+            final ObservableList<Opera> tab = FXCollections.observableArrayList();
+            while (rs.next()) {
+                tab.add(new Opera(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("anno_realizzazione"),
+                        rs.getString("dimensioni"), rs.getString("tecnica"), rs.getString("descrizione")));
+
+            }
+            return tab;
+        } catch (final SQLException e) {
+            throw new IllegalStateException("Cannot execute the query!", e);
+        }
     }
-      catch (final SQLException e) {
-                                throw new IllegalStateException("Cannot execute the query!", e);
-     }                    
+
+    
 }
 
-}

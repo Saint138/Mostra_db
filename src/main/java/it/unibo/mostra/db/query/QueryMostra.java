@@ -78,7 +78,7 @@ public class QueryMostra {
     
             final ObservableList<BigliettiMostraTotale> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new BigliettiMostraTotale(rs.getString("nome_mostra"),rs.getInt("biglietti_venduti")));
+                list.add(new BigliettiMostraTotale(rs.getString("mostra"),rs.getInt("biglietti_venduti")));
             }
             return list;
         } catch (SQLException e) {

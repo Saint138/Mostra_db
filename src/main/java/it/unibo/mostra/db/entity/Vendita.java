@@ -1,28 +1,28 @@
 package it.unibo.mostra.db.entity;
 
 public class Vendita {
-    private String codice_vendita;
-    private String data_vendita;
+    private String codiceVendita;
+    private String dataVendita;
     private float importo;
-    private String fornitore;
+    private String codiceFornitore;
 
-    public Vendita(String codice_vendita, String data_vendita, float importo, String fornitore) {
-        this.fornitore = fornitore;
-        this.codice_vendita = codice_vendita;
+    public Vendita(String codiceVendita, String dataVendita, float importo, String codiceFornitore) {
+        this.codiceFornitore = codiceFornitore;
+        this.codiceVendita = codiceVendita;
         this.importo = importo;
-        this.data_vendita = data_vendita;
+        this.dataVendita = dataVendita;
     }
 
-    public String getCodice_vendita() {
-        return this.codice_vendita;
+    public String getCodiceVendita() {
+        return this.codiceVendita;
     }
 
-    public String getfornitore() {
-        return this.fornitore;
+    public String getCodiceFornitore() {
+        return this.codiceFornitore;
     }
 
-    public String getData_vendita() {
-        return this.data_vendita;
+    public String getDataVendita() {
+        return this.dataVendita;
     }
     
     public float getImporto() {

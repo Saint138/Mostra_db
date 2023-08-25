@@ -178,6 +178,13 @@ public class ViewImpl implements View {
         this.queryVisitatore = new QueryVisitatore(connection);
         this.queryVisita = new QueryVisita(connection);
         this.queryOpera = new QueryOpera(connection);
+        this.queryVendita = new QueryVendita(connection);
+        this.queryRicerca = new QueryRicerca(connection);
+        this.queryArtista = new QueryArtista(connection);
+        this.queryBiglietteria = new QueryBiglietteria(connection);
+        this.queryTurno = new QueryTurno(connection);
+        this.queryPresenza = new QueryPresenza(connection);
+        
     }
 
     

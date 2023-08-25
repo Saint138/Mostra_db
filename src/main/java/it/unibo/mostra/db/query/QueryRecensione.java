@@ -26,7 +26,7 @@ public class QueryRecensione {
   
     public void addRecensione(String Cf, String commento, String codMostra, Integer val) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = " INSERT INTO Mostra (codice_recensione,data_recensione,valutazione,commento,cf,codice_mostra) "
-                            + " VALUES (?, ?, ?, ?, ?)";
+                            + "VALUES (?, ?, ?, ?, ?)";
         String cod = 'A'+ Integer.toString(rand.nextInt(1000, 9999));
         Date date = new Date (System.currentTimeMillis ());
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -91,22 +91,23 @@ public class QueryRecensione {
     }
 
     public ObservableList<Recensione> refreshRecensione() {
-        final String query = " SELECT DISTINCT V.nome, V.cognome, V.CF, R.data_recensione, R.codice_recensione, R.valutazione, R.commento,  R.codice_mostra"
-                            + " FROM Recensione R, Visitatore V"
-                            + " WHERE R.CF = V.CF";
+       final String query = " SELECT V.email, M.nome AS nome_mostra, R.valutazione, R.commento"
+                            + " FROM Recensione R"
+                            + " JOIN Visitatore V on R.CF = V.CF"
+                            + " JOIN MOSTRA M ON R.codice_mostra = M.codice_mostra;";
+                            
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
 
-         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
-                final ResultSet rs = stmt.executeQuery();
-                final ObservableList<Recensione> tab = FXCollections.observableArrayList();
-                 while (rs.next()) {
-                                    tab.add(new Recensione(rs.getString("nome"), rs.getString("cognome"), rs.getString("codice_recensione"),
-                                            rs.getString("commento"), rs.getInt("valutazione"), rs.getString("data_recensione"), rs.getString("codice_mostra")));
-                                                              
-                                }
-                                return tab;
-    }
-      catch (final SQLException e) {
-                                throw new IllegalStateException("Cannot execute the query!", e);
-     }                    
+            final ObservableList<Recensione> list = FXCollections.observableArrayList();
+            while(rs.next()){
+                list.add(new Recensione(rs.getString("email"), rs.getString("nome_mostra"),rs.getInt("valutazione"), 
+                                               rs.getString("commento")));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
 }
 }
