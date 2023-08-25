@@ -115,20 +115,39 @@ public class AdminViewController {
 
     public AdminViewController(ViewImpl view, QueryVisita queryVisita, QueryOpera queryOpera, QueryMostra queryMostra,
             QueryFornitore queryFornitore, QueryDipendenti queryDipendenti, QueryVisitatore queryVisitatore,
-            QueryVendita queryVendita, QueryArtista queryArtista, QueryPresenza queryPresenza,QueryTurno queryTurno) {
+            QueryVendita queryVendita, QueryArtista queryArtista, QueryPresenza queryPresenza, QueryTurno queryTurno) {
         this.view = view;
         this.queryDipendenti = queryDipendenti;
         this.queryArtista = queryArtista;
         this.queryFornitore = queryFornitore;
-        System.out.println(queryMostra);
         this.queryMostra = queryMostra;
         this.queryOpera = queryOpera;
         this.queryVisitatore = queryVisitatore;
         this.queryVisita = queryVisita;
-        System.out.println(queryVendita);
         this.queryVendita = queryVendita;
         this.queryPresenza = queryPresenza;
         this.queryTurno = queryTurno;
+    }
+    
+    @FXML
+    public void initialize() {
+        refreshOpere();
+        refreshArtisti();
+        refreshDipendenti();
+        refreshFornitori();
+        refreshMostre();
+        refreshVendite();
+        refreshVisitatori();
+        refreshVisite();
+        refreshPresenze();
+        refreshTurni();
+        viewClassificaMostre();
+        viewFornitoriPiuAttivi();
+        viewMostreNegative();
+        viewTotaleBiglietti();
+        viewGuadagnoMostre();
+        viewUtentiPiuAttivi();
+
     }
 
     @FXML

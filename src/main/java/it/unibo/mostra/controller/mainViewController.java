@@ -3,6 +3,7 @@ package it.unibo.mostra.controller;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 import it.unibo.mostra.db.entity.RefreshMostra;
 import it.unibo.mostra.db.query.QueryMostra;
@@ -28,6 +29,11 @@ public class MainViewController {
         this.queryMain = queryMain;
         this.queryVisitatore = queryVisitatore;
         this.view = view;
+    }
+
+    @FXML
+    public void initialize() {
+        refreshMostra();
     }
 
     @FXML

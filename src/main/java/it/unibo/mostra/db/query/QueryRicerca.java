@@ -43,9 +43,9 @@ public class QueryRicerca {
     }
     
     public ObservableList<Opera> viewRicercaOpera(String nome_opera) {
-        final String query = "Select nome_arte, anno_realizzazione, dimensioni,tecnica,descrizione "
+        final String query = "Select nome_arte, anno_realizzazione, dimensioni, tecnica, descrizione "
                 + " FROM Opera "
-                + "WHERE nome=? ";
+                + " WHERE nome=? ;";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             stmt.setString(1, nome_opera);
             final ResultSet rs = stmt.executeQuery();

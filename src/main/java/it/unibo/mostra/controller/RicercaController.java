@@ -47,14 +47,14 @@ public class RicercaController {
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         TableColumn<Artista, String> cognome = new TableColumn<>("Cognome");
         cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
-        TableColumn<Artista, String> data_di_nascita = new TableColumn<>("Data Nascita");
-        data_di_nascita.setCellValueFactory(new PropertyValueFactory<>("data_di_nascita"));
-        TableColumn<Artista, String> data_decesso = new TableColumn<>("Data Decesso");
-        data_decesso.setCellValueFactory(new PropertyValueFactory<>("data_decesso"));
-        TableColumn<Artista, String> breve_biografia = new TableColumn<>("Breve Biografia");
-        breve_biografia.setCellValueFactory(new PropertyValueFactory<>("breve_biografia"));
+        TableColumn<Artista, String> dataNascita = new TableColumn<>("Data Nascita");
+        dataNascita.setCellValueFactory(new PropertyValueFactory<>("dataNascita"));
+        TableColumn<Artista, String> dataDecesso = new TableColumn<>("Data Decesso");
+        dataDecesso.setCellValueFactory(new PropertyValueFactory<>("dataDecesso"));
+        TableColumn<Artista, String> breveBiografia = new TableColumn<>("Breve Biografia");
+        breveBiografia.setCellValueFactory(new PropertyValueFactory<>("breveBiografia"));
         this.viewRicercaArtista.getColumns()
-                .addAll(Arrays.asList(nome, cognome, data_di_nascita, data_decesso, breve_biografia));
+                .addAll(Arrays.asList(nome, cognome, dataNascita, dataDecesso, breveBiografia));
         this.viewRicercaArtista.setItems(this.queryRicerca.viewRicercaArtista(this.nome_arte.getText()));
         this.nome_arte.clear();
     }

@@ -49,7 +49,6 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removeOpera" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Opera" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshOpere" prefHeight="26.0" prefWidth="202.0" text="Refresh Opere" />
                            </children>
                         </FlowPane>
                      </left>
@@ -82,7 +81,6 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removeMostra" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Mostra" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshMostre" prefHeight="26.0" prefWidth="202.0" text="Refresh Mostre" />
                            </children>
                         </FlowPane>
                      </left>
@@ -116,7 +114,6 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removeArtista" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Artista" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshArtisti" prefHeight="26.0" prefWidth="202.0" text="Refresh Artisti" />
                            </children>
                         </FlowPane>
                      </left>
@@ -174,7 +171,6 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removeDipendente" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Dipendente" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshDipendenti" prefHeight="26.0" prefWidth="202.0" text="Refresh Dipendenti" />
                            </children>
                         </FlowPane>
                      </left>
@@ -232,7 +228,6 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removeTurno" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Turno" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshTurni" prefHeight="26.0" prefWidth="202.0" text="Refresh Turni" />
                            </children>
                         </FlowPane>
                      </left>
@@ -263,7 +258,6 @@
                               <Button mnemonicParsing="false" onAction="#addVendita" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Vendita" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshVendite" prefHeight="26.0" prefWidth="202.0" text="Refresh Vendite" />
                            </children>
                         </FlowPane>
                      </left>
@@ -296,7 +290,6 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removeVisita" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Visita" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshVisite" prefHeight="26.0" prefWidth="202.0" text="Refresh Visite" />
                            </children>
                         </FlowPane>
                      </left>
@@ -327,7 +320,6 @@
                               <Button mnemonicParsing="false" onAction="#addFornitore" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Fornitori" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshFornitori" prefHeight="26.0" prefWidth="202.0" text="Refresh Fornitori" />
                            </children>
                         </FlowPane>
                      </left>
@@ -358,7 +350,6 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removePresenza" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Presenza" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshPresenze" prefHeight="26.0" prefWidth="202.0" text="Refresh Presenza" />
                            </children>
                         </FlowPane>
                      </left>
@@ -385,7 +376,6 @@
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#removeVisitatore" prefHeight="26.0" prefWidth="202.0" text="Rimuovi Visitatori" />
                               <Separator prefHeight="47.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" onAction="#refreshVisitatori" prefHeight="26.0" prefWidth="202.0" text="Refresh Visitatori" />
                            </children>
                         </FlowPane>
                      </left>
@@ -403,13 +393,13 @@
                         <TableView fx:id="tabMediaRecensioni" layoutX="287.0" layoutY="47.0" prefHeight="121.0" prefWidth="194.0" />
                         <TableView fx:id="tabGuadagnoTotale" layoutX="14.0" layoutY="306.0" prefHeight="136.0" prefWidth="235.0" />
                         <TableView fx:id="tabBigliettiTotali" layoutX="515.0" layoutY="47.0" prefHeight="121.0" prefWidth="220.0" />
-                        <Button layoutX="20.0" layoutY="19.0" mnemonicParsing="false" onAction="#viewMostreNegative" prefHeight="28.0" prefWidth="237.0" text="Mostre con piu recensioni negative (val. &lt; 5)" />
-                        <Button layoutX="287.0" layoutY="19.0" mnemonicParsing="false" onAction="#viewClassificaMostre" prefHeight="28.0" prefWidth="194.0" text="Classifica mostre meglio recensite" />
-                        <Button layoutX="14.0" layoutY="278.0" mnemonicParsing="false" onAction="#viewGuadagnoMostre" prefHeight="28.0" prefWidth="235.0" text="Guadagno totale delle mostre" />
-                        <Button layoutX="515.0" layoutY="19.0" mnemonicParsing="false" onAction="#viewTotaleBiglietti" prefHeight="28.0" prefWidth="219.0" text="Totale biglietti per mostra" />
-                        <Button layoutX="284.0" layoutY="278.0" mnemonicParsing="false" onAction="#viewFornitoriPiuAttivi" prefHeight="28.0" prefWidth="201.0" text="Lista fornitori più attivi" />
+                        <Button layoutX="20.0" layoutY="19.0" mnemonicParsing="false"  prefHeight="28.0" prefWidth="237.0" text="Mostre con piu recensioni negative (val. &lt; 5)" />
+                        <Button layoutX="287.0" layoutY="19.0" mnemonicParsing="false"  prefHeight="28.0" prefWidth="194.0" text="Classifica mostre meglio recensite" />
+                        <Button layoutX="14.0" layoutY="278.0" mnemonicParsing="false"  prefHeight="28.0" prefWidth="235.0" text="Guadagno totale delle mostre" />
+                        <Button layoutX="515.0" layoutY="19.0" mnemonicParsing="false"  prefHeight="28.0" prefWidth="219.0" text="Totale biglietti per mostra" />
+                        <Button layoutX="284.0" layoutY="278.0" mnemonicParsing="false"  prefHeight="28.0" prefWidth="201.0" text="Lista fornitori più attivi" />
                         <TableView fx:id="tabListaFornitoriPiuAttivi" layoutX="284.0" layoutY="306.0" prefHeight="133.0" prefWidth="201.0" />
-                        <Button layoutX="515.0" layoutY="278.0" mnemonicParsing="false" onAction="#viewUtentiPiuAttivi" prefHeight="28.0" prefWidth="219.0" text="Lista utenti più attivi" />
+                        <Button layoutX="515.0" layoutY="278.0" mnemonicParsing="false"  prefHeight="28.0" prefWidth="219.0" text="Lista utenti più attivi" />
                         <TableView fx:id="tabListaUtentiPiuAttivi" layoutX="515.0" layoutY="306.0" prefHeight="132.0" prefWidth="220.0" />
                      </children>
                   </AnchorPane>
