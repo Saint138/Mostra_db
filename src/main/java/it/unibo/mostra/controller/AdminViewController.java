@@ -3,7 +3,6 @@ package it.unibo.mostra.controller;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
-
 import it.unibo.mostra.db.entity.*;
 import it.unibo.mostra.db.query.*;
 import it.unibo.mostra.utils.DateAdapter;
@@ -99,17 +98,19 @@ public class AdminViewController {
     @FXML
     private TableView<Presenza> tabPresenze;
     @FXML
-    private TableView<Mostra> tabMostreNegative;
+    private TableView<NumeroRecensioniNegative> tabMostreNegative;
     @FXML
-    private TableView<Mostra> tabClassificaMostre;
+    private TableView<MediaRecensioniMostra> tabMediaRecensioni;
     @FXML
     private TableView<GuadagnoMostraTotale> tabGuadagnoTotale;
     @FXML
-    private TableView<EntitaBigliettiTotali> tabBigliettiTotali;
+    private TableView<BigliettiMostraTotale> tabBigliettiTotali;
     @FXML
     private TableView<FornitoriPiuAttivi> tabListaFornitoriPiuAttivi;
     @FXML
     private TableView<UtentiPiùAttivi> tabListaUtentiPiuAttivi;
+    @FXML
+    private TableView<Visitatore> tabVisitatori;
     
 
     public AdminViewController(ViewImpl view, QueryVisita queryVisita, QueryOpera queryOpera, QueryMostra queryMostra,
@@ -571,16 +572,16 @@ public class AdminViewController {
     @FXML
     public void refreshVendite() { 
         this.tabVendite.getColumns().clear();
-        TableColumn<Vendita, String> codice = new TableColumn<>("Codice");
-        codice.setCellValueFactory(new PropertyValueFactory<>("codice_vendita"));
-        TableColumn<Vendita, String> data = new TableColumn<>("Data");
-        data.setCellValueFactory(new PropertyValueFactory<>("data_vendita"));
+        TableColumn<Vendita, String> codice_vendita = new TableColumn<>("Codice");
+        codice_vendita.setCellValueFactory(new PropertyValueFactory<>("codice_vendita"));
+        TableColumn<Vendita, String> data_vendita = new TableColumn<>("Data");
+        data_vendita.setCellValueFactory(new PropertyValueFactory<>("data_vendita"));
         TableColumn<Vendita, Float> importo= new TableColumn<>("Importo");
         importo.setCellValueFactory(new PropertyValueFactory<>("importo"));
-        TableColumn<Vendita, String> fornitore = new TableColumn<>("Fornitore");
-        fornitore.setCellValueFactory(new PropertyValueFactory<>("nome_fornitore"));
+        TableColumn<Vendita, String> codice_fornitore = new TableColumn<>("Codice_fornitore");
+        codice_fornitore.setCellValueFactory(new PropertyValueFactory<>("codice_fornitore"));
         this.tabVendite.getColumns()
-                .addAll(Arrays.asList(codice, data, importo, fornitore));
+                .addAll(Arrays.asList(codice_vendita, data_vendita, importo, codice_fornitore));
         this.tabVendite.setItems(this.queryVendita.refreshVendita());
     }
 
@@ -642,17 +643,44 @@ public class AdminViewController {
     }
     @FXML
     public void refreshVisitatori() {
-
+        this.tabVisitatori.getColumns().clear();
+        TableColumn<Visitatore, String> cf = new TableColumn<>("Codice Fiscale");
+        cf.setCellValueFactory(new PropertyValueFactory<>("cf"));
+        TableColumn<Visitatore, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Visitatore, String> cognome= new TableColumn<>("cognome");
+        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        TableColumn<Visitatore, String> email = new TableColumn<>("Email");
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        this.tabVisitatori.getColumns()
+                .addAll(Arrays.asList(cf, nome, cognome, email));
+        this.tabVisitatori.setItems(this.queryVisitatore.refreshVisitatori());
     }
 
     @FXML
     public void viewMostreNegative() {
+        this.tabMostreNegative.getColumns().clear();
+        TableColumn<NumeroRecensioniNegative, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<NumeroRecensioniNegative, String> totale = new TableColumn<>("Totale ");
+        totale.setCellValueFactory(new PropertyValueFactory<>("totale"));
 
+        this.tabMostreNegative.getColumns()
+                .addAll(Arrays.asList(nome,totale));
+        this.tabMostreNegative.setItems(this.queryMostra.RecensioniNegativeMostra());
     }
 
     @FXML
     public void viewClassificaMostre() {
+        this.tabMediaRecensioni.getColumns().clear();
+        TableColumn<MediaRecensioniMostra, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<MediaRecensioniMostra, Float> media = new TableColumn<>("Media ");
+        media.setCellValueFactory(new PropertyValueFactory<>("media"));
 
+        this.tabMediaRecensioni.getColumns()
+                .addAll(Arrays.asList(nome,media));
+        this.tabMediaRecensioni.setItems(this.queryMostra.MediaRecensioni());
     }
 
     @FXML
@@ -670,7 +698,15 @@ public class AdminViewController {
 
     @FXML
     public void viewTotaleBiglietti() {
-        
+        this.tabBigliettiTotali.getColumns().clear();
+        TableColumn<BigliettiMostraTotale, String> nome = new TableColumn<>("Nome Mostra");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<BigliettiMostraTotale, Integer> totale = new TableColumn<>("Numero Biglietti ");
+        totale.setCellValueFactory(new PropertyValueFactory<>("totale"));
+
+        this.tabBigliettiTotali.getColumns()
+                .addAll(Arrays.asList(nome,totale));
+        this.tabBigliettiTotali.setItems(this.queryMostra.BigliettiTotali());
     }
 
     @FXML
