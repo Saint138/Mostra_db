@@ -154,13 +154,7 @@ public class QueryMostra {
     }
 
     public void removeMostra(String codiceMostra) throws SQLException {
-        final String query = "DELETE FROM Mostra WHERE codice_mostra=?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, codiceMostra);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
+      
         final String query2 = "DELETE FROM Visita WHERE codice_mostra=?";
           try (PreparedStatement statement = connection.prepareStatement(query2)) {
             statement.setString(1, codiceMostra);
@@ -177,6 +171,14 @@ public class QueryMostra {
         }
          final String query4 = "DELETE FROM Presenza WHERE codice_mostra=?";
           try (PreparedStatement statement = connection.prepareStatement(query4)) {
+            statement.setString(1, codiceMostra);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+
+        final String query = "DELETE FROM Mostra WHERE codice_mostra=?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, codiceMostra);
             statement.executeUpdate();
         } catch (SQLException e) {
