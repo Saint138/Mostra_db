@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.Timestamp;
 import it.unibo.mostra.db.entity.*;
 import it.unibo.mostra.utils.DateAdapter;
 import javafx.collections.FXCollections;

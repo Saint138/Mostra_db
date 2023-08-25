@@ -3,7 +3,6 @@ package it.unibo.mostra.controller;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 
 import it.unibo.mostra.db.entity.RefreshMostra;
 import it.unibo.mostra.db.query.QueryMostra;
