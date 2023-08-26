@@ -541,7 +541,7 @@ public class AdminViewController {
     @FXML
     public void removeVisita() { 
         try {
-            this.queryVisita.removeVisita(codice_turno.getText());
+            this.queryVisita.removeVisita(codice_visita.getText());
             codice_visita.clear();
             ora_inizio_visita.clear();
             data_visita.clear();
@@ -617,7 +617,7 @@ public class AdminViewController {
     @FXML
     public void addPresenza() { 
         try{
-            queryPresenza.addPresenza(codice_mostra_presenza.getText(),nome_arte_presenza.getText(), nome_opera_presenza.getText());
+            queryPresenza.addPresenza(nome_opera_presenza.getText(),nome_arte_presenza.getText(), codice_mostra_presenza.getText());
             codice_mostra_presenza.clear();
             nome_arte_presenza.clear();
             nome_opera_presenza.clear();
