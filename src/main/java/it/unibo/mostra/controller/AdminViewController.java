@@ -224,7 +224,6 @@ public class AdminViewController {
             queryMostra.addMostra(nome_mostra.getText(),città.getText(), data_inizio.getText(),
                                     codice_mostra.getText(),data_fine.getText());
         
-                System.out.println(codice_mostra.getText());
             nome_mostra.clear();
             città.clear();
             data_inizio.clear();

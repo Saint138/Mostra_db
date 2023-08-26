@@ -118,10 +118,6 @@ public class QueryMostra {
         final String query = "INSERT INTO MOSTRA (nome, città, data_inizio, data_fine, codice_mostra, numero_opere, valore) "
                 + " VALUES (?, ?, ?, ?, ?, ?, ? )";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            System.out.println(data_inizio);
-            System.out.println(data_fine);
-             System.out.println(città);
-             System.out.println(codiceMostra);
             stmt.setString(1, nome);
             stmt.setString(2, città);
             stmt.setTimestamp(3, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_inizio).get()));
