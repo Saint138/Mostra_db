@@ -253,7 +253,7 @@
                               <TextField fx:id="codice_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice vendita*" />
                               <TextField fx:id="data_vendita" prefHeight="26.0" prefWidth="201.0" promptText="data vendita*" />
                               <TextField fx:id="importo" prefHeight="26.0" prefWidth="201.0" promptText="importo*" />
-                              <TextField fx:id="codice_fornitore" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore*" />
+                              <TextField fx:id="codice_fornitore_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore*" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
                               <Button mnemonicParsing="false" onAction="#addVendita" prefHeight="26.0" prefWidth="202.0" text="Aggiungi Vendita" />
                               <Separator prefHeight="18.0" prefWidth="200.0" />
