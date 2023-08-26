@@ -21,8 +21,8 @@ public class QueryArtista {
 
     public void addArtista(String nome, String nome_arte, String cognome, String data_di_nascita, String data_decesso,
     String breve_biografia) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Artista (nome_arte,nome,cognome,data_di_nascita,data_decesso,breve_biografia)"
-                + " VALUES (?, ?, ?, ?, ?,?);";
+        final String query = "INSERT INTO Artista (nome_arte, nome, cognome, data_di_nascita, data_decesso, breve_biografia)"
+                + " VALUES (?, ?, ?, ?, ?, ?);";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome_arte);
             stmt.setString(2, nome);

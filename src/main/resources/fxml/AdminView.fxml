@@ -196,29 +196,29 @@
                               <TextField fx:id="codice_turno" prefHeight="26.0" prefWidth="201.0" promptText="Codice turno*" />
                               <TextField fx:id="data_turno" prefHeight="26.0" prefWidth="201.0" promptText="data turno*" />
                               <TextField fx:id="ora_inizio" prefHeight="26.0" prefWidth="201.0" promptText="ora inizio*" />
-                              <TextField fx:id="ora_fine1" prefHeight="26.0" prefWidth="201.0" promptText="ora fine*" />
+                              <TextField fx:id="ora_fine" prefHeight="26.0" prefWidth="201.0" promptText="ora fine*" />
                               <TextField fx:id="codice_mostra_turno" prefHeight="26.0" prefWidth="201.0" promptText="codice mostra*" />
-                              <CheckBox fx:id="guardia1" mnemonicParsing="false" prefHeight="18.0" prefWidth="70.0" text="Guardia">
+                              <CheckBox fx:id="guardia" mnemonicParsing="false" prefHeight="18.0" prefWidth="70.0" text="Guardia">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="guida1" mnemonicParsing="false" prefHeight="18.0" prefWidth="70.0" text="Guida">
+                              <CheckBox fx:id="guida" mnemonicParsing="false" prefHeight="18.0" prefWidth="70.0" text="Guida">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="souvenir1" mnemonicParsing="false" prefHeight="18.0" prefWidth="82.0" text="Souvenir">
+                              <CheckBox fx:id="souvenir" mnemonicParsing="false" prefHeight="18.0" prefWidth="82.0" text="Souvenir">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="magazziniere1" mnemonicParsing="false" prefHeight="18.0" prefWidth="104.0" text="Magazziniere">
+                              <CheckBox fx:id="magazziniere" mnemonicParsing="false" prefHeight="18.0" prefWidth="104.0" text="Magazziniere">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox fx:id="receptionist1" mnemonicParsing="false" prefHeight="18.0" prefWidth="110.0" text="Receptionist">
+                              <CheckBox fx:id="receptionist" mnemonicParsing="false" prefHeight="18.0" prefWidth="110.0" text="Receptionist">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>

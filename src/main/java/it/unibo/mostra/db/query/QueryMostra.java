@@ -54,7 +54,7 @@ public class QueryMostra {
     
             final ObservableList<NumeroRecensioniNegative> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new NumeroRecensioniNegative(rs.getString("nome"), rs.getInt("recensioni_negative")));
+                list.add(new NumeroRecensioniNegative(rs.getString("mostra"), rs.getInt("recensioni_negative")));
             }
             return list;
         } catch (SQLException e) {

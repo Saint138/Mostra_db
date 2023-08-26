@@ -726,7 +726,7 @@ public class AdminViewController {
     @FXML
     public void viewGuadagnoMostre() {
         this.tabGuadagnoTotale.getColumns().clear();
-        TableColumn<GuadagnoMostraTotale, String> nome = new TableColumn<>("Codice Fornitore");
+        TableColumn<GuadagnoMostraTotale, String> nome = new TableColumn<>("Nome Fornitore");
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         TableColumn<GuadagnoMostraTotale, String> valore = new TableColumn<>("valore ");
         valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
