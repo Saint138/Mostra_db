@@ -17,7 +17,7 @@ public final class DateAdapter {
 
     public static Optional<java.util.Date> buildDate(final String dateString) {
         try {
-            final String dateFormatString = "yyyy-MM-dd HH:mm:ss";
+            final String dateFormatString = "yyyy-MM-dd";
             final java.util.Date date = new SimpleDateFormat(dateFormatString, Locale.ITALIAN).parse(dateString);
             return Optional.of(date);
         } catch (final ParseException e) {

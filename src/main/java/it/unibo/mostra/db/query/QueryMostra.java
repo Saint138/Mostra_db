@@ -123,7 +123,7 @@ public class QueryMostra {
             stmt.setTimestamp(3, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_inizio).get()));
             stmt.setTimestamp(4, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_fine).get()));
             stmt.setString(5, codiceMostra);
-            stmt.setFloat(6, 0);
+            stmt.setInt(6, 0);
             stmt.setInt(7, 0);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
@@ -131,7 +131,7 @@ public class QueryMostra {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        updateValore();
+        
     }
    
     public ObservableList<RefreshMostra> refreshMostra(){
@@ -185,18 +185,6 @@ public class QueryMostra {
             throw new IllegalStateException(e);
         }
 
-    }
-    
-    private void updateValore() {
-        final String query = "UPDATE MOSTRA M "
-                       + "SET M.valore = (SELECT COALESCE(SUM(O.valore), 0) "
-                       + "                 FROM OPERA O "
-                       + "                 INNER JOIN Presenza P ON O.nome_arte = P.nome_arte AND O.nome = P.nome AND P.codice_mostra = M.codice_mostra) ";
-    try (PreparedStatement statement = connection.prepareStatement(query)) {
-        statement.executeUpdate();
-    } catch (SQLException e) {
-        throw new IllegalStateException(e);
-    }
     }
 
 }
