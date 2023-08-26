@@ -37,7 +37,7 @@
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="nome_arte" prefHeight="26.0" prefWidth="201.0" promptText="nome_arte*" />
+                              <TextField fx:id="nome_arte_opera" prefHeight="26.0" prefWidth="201.0" promptText="nome_arte*" />
                               <TextField fx:id="nome_opera" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
                               <TextField fx:id="codice_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice_vendita*" />
                               <TextField fx:id="anno_realizzazione" prefHeight="26.0" prefWidth="201.0" promptText="anno_realizzazione*" />

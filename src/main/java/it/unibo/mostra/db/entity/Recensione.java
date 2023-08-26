@@ -4,7 +4,7 @@ public class Recensione {
     private String cod;
     private String nome;
     private String cognome;
-    private String CF;
+    private String cf;
     private int valutazione;
     private String commento;
     private String codiceMostra;
@@ -53,8 +53,8 @@ public class Recensione {
     public String getCodiceRecensione(){
         return cod;
     }
-    public String getCF(){
-        return CF;
+    public String getCf(){
+        return cf;
     }
     public int getValutazione(){
         return valutazione;
