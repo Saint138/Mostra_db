@@ -103,9 +103,9 @@
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="nome_arte" prefHeight="26.0" prefWidth="201.0" promptText="nome_arte*" />
+                              <TextField fx:id="nome_arte_artista" prefHeight="26.0" prefWidth="201.0" promptText="nome_arte*" />
                               <TextField fx:id="nome_artista" prefHeight="26.0" prefWidth="201.0" promptText="nome*" />
-                              <TextField fx:id="cognome" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
+                              <TextField fx:id="cognome_artista" prefHeight="26.0" prefWidth="201.0" promptText="cognome*" />
                               <TextField fx:id="data_di_nascita" prefHeight="26.0" prefWidth="201.0" promptText="data di nascita*" />
                               <TextField fx:id="data_decesso" prefHeight="26.0" prefWidth="201.0" promptText="data decesso" />
                               <TextField fx:id="breve_biografia" prefHeight="26.0" prefWidth="201.0" promptText="breve biografia*" />
