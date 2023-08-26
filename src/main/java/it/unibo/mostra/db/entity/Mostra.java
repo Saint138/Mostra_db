@@ -3,31 +3,32 @@ package it.unibo.mostra.db.entity;
 public class Mostra {
     private String nome;
     private String città;
-    private Integer numero_opere;
+    private Integer numeroOpere;
     private String codiceMostra;
     private int valore;
-    private String data_inizio;
-    private String data_fine;
+    private String dataInizio;
+    private String dataFine;
 
-    public Mostra(String nome, String città, int numero_opere, String data_inizio, String codiceMostra,
-            int valore, String data_fine) {
+    public Mostra(String nome, String città, int numeroOpere, String dataInizio, String codiceMostra,
+            int valore, String dataFine) {
         this.città = città;
         this.nome = nome;
-        this.numero_opere = numero_opere;
+        this.numeroOpere = numeroOpere;
         this.codiceMostra = codiceMostra;
         this.valore = valore;
-        this.data_inizio = data_inizio;
-        this.data_fine = data_fine;
+        this.dataInizio = dataInizio;
+        this.dataFine = dataFine;
     }
 
-    public Mostra(String città, String data_inizio, String data_fine, String codiceMostra, int valore,
-            int numero_opere) {
+    public Mostra(String nome,String città, String dataInizio, String dataFine, String codiceMostra, int valore,
+            int numeroOpere) {
         this.città = città;
-        this.numero_opere = numero_opere;
+        this.nome = nome;
+        this.numeroOpere = numeroOpere;
         this.codiceMostra = codiceMostra;
         this.valore = valore;
-        this.data_inizio = data_inizio;
-        this.data_fine = data_fine;
+        this.dataInizio = dataInizio;
+        this.dataFine = dataFine;
     }
 
     public Mostra(String nome, int valore) {
@@ -40,18 +41,18 @@ public class Mostra {
     public String getNome(){
         return nome;
     }
-    public String getCitta(){
+    public String getCittà(){
         return città;
     }
 
     public String getDataInizio() {
-        return data_inizio;
+        return dataInizio;
     }
     public String getDataFine(){
-        return data_fine;
+        return dataFine;
     }
     public Integer getNumeroOpere (){
-        return numero_opere;
+        return numeroOpere;
     }
     public String getCodiceMostra(){
         return codiceMostra;

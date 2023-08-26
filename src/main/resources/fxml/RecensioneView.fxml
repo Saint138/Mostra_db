@@ -16,7 +16,7 @@
          </image>
       </ImageView>
       <TableView fx:id="refreshRecensioneView" layoutX="507.0" layoutY="208.0" prefHeight="187.0" prefWidth="277.0" />
-      <Button layoutX="595.0" layoutY="181.0" mnemonicParsing="false" onAction="#refreshRecensione" prefHeight="26.0" prefWidth="102.0" text="Aggiorna">
+      <Button layoutX="595.0" layoutY="181.0" mnemonicParsing="false"  prefHeight="26.0" prefWidth="102.0" text="Recensioni">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>

@@ -27,9 +27,14 @@ public class RecensioneController {
     @FXML private TextField valutazione;
 
 
-    public RecensioneController (ViewImpl view, QueryRecensione queryRecensione){
+    public RecensioneController(ViewImpl view, QueryRecensione queryRecensione) {
         this.view = view;
         this.queryRecensione = queryRecensione;
+    }
+    @FXML
+    public void initialize() {
+            refreshRecensione();
+            
     }
 
     @FXML

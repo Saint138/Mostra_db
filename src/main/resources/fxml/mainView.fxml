@@ -31,7 +31,7 @@
          </font>
       </Button>
       <TableView fx:id="refreshMostraView" layoutX="318.0" layoutY="300.0" prefHeight="140.0" prefWidth="464.0" />
-      <Button layoutX="462.0" layoutY="272.0" mnemonicParsing="false" onAction="#refreshMostra" prefHeight="26.0" prefWidth="175.0" text="AGGIORNA MOSTRE">
+      <Button layoutX="462.0" layoutY="272.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="175.0" text="MOSTRE">
          <font>
             <Font name="Baskerville Old Face" size="14.0" />
          </font>

@@ -5,7 +5,6 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
 import it.unibo.mostra.db.entity.*;
 import it.unibo.mostra.db.query.*;
-import it.unibo.mostra.utils.DateAdapter;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -502,7 +501,18 @@ public class AdminViewController {
 
     @FXML
     public void refreshFornitori() {
-
+        this.tabFornitori.getColumns().clear();
+        TableColumn<Fornitore, String> codiceFornitore = new TableColumn<>("Codice Fornitore");
+        codiceFornitore.setCellValueFactory(new PropertyValueFactory<>("codiceFornitore"));
+        TableColumn<Fornitore, String> nome = new TableColumn<>("Nome Fornitore");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Fornitore, String> email = new TableColumn<>("Email");
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        TableColumn<Fornitore, String> numeroTelefono = new TableColumn<>("Numero Telefono");
+        numeroTelefono.setCellValueFactory(new PropertyValueFactory<>("numeroTelefono"));
+        this.tabFornitori.getColumns()
+                .addAll(Arrays.asList(codiceFornitore, nome, email, numeroTelefono));
+        this.tabFornitori.setItems(this.queryFornitore.refreshFornitore());
     }
 
     @FXML
@@ -645,7 +655,18 @@ public class AdminViewController {
 
     @FXML
     public void refreshPresenze() {
-
+        this.tabPresenze.getColumns().clear();
+        TableColumn<Presenza, String> nomeArte = new TableColumn<>("Nome Artista");
+        nomeArte.setCellValueFactory(new PropertyValueFactory<>("nomeArte"));
+        TableColumn<Presenza, String> nomeOpera = new TableColumn<>("Nome Opera");
+        nomeOpera.setCellValueFactory(new PropertyValueFactory<>("nomeOpera"));
+        TableColumn<Presenza, String> nomeMostra = new TableColumn<>("Nome Mostra");
+        nomeMostra.setCellValueFactory(new PropertyValueFactory<>("nomeMostra"));
+        TableColumn<Presenza, String> codiceMostra = new TableColumn<>("Codice Mostra");
+        codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codiceMostra"));
+        this.tabPresenze.getColumns()
+                .addAll(Arrays.asList(nomeArte, nomeOpera, nomeMostra,codiceMostra));
+        this.tabPresenze.setItems(this.queryPresenza.refreshPresenze());
     }
 
     @FXML

@@ -40,7 +40,7 @@ public class QueryFornitore {
 
     public ObservableList<Fornitore> refreshFornitore() {
         final String query = "Select codice_fornitore, nome , email, numero_telefono "
-                + " FROM Fornitore ";
+                + " FROM Fornitore;";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
 
