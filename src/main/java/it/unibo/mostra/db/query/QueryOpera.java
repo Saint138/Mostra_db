@@ -19,7 +19,7 @@ public class QueryOpera {
 
     public void addOpera(String nomeArtista, String nomeOpera, String codiceVendita, String annoRealizzazione, String dimensioni,
                          String tecnica, String descrizione) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Mostra (NOME_ARTE, NOME, CODICE_VENDITA, ANNO_REALIZZAZIONE , DIMENSIONI, TECNICA, DESCRIZIONE) "
+        final String query = "INSERT INTO Opera (NOME_ARTE, NOME, CODICE_VENDITA, ANNO_REALIZZAZIONE , DIMENSIONI, TECNICA, DESCRIZIONE) "
                             + " VALUES (?, ?, ?, ?, ?, ?, ?);";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nomeArtista);
@@ -46,8 +46,8 @@ public class QueryOpera {
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-        final String query1 = "DELETE FROM Opera WHERE nome_arte=? AND nome=?";
-        try (PreparedStatement statement = connection.prepareStatement(query1)) {
+        final String query2 = "DELETE FROM Opera WHERE nome_arte=? AND nome=?";
+        try (PreparedStatement statement = connection.prepareStatement(query2)) {
             statement.setString(1, nomeArtista);
             statement.setString(2, nomeOpera);
             statement.executeUpdate();
@@ -56,19 +56,7 @@ public class QueryOpera {
         }
     }
 
-    public void updateOpereMostre(){
-        
-       final String query =   "UPDATE Mostra"
-                             + "SET numero_opere = (SELECT COUNT(P.codice_mostra) as opere"
-                             + "FROM presenza P "
-                             + "WHERE Mostra.codice_mostra = P.codice_mostra);";
-
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new IllegalStateException(e);
-        }
-    }
+    
 
     public ObservableList<Opera> refreshOpera() {
         final String query = "SELECT nome_arte, nome, anno_realizzazione, dimensioni, tecnica, descrizione "
