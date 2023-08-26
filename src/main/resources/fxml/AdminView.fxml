@@ -250,7 +250,7 @@
                                  </font>
                               </Text>
                               <Separator prefHeight="27.0" prefWidth="200.0" />
-                              <TextField fx:id="codice_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice vendita*" />
+                              <TextField fx:id="codice_vendita_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice vendita*" />
                               <TextField fx:id="data_vendita" prefHeight="26.0" prefWidth="201.0" promptText="data vendita*" />
                               <TextField fx:id="importo" prefHeight="26.0" prefWidth="201.0" promptText="importo*" />
                               <TextField fx:id="codice_fornitore_vendita" prefHeight="26.0" prefWidth="201.0" promptText="codice fornitore*" />
