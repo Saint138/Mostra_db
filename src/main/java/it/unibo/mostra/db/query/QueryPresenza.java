@@ -31,6 +31,9 @@ public class QueryPresenza {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        updateValore(mostra);
+        updateNumeroOpere(mostra);
+
     }
 
     public void removePresenza(String nomeArtista, String nomeOpera, String codiceMostra) throws SQLException {
@@ -46,7 +49,7 @@ public class QueryPresenza {
 
     }
     
-     public ObservableList<Presenza> refreshPresenze() {
+    public ObservableList<Presenza> refreshPresenze() {
         final String query = "SELECT P.nome_arte, P.nome, P.codice_mostra, M.nome AS nome_mostra"
                 + " FROM Presenza AS P, MOSTRA AS M"
                 + " WHERE P.codice_mostra = M.codice_mostra;";
@@ -55,7 +58,8 @@ public class QueryPresenza {
 
             final ObservableList<Presenza> list = FXCollections.observableArrayList();
             while (rs.next()) {
-                list.add(new Presenza(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("nome_mostra"),rs.getString("codice_mostra")));
+                list.add(new Presenza(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("nome_mostra"),
+                        rs.getString("codice_mostra")));
             }
             return list;
         } catch (SQLException e) {
@@ -63,4 +67,43 @@ public class QueryPresenza {
             return null;
         }
     }
+    
+    private void updateValore(String codiceMostra) {
+        final String query = "UPDATE MOSTRA M"
+                + " JOIN ("
+                + " SELECT P.codice_mostra, SUM(V.importo) AS total_value"
+                + " FROM Presenza P"
+                + " JOIN OPERA O ON P.nome_arte = O.nome_arte AND P.nome = O.nome"
+                + " JOIN VENDITA V ON O.codice_vendita = V.codice_vendita"
+                + " GROUP BY P.codice_mostra"
+                + " ) AS Subquery"
+                + " ON M.codice_mostra = Subquery.codice_mostra"
+                + "SET M.valore = Subquery.total_value"
+                + " WHERE M.codice_mostra = ?;";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, codiceMostra);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+    
+       private void updateNumeroOpere(String codiceMostra) {
+        final String query = "UPDATE MOSTRA M"
+                + " JOIN ("
+                + " SELECT codice_mostra, COUNT(*) AS total_opere"
+                + " FROM Presenza "
+                + " GROUP BY codice_mostra"
+                + " ) AS Subquery"
+                + " ON M.codice_mostra = Subquery.codice_mostra"
+                + " SET M.numero_opere = Subquery.total_opere"
+                + " WHERE M.codice_mostra = ?;";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, codiceMostra);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+   
 }

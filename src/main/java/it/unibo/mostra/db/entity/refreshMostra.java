@@ -2,18 +2,18 @@ package it.unibo.mostra.db.entity;
 
 public class RefreshMostra {
     private String nome;
-    private String codice_mostra;
+    private String codiceMostra;
     private String città;
-    private String data_inizio;
-    private String data_fine;
+    private String dataInizio;
+    private String dataFine;
     
 
-    public RefreshMostra(String nome, String codice_mostra,String città,String data_inizio, String data_fine) {
+    public RefreshMostra(String nome, String codiceMostra,String città,String dataInizio, String dataFine) {
         this.nome = nome;
-        this.codice_mostra = codice_mostra;
+        this.codiceMostra = codiceMostra;
         this.città = città;
-        this.data_inizio = data_inizio;
-        this.data_fine = data_fine;
+        this.dataInizio = dataInizio;
+        this.dataFine = dataFine;
     }
 
     public String getNome() {
@@ -21,7 +21,7 @@ public class RefreshMostra {
     }
 
     public String getCodiceMostra() {
-        return codice_mostra;
+        return codiceMostra;
     }
 
     public String getCittà() {
@@ -29,10 +29,10 @@ public class RefreshMostra {
     }
     
     public String getDataInizio() {
-        return data_inizio;
+        return dataInizio;
     }
 
     public String getDataFine() {
-        return data_fine;
+        return dataFine;
     }
 }

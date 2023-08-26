@@ -224,7 +224,7 @@ public class AdminViewController {
             queryMostra.addMostra(nome_mostra.getText(),città.getText(), data_inizio.getText(),
                                     codice_mostra.getText(),data_fine.getText());
         
-        
+                System.out.println(codice_mostra.getText());
             nome_mostra.clear();
             città.clear();
             data_inizio.clear();
@@ -233,15 +233,15 @@ public class AdminViewController {
             this.refreshMostre();
         } catch (SQLIntegrityConstraintViolationException e) {
             e.getCause();
-            nome_mostra.clear();
-            nome_mostra.setPromptText("Errore di inserimento");
-            nome_mostra.setStyle("-fx-prompt-text-fill: red;");
+            codice_mostra.clear();
+            codice_mostra.setPromptText("Errore di inserimento");
+            codice_mostra.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalArgumentException(e);
         } catch (SQLException e) {
             e.getCause();
-            nome_mostra.clear();
-            nome_mostra.setPromptText("Errore di inserimento");
-            nome_mostra.setStyle("-fx-prompt-text-fill: red;");
+            codice_mostra.clear();
+            codice_mostra.setPromptText("Errore di inserimento");
+            codice_mostra.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalStateException(e);
         }
     }
@@ -269,7 +269,7 @@ public class AdminViewController {
         this.tabMostre.getColumns().clear();
         TableColumn<RefreshMostra, String> nomeMostra = new TableColumn<>("Nome mostra");
         nomeMostra.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        TableColumn<RefreshMostra, String> codiceMostra = new TableColumn<>("Codice RefreshMostra");
+        TableColumn<RefreshMostra, String> codiceMostra = new TableColumn<>("Codice Mostra");
         codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codiceMostra"));
         TableColumn<RefreshMostra, String> città = new TableColumn<>("Città");
         città.setCellValueFactory(new PropertyValueFactory<>("città"));
