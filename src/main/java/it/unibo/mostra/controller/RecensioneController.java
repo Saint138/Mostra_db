@@ -19,10 +19,9 @@ public class RecensioneController {
     @FXML private TextField testo;
     @FXML private TextField cf;
     @FXML private TextField codice_mostra;
-    @FXML private TableView<Recensione> refreshRecensioneView;
-
-    @FXML private TextField Cf;
-    @FXML private TextField codiceMostra;
+    @FXML
+    private TableView<Recensione> refreshRecensioneView;
+        @FXML private TextField codiceMostra;
     @FXML private TextField commento;
     @FXML private TextField valutazione;
 
@@ -55,22 +54,22 @@ public class RecensioneController {
     @FXML
     public void newRecensione() {
         try {
-            this.queryRecensione.addRecensione(Cf.getText(), commento.getText(), codice_mostra.getText(),
+            this.queryRecensione.addRecensione(cf.getText(), commento.getText(), codice_mostra.getText(),
                     Integer.parseInt(valutazione.getText()));
-            Cf.clear();
+            cf.clear();
             commento.clear();
             valutazione.clear();
             codice_mostra.clear();
             this.refreshRecensione();
         } catch (SQLIntegrityConstraintViolationException e) {
-            Cf.clear();
-            Cf.setPromptText("Errore di inserimento");
-            Cf.setStyle("-fx-prompt-text-fill: red;");
+            cf.clear();
+            cf.setPromptText("Errore di inserimento");
+            cf.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalArgumentException(e);
         } catch (SQLException e) {
-            Cf.clear();
-            Cf.setPromptText("Errore di inserimento");
-            Cf.setStyle("-fx-prompt-text-fill: red;");
+            cf.clear();
+            cf.setPromptText("Errore di inserimento");
+            cf.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalStateException(e);
         }
     }

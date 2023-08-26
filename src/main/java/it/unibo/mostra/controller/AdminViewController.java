@@ -28,7 +28,7 @@ public class AdminViewController {
     private ViewImpl view;
     //opera
     @FXML
-    private TextField nome_arte, nome_opera, codice_vendita, anno_realizzazione, dimensioni, tecnica, descrizione;
+    private TextField nome_arte_opera, nome_opera, codice_vendita, anno_realizzazione, dimensioni, tecnica, descrizione;
     //mostra
     @FXML
     private TextField nome_mostra, città, data_inizio, data_fine, codice_mostra;
@@ -152,10 +152,10 @@ public class AdminViewController {
     @FXML
     public void addOpera() {
          try{
-            queryOpera.addOpera(nome_arte.getText(), nome_opera.getText(),
+            queryOpera.addOpera(nome_arte_opera.getText(), nome_opera.getText(),
                                     codice_vendita.getText(), anno_realizzazione.getText(), dimensioni.getText(),
                                     tecnica.getText(), descrizione.getText());
-            nome_arte.clear();
+            nome_arte_opera.clear();
             nome_opera.clear();
             codice_vendita.clear();
             anno_realizzazione.clear();
@@ -164,14 +164,14 @@ public class AdminViewController {
             descrizione.clear();
             this.refreshOpere();
         } catch (SQLIntegrityConstraintViolationException e) {
-            nome_arte.clear();
-            nome_arte.setPromptText("Errore di inserimento");
-            nome_arte.setStyle("-fx-prompt-text-fill: red;");
+            nome_arte_opera.clear();
+            nome_arte_opera.setPromptText("Errore di inserimento");
+            nome_arte_opera.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalArgumentException(e);
         } catch (SQLException e) {
-            nome_arte.clear();
-            nome_arte.setPromptText("Errore di inserimento");
-            nome_arte.setStyle("-fx-prompt-text-fill: red;");
+            nome_arte_opera.clear();
+            nome_arte_opera.setPromptText("Errore di inserimento");
+            nome_arte_opera.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalStateException(e);
         }
     }
@@ -179,8 +179,8 @@ public class AdminViewController {
     @FXML
     public void removeOpera() {
          try {
-            this.queryOpera.removeOpera(nome_arte.getText(), nome_opera.getText());
-            nome_arte.clear();
+            this.queryOpera.removeOpera(nome_arte_opera.getText(), nome_opera.getText());
+            nome_arte_opera.clear();
             nome_opera.clear();
             codice_vendita.clear();
             anno_realizzazione.clear();
@@ -190,9 +190,9 @@ public class AdminViewController {
             this.refreshOpere();
             this.refreshPresenze();
         } catch (SQLException e) {
-            nome_arte.clear();
-            nome_arte.setPromptText("Errore di rimozione");
-            nome_arte.setStyle("-fx-prompt-text-fill: red;");
+            nome_arte_opera.clear();
+            nome_arte_opera.setPromptText("Errore di rimozione");
+            nome_arte_opera.setStyle("-fx-prompt-text-fill: red;");
             throw new IllegalStateException(e);
         }
     }
