@@ -578,14 +578,13 @@ public class AdminViewController {
     @FXML
     public void addVendita() {
         try {
-            queryVendita.addVendita(codice_vendita.getText(), data_vendita.getText(),
+            queryVendita.addVendita(codice_vendita_vendita.getText(), data_vendita.getText(),
                     Float.parseFloat(importo.getText()),
                     codice_fornitore_vendita.getText());
-            codice_vendita.clear();
+            codice_vendita_vendita.clear();
             data_vendita.clear();
             importo.clear();
             codice_fornitore_vendita.clear();
-            codice_contratto_guida.clear();
             this.refreshVendite();
         } catch (SQLIntegrityConstraintViolationException e) {
             codice_vendita_vendita.clear();
