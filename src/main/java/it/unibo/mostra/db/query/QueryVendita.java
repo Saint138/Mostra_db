@@ -20,10 +20,9 @@ public class QueryVendita {
     }
     
     public void addVendita(String codice_vendita, String data_vendita, float importo, String codice_fornitore) throws SQLException, SQLIntegrityConstraintViolationException {
-        System.out.println("ooooooooooooooooo");
+       
         final String query = " INSERT INTO Vendita(codice_vendita,data_vendita,importo,codice_fornitore) "
                 + " VALUES (?, ?, ?, ?, ?, ?)";
-        System.out.println("ciao");
          try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, codice_vendita);
             stmt.setTimestamp(2, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_vendita).get()));

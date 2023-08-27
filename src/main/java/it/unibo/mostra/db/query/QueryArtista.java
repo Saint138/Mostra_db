@@ -28,7 +28,7 @@ public class QueryArtista {
             stmt.setString(2, nome);
             stmt.setString(3, cognome);
             stmt.setTimestamp(4,DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_di_nascita).get()) );
-            stmt.setTimestamp(5,DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_decesso).get()) );
+            stmt.setTimestamp(5,DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_decesso).get()));
             stmt.setString(6, breve_biografia);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
@@ -40,14 +40,14 @@ public class QueryArtista {
 
     public void removeArtista(String nome_arte) throws SQLException{
     
-        final String query = "DELETE FROM Opera WHERE nome_arte=?;";
+        final String query = "DELETE FROM Opera WHERE nome_arte= ? ;";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, nome_arte);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
-        final String query2 = "DELETE FROM Presenza WHERE nome_arte=?;";
+        final String query2 = "DELETE FROM Presenza WHERE nome_arte= ? ;";
         try (PreparedStatement statement = connection.prepareStatement(query2)) {
             statement.setString(1, nome_arte);
             statement.executeUpdate();
@@ -55,7 +55,7 @@ public class QueryArtista {
             throw new IllegalStateException(e);
         }
 
-        final String query3 = "DELETE FROM Artista WHERE nome_arte=?, ";
+        final String query3 = "DELETE FROM Artista WHERE nome_arte= ?; ";
         try (PreparedStatement statement = connection.prepareStatement(query3)) {
             statement.setString(1, nome_arte);
             statement.executeUpdate();

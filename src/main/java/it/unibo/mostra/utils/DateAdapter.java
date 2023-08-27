@@ -25,8 +25,8 @@ public final class DateAdapter {
         }
     }
 
-    public static Optional<java.util.Date> buildDate(final int day, final int month, final int year, final int hour, final int minute, final int second) {
-        final String dateString = day + "-" + month + "-" + year + " " + hour + ":" + minute + ":" + second;
+    public static Optional<java.util.Date> buildDate(final int day, final int month, final int year) {
+        final String dateString = day + "-" + month + "-" + year;
         return buildDate(dateString);
     }
 }
