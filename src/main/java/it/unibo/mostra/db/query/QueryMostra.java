@@ -42,12 +42,12 @@ public class QueryMostra {
     }
     
     public ObservableList<NumeroRecensioniNegative> RecensioniNegativeMostra(){
-        final String query = " SELECT M.nome AS mostra, COUNT(R.codice_recensione) AS recensioni_negative"
-                            + " FROM Mostra M"
-                            + " JOIN RECENSIONE R ON M.codice_mostra = R.codice_mostra"
-                            + " WHERE R.valutazione < 5"
+        final String query = " SELECT M.nome, COUNT(R.codice_recensione) as recensioni_negative "
+                            + " FROM Mostra M "
+                            + " JOIN RECENSIONE R ON M.codice_mostra = R.codice_mostra "
+                            + " WHERE R.valutazione <= 5 "
                             + " GROUP BY M.nome"
-                            + " ORDER BY recensioni_negative DESC;";
+                            + " HAVING COUNT(recensioni_negative) >= 5 ";
     
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
