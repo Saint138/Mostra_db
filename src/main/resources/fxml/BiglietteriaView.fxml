@@ -30,6 +30,6 @@
       <TextField fx:id="codice_visita" layoutX="68.0" layoutY="239.0" prefHeight="28.0" prefWidth="162.0" promptText="codice visita" />
       <Button layoutX="119.0" layoutY="287.0" mnemonicParsing="false" onAction="#newBiglietto" text="Acquista" />
       <TableView fx:id="refreshBiglietteriaView" layoutX="382.0" layoutY="200.0" prefHeight="200.0" prefWidth="388.0" />
-      <Button layoutX="535.0" layoutY="173.0" mnemonicParsing="false" onAction="#refreshBiglietteria" prefHeight="26.0" prefWidth="82.0" text="Aggiorna" />
+      <Button layoutX="535.0" layoutY="173.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Aggiorna" />
    </children>
 </AnchorPane>

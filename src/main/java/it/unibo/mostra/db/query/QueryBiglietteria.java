@@ -12,6 +12,7 @@ import it.unibo.mostra.db.entity.RefreshBiglietteria;
 import it.unibo.mostra.utils.DateAdapter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 
 public class QueryBiglietteria {
     private Connection connection;
@@ -20,6 +21,10 @@ public class QueryBiglietteria {
         this.connection = connection;
     }
 
+     @FXML
+     public void initialize() {
+        refreshBiglietteria();
+     }
     public void newBiglietto(Float prezzo, String CF, String codice_visita) {
 
         Random rand = new Random();

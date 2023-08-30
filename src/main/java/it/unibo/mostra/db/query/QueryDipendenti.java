@@ -202,21 +202,22 @@ public class QueryDipendenti {
        
     }
     
-    public  ObservableList<Dipendente> refreshDipendente() {
+    public ObservableList<Dipendente> refreshDipendente() {
         final String query = "Select nome, cognome , email, matricola "
-               + " FROM Dipendente ";
-       try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
-           final ResultSet rs = stmt.executeQuery();
+                + " FROM Dipendente ";
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
 
-           final ObservableList<Dipendente> list = FXCollections.observableArrayList();
-           while (rs.next()) {
-               list.add(new Dipendente(rs.getString("matricola"), rs.getString("nome"), rs.getString("cognome"),
-                       rs.getString("email")));
-           }
-           return list;
-       } catch (SQLException e) {
-           e.printStackTrace();
-           return null;
-       }
-   }
+            final ObservableList<Dipendente> list = FXCollections.observableArrayList();
+            while (rs.next()) {
+                list.add(new Dipendente(rs.getString("matricola"), rs.getString("nome"), rs.getString("cognome"),
+                        rs.getString("email")));
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+   
 }

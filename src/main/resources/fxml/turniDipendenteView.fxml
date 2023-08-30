@@ -26,6 +26,6 @@
             <Font name="Baskerville Old Face" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="matricola" layoutX="277.0" layoutY="118.0" prefHeight="26.0" prefWidth="246.0" promptText="Inserisci Matricola" />
+      <TextField fx:id="codice_contratto" layoutX="277.0" layoutY="118.0" prefHeight="26.0" prefWidth="246.0" promptText="Inserisci codice Contratto" />
    </children>
 </AnchorPane>

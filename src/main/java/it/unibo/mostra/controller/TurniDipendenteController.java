@@ -16,7 +16,7 @@ public class TurniDipendenteController {
     private ViewImpl view;
     private QueryTurno queryTurno;
     @FXML
-    private TextField matricola;
+    private TextField codice_contratto;
     @FXML
     private TableView<Turno> tabTurniDipendente;
 
@@ -33,17 +33,19 @@ public class TurniDipendenteController {
     public void refreshTurniDipendente() {
         this.tabTurniDipendente.getColumns().clear();
        TableColumn<Turno, String> codiceTurno = new TableColumn<>("Codice Turno");
-        codiceTurno.setCellValueFactory(new PropertyValueFactory<>("codice_turno"));
-        TableColumn<Turno, String> dataTurno = new TableColumn<>("dataTurno");  
-        dataTurno.setCellValueFactory(new PropertyValueFactory<>("data_turno"));
+        codiceTurno.setCellValueFactory(new PropertyValueFactory<>("codiceTurno"));
+        TableColumn<Turno, String> dataTurno = new TableColumn<>("Data Turno");  
+        dataTurno.setCellValueFactory(new PropertyValueFactory<>("dataTurno"));
         TableColumn<Turno, String> oraInizio = new TableColumn<>(" Ora Inizio");
-        oraInizio.setCellValueFactory(new PropertyValueFactory<>("ora_inizio"));
+        oraInizio.setCellValueFactory(new PropertyValueFactory<>("oraInizio"));
         TableColumn<Turno, String> oraFine = new TableColumn<>("Ora Fine");
-        oraFine.setCellValueFactory(new PropertyValueFactory<>("ora_fine"));
+        oraFine.setCellValueFactory(new PropertyValueFactory<>("oraFine"));
         TableColumn<Turno, String> codiceMostra = new TableColumn<>("Codice Mostra");
-        codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codice_mostra"));
+        codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codiceMostra"));
         this.tabTurniDipendente.getColumns().addAll(Arrays.asList(codiceTurno, dataTurno, oraInizio, oraFine, codiceMostra));
-        this.tabTurniDipendente.setItems(this.queryTurno.refreshTurniDipendente(this.matricola.getText()));
+        this.tabTurniDipendente.setItems(this.queryTurno.refreshTurniDipendente(this.codice_contratto.getText()));
     }
+
+    
 
 }
