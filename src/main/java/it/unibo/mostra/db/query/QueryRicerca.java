@@ -63,21 +63,20 @@ public class QueryRicerca {
     }
     
     public ObservableList<Mostra> viewRicercaMostra(String nome_mostra) {
-        final String query = "Select M.nome, M.città, M.data_inizio, M.data_fine, M.codice_mostra, M.numero_opere, M.valore,A.nome_arte"
+        final String query = "Select DISTINCT M.nome, M.città, M.data_inizio, M.data_fine, M.codice_mostra, M.numero_opere, M.valore"
                 + " FROM Mostra M"
                 + " JOIN Presenza P ON M.codice_mostra = P.codice_mostra"
-                + " JOIN Artista A On P.nome_arte = A.nome_arte "
                 + " JOIN Opera O ON P.nome_arte = O.nome_arte AND P.nome = O.nome"
-                + " WHERE nome LIKE ?;";
+                + " WHERE M.nome LIKE ? ;";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             stmt.setString(1, nome_mostra + "%");
             final ResultSet rs = stmt.executeQuery();
 
             final ObservableList<Mostra> list = FXCollections.observableArrayList();
             while (rs.next()) {
-                list.add(new Mostra(rs.getString("nome"),rs.getString("città"), rs.getString("data_inizio"),
+                list.add(new Mostra(rs.getString("M.nome"),rs.getString("città"), rs.getString("data_inizio"),
                         rs.getString("data_fine"), rs.getString("codice_mostra"), rs.getInt("numero_opere"),
-                        rs.getInt("valore"),rs.getString("nome_arte")));
+                        rs.getInt("valore")));
             }
             return list;
         } catch (SQLException e) {
