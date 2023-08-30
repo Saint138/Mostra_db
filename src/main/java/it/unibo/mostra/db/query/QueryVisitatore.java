@@ -105,19 +105,18 @@ public class QueryVisitatore {
     }
 
      public ObservableList<Visitatore> viewTopVisitatori() {
-        final String query = "SELECT V.nome, V.cognome, COUNT(DISTINCT P.codice_mostra) AS numero_mostre "
-                + " FROM VISITATORE V"
-                + " JOIN VISITA VI ON V.CF = VI.CF"
-                + " JOIN PRESENZA P ON VI.codice_visita = P.codice_visita"
-                + " GROUP BY V.nome, V.cognome"
-                + " ORDER BY numero_mostre_partecipate DESC;";
+        final String query = "SELECT v.nome, v.cognome, v.CF, COUNT(DISTINCT b.codice_visita) AS num_mostre_partecipate "
+                + " FROM VISITATORE v"
+                + " JOIN BIGLIETTO b ON v.CF = b.CF"
+                + " GROUP BY v.CF, v.nome, v.cognome"
+                + " ORDER BY num_mostre_partecipate DESC;";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
 
             final ObservableList<Visitatore> list = FXCollections.observableArrayList();
             while (rs.next()) {
-                list.add(new Visitatore(rs.getString("nome"), rs.getString("cognome"), rs.getString("cf"),
-                        rs.getString("numero_mostre")));
+                list.add(new Visitatore(rs.getString("nome"), rs.getString("cognome"), rs.getString("CF"),
+                        rs.getInt("num_mostre_partecipate")));
             }
             return list;
         } catch (SQLException e) {

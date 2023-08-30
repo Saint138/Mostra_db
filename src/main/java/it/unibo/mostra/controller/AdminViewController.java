@@ -116,6 +116,8 @@ public class AdminViewController {
     private TableView<Mostra> tabMediaOpere;
     @FXML
     private TableView<Visitatore> tabVisitatori;
+    @FXML
+    private TableView<Artista> tabArtistiNoOpere;
     
 
     public AdminViewController(ViewImpl view, QueryVisita queryVisita, QueryOpera queryOpera, QueryMostra queryMostra,
@@ -152,6 +154,10 @@ public class AdminViewController {
         viewTotaleBiglietti();
         viewGuadagnoMostre();
         viewUtentiPiuAttivi();
+        viewArtistaTopValore();
+        viewArtistiNoOpere();
+        viewMediaOpere();
+        viewTopVisitatori();
 
     }
 
@@ -822,6 +828,16 @@ public class AdminViewController {
         this.tabMediaOpere.getColumns()
                 .addAll(Arrays.asList(nome, media));
         this.tabMediaOpere.setItems(this.queryMostra.mediaOpere());
+    }
+
+    @FXML
+    public void viewArtistiNoOpere() {
+        this.tabArtistiNoOpere.getColumns().clear();
+        TableColumn<Artista, String> nome = new TableColumn<>("Nome Artista");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nomeArte"));
+        this.tabArtistiNoOpere.getColumns()
+                .addAll(Arrays.asList(nome));
+        this.tabArtistiNoOpere.setItems(this.queryArtista.artistiNoOpere());
     }
 
     @FXML

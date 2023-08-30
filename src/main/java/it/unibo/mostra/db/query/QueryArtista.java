@@ -84,21 +84,42 @@ public class QueryArtista {
 
     }
     
-    public ObservableList<Artista> artistaTopValore(){
-        final String query = "SELECT A.nome_arte, SUM(M.valore) AS valore_totale_opere "
+    public ObservableList<Artista> artistaTopValore() {
+        final String query = "SELECT A.nome_arte, SUM(V.importo) AS valore_totale_opere "
+                + " FROM ARTISTA A "
+                + " JOIN OPERA O ON A.nome_arte = O.nome_arte "
+                + " JOIN VENDITA V ON O.codice_vendita = V.codice_vendita "
+                + " GROUP BY A.nome_arte "
+                + " ORDER BY valore_totale_opere DESC";
+
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
+
+            final ObservableList<Artista> list = FXCollections.observableArrayList();
+            while (rs.next()) {
+                list.add(new Artista(rs.getString("nome_arte"), rs.getInt("valore_totale_opere")));
+            }
+            return list;
+        } catch (final SQLException e) {
+            throw new IllegalStateException("Cannot execute the query!", e);
+
+        }
+    }
+    
+     public ObservableList<Artista> artistiNoOpere(){
+        final String query = "SELECT DISTINCT A.nome_arte "
                             + " FROM ARTISTA A "
-                            + " JOIN OPERA O ON A.nome_arte = O.nome_arte"
-                            + " JOIN PRESENZA P ON O.nome_arte = P.nome_arte AND O.nome = P.nome "
-                            + " JOIN MOSTRA M ON P.codice_mostra = M.codice_mostra "
-                            + " GROUP BY A.nome_arte"
-                            + " ORDER BY valore_totale_opere DESC";
+                            + " LEFT JOIN OPERA O ON A.nome_arte = O.nome_arte"
+                            + " LEFT JOIN PRESENZA P ON O.nome_arte = P.nome_arte "
+                + " WHERE P.codice_mostra IS NULL;";
+                           
 
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();
                     
                                 final ObservableList<Artista> list = FXCollections.observableArrayList();
                                 while (rs.next()) {
-                                    list.add(new Artista(rs.getString("nome_arte"), rs.getInt("valore_totale_opere")));
+                                    list.add(new Artista(rs.getString("nome_arte")));
                                 }
                                 return list;
                             } catch (final SQLException e) {

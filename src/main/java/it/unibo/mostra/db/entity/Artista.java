@@ -28,6 +28,10 @@ public class Artista {
         this.breveBiografia = breveBiografia;
 
     }
+
+    public Artista(String nome) {
+        this.nomeArte = nome;
+    }
     
     
     public Artista(String nome, int valore) {

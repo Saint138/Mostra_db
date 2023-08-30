@@ -47,14 +47,14 @@ public class QueryMostra {
                             + " JOIN RECENSIONE R ON M.codice_mostra = R.codice_mostra "
                             + " WHERE R.valutazione <= 5 "
                             + " GROUP BY M.nome"
-                            + " HAVING COUNT(recensioni_negative) >= 5 ";
+                            + " HAVING COUNT(codice_recensione) >= 5 ";
     
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
     
             final ObservableList<NumeroRecensioniNegative> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new NumeroRecensioniNegative(rs.getString("mostra"), rs.getInt("recensioni_negative")));
+                list.add(new NumeroRecensioniNegative(rs.getString("nome"), rs.getInt("recensioni_negative")));
             }
             return list;
         } catch (SQLException e) {
@@ -187,13 +187,13 @@ public class QueryMostra {
 
     }
     public ObservableList<Mostra> mediaOpere(){
-        final String query = "SELECT M.nome, AVG(numero_opere) AS numero_medio"
+        final String query = "SELECT M.nome, AVG(P.numero_opere) AS numero_medio"
                             + " FROM MOSTRA M "
                             + " LEFT JOIN ("
                             + "  SELECT codice_mostra, COUNT(*) AS numero_opere "
                             + " FROM PRESENZA"
                             + " GROUP BY codice_mostra"
-                            + " ) AS OperePerMostra ON M.codice_mostra = OperePerMostra.codice_mostra"
+                            + " ) AS P ON M.codice_mostra = P.codice_mostra"
                             + " GROUP BY M.nome;";
 
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
