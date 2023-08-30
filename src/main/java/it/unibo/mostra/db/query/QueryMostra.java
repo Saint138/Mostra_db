@@ -47,7 +47,8 @@ public class QueryMostra {
                             + " JOIN RECENSIONE R ON M.codice_mostra = R.codice_mostra "
                             + " WHERE R.valutazione <= 5 "
                             + " GROUP BY M.nome"
-                            + " HAVING COUNT(codice_recensione) >= 5 ";
+                            + " HAVING COUNT(R.codice_recensione) >= 5 "
+                            + " ORDER BY recensioni_negative DESC";
     
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
