@@ -22,7 +22,6 @@ public class RecensioneController {
     @FXML
     private TableView<Recensione> refreshRecensioneView;
         @FXML private TextField codiceMostra;
-    @FXML private TextField commento;
     @FXML private TextField valutazione;
 
 
@@ -54,10 +53,10 @@ public class RecensioneController {
     @FXML
     public void newRecensione() {
         try {
-            this.queryRecensione.addRecensione(cf.getText(), commento.getText(), codice_mostra.getText(),
+            this.queryRecensione.addRecensione(cf.getText(), testo.getText(), codice_mostra.getText(),
                     Integer.parseInt(valutazione.getText()));
             cf.clear();
-            commento.clear();
+            testo.clear();
             valutazione.clear();
             codice_mostra.clear();
             this.refreshRecensione();

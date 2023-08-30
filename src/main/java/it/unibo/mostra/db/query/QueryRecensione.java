@@ -25,8 +25,8 @@ public class QueryRecensione {
 
   
     public void addRecensione(String Cf, String commento, String codMostra, Integer val) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = " INSERT INTO Mostra (codice_recensione,data_recensione,valutazione,commento,cf,codice_mostra) "
-                            + "VALUES (?, ?, ?, ?, ?)";
+        final String query = " INSERT INTO Recensione (codice_recensione,data_recensione,valutazione,commento,cf,codice_mostra) "
+                            + "VALUES (?, ?, ?, ?, ?, ?)";
         String cod = 'A'+ Integer.toString(rand.nextInt(1000, 9999));
         Date date = new Date (System.currentTimeMillis ());
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
