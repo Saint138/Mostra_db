@@ -109,6 +109,12 @@ public class AdminViewController {
     @FXML
     private TableView<UtentiPiùAttivi> tabListaUtentiPiuAttivi;
     @FXML
+    private TableView<Artista> tabArtistaValore;
+    @FXML
+    private TableView<Visitatore> tabTopVisitatori;
+    @FXML
+    private TableView<Mostra> tabMediaOpere;
+    @FXML
     private TableView<Visitatore> tabVisitatori;
     
 
@@ -726,7 +732,7 @@ public class AdminViewController {
     @FXML
     public void viewGuadagnoMostre() {
         this.tabGuadagnoTotale.getColumns().clear();
-        TableColumn<GuadagnoMostraTotale, String> nome = new TableColumn<>("Nome Fornitore");
+        TableColumn<GuadagnoMostraTotale, String> nome = new TableColumn<>("Nome Mostra");
         nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         TableColumn<GuadagnoMostraTotale, String> valore = new TableColumn<>("valore ");
         valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
@@ -777,7 +783,46 @@ public class AdminViewController {
                 .addAll(Arrays.asList(nome, cognome, conteggioRecensioni));
         this.tabListaUtentiPiuAttivi.setItems(this.queryVisitatore.UtentiPiùAttivi());
     }
+
+    @FXML
+    public void viewTopVisitatori() {
+        this.tabTopVisitatori.getColumns().clear();
+        TableColumn<Visitatore, String> nome = new TableColumn<>("Nome");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Visitatore, String> cognome = new TableColumn<>("Cognome ");
+        cognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        TableColumn<Visitatore, String> cf = new TableColumn<>("Codice Fiscale");
+        cf.setCellValueFactory(new PropertyValueFactory<>("cf"));
+        TableColumn<Visitatore, Integer> numeroMostre = new TableColumn<>("Numero Mostre Visitate");
+        numeroMostre.setCellValueFactory(new PropertyValueFactory<>("numeroMostre"));
+        this.tabTopVisitatori.getColumns()
+                .addAll(Arrays.asList(nome, cognome, cf,numeroMostre));
+        this.tabTopVisitatori.setItems(this.queryVisitatore.viewTopVisitatori());
+    }
+
+    @FXML
+    public void viewArtistaTopValore() {
+        this.tabArtistaValore.getColumns().clear();
+        TableColumn<Artista, String> nome = new TableColumn<>("Nome Arte");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nomeArte"));
+        TableColumn<Artista, Integer> valore = new TableColumn<>("Valore ");
+        valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
+        this.tabArtistaValore.getColumns()
+                .addAll(Arrays.asList(nome, valore));
+        this.tabArtistaValore.setItems(this.queryArtista.artistaTopValore());
+    }
     
+    @FXML
+    public void viewMediaOpere() {
+        this.tabMediaOpere.getColumns().clear();
+        TableColumn<Mostra, String> nome = new TableColumn<>("Nome Mostra");
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        TableColumn<Mostra, Float> media = new TableColumn<>("media ");
+        media.setCellValueFactory(new PropertyValueFactory<>("media"));
+        this.tabMediaOpere.getColumns()
+                .addAll(Arrays.asList(nome, media));
+        this.tabMediaOpere.setItems(this.queryMostra.mediaOpere());
+    }
 
     @FXML
     public void goBack() {

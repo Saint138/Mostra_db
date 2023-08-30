@@ -63,8 +63,11 @@ public class QueryRicerca {
     }
     
     public ObservableList<Mostra> viewRicercaMostra(String nome_mostra) {
-        final String query = "Select nome, città, data_inizio, data_fine, codice_mostra, numero_opere, valore"
-                + " FROM Mostra"
+        final String query = "Select M.nome, M.città, M.data_inizio, M.data_fine, M.codice_mostra, M.numero_opere, M.valore,A.nome_arte"
+                + " FROM Mostra M"
+                + " JOIN Presenza P ON M.codice_mostra = P.codice_mostra"
+                + " JOIN Artista A On P.nome_arte = A.nome_arte "
+                + " JOIN Opera O ON P.nome_arte = O.nome_arte AND P.nome = O.nome"
                 + " WHERE nome LIKE ?;";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             stmt.setString(1, nome_mostra + "%");
@@ -74,7 +77,7 @@ public class QueryRicerca {
             while (rs.next()) {
                 list.add(new Mostra(rs.getString("nome"),rs.getString("città"), rs.getString("data_inizio"),
                         rs.getString("data_fine"), rs.getString("codice_mostra"), rs.getInt("numero_opere"),
-                        rs.getInt("valore")));
+                        rs.getInt("valore"),rs.getString("nome_arte")));
             }
             return list;
         } catch (SQLException e) {

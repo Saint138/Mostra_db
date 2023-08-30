@@ -21,7 +21,7 @@ public class QueryTurno {
 
     public void addTurno(String codice_turno, String data_turno, String ora_inizio, String ora_fine, String codice_mostra,boolean codice_guida, boolean codice_guardia,  boolean codice_magazziniere, boolean codice_receptionist,boolean codice_souvenir) throws SQLIntegrityConstraintViolationException, SQLException{
         final String query = "INSERT INTO Turno(codice_turno, data_turno, ora_inizio, ora_fine, codice_mostra, codice_contratto, codice_contratto_receptionist, codice_contratto_guardia, codice_contratto_magazziniere) "
-                            + "values (?,?,?,?,?,?,?,?,?)";
+                + " values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
           try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, codice_turno);
             stmt.setTimestamp(2, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_turno).get()));
@@ -36,7 +36,7 @@ public class QueryTurno {
             stmt.setBoolean(9, codice_magazziniere);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("Dipendente già presete");
+            System.out.println("Turno già presente");
         } catch (SQLException e) {
             e.printStackTrace();
         }

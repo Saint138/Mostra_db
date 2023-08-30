@@ -63,22 +63,47 @@ public class QueryArtista {
             throw new IllegalStateException(e);
         }
     }
-     public ObservableList<Artista> refreshArtista(){
+
+    public ObservableList<Artista> refreshArtista() {
         final String query = "SELECT nome_arte, nome, cognome, data_di_nascita, data_decesso, breve_biografia"
                 + " FROM Artista; ";
-                        
+
+        try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+            final ResultSet rs = stmt.executeQuery();
+            final ObservableList<Artista> tab = FXCollections.observableArrayList();
+            while (rs.next()) {
+                tab.add(new Artista(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("cognome"),
+                        rs.getString("data_di_nascita"), rs.getString("data_decesso"),
+                        rs.getString("breve_biografia")));
+
+            }
+            return tab;
+        } catch (final SQLException e) {
+            throw new IllegalStateException("Cannot execute the query!", e);
+        }
+
+    }
+    
+    public ObservableList<Artista> artistaTopValore(){
+        final String query = "SELECT A.nome_arte, SUM(M.valore) AS valore_totale_opere "
+                            + " FROM ARTISTA A "
+                            + " JOIN OPERA O ON A.nome_arte = O.nome_arte"
+                            + " JOIN PRESENZA P ON O.nome_arte = P.nome_arte AND O.nome = P.nome "
+                            + " JOIN MOSTRA M ON P.codice_mostra = M.codice_mostra "
+                            + " GROUP BY A.nome_arte"
+                            + " ORDER BY valore_totale_opere DESC";
+
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
                                 final ResultSet rs = stmt.executeQuery();
-                                final ObservableList<Artista> tab = FXCollections.observableArrayList();
+                    
+                                final ObservableList<Artista> list = FXCollections.observableArrayList();
                                 while (rs.next()) {
-                                    tab.add(new Artista(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("cognome"),
-                                            rs.getString("data_di_nascita"), rs.getString("data_decesso"), rs.getString("breve_biografia")));
-                                                              
+                                    list.add(new Artista(rs.getString("nome_arte"), rs.getInt("valore_totale_opere")));
                                 }
-                                return tab;
+                                return list;
                             } catch (final SQLException e) {
                                 throw new IllegalStateException("Cannot execute the query!", e);
-                            }
                             
+                            }
     }
 }

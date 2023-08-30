@@ -104,8 +104,10 @@ public class RicercaController {
              valore.setCellValueFactory(new PropertyValueFactory<>("valore"));
              TableColumn<Mostra, Integer> numero_opere = new TableColumn<>("Numero Opere");
              numero_opere.setCellValueFactory(new PropertyValueFactory<>("numeroOpere"));
+             TableColumn<Mostra, Integer> nomeArte = new TableColumn<>("Nome Artista");
+             nomeArte.setCellValueFactory(new PropertyValueFactory<>("nomeArte"));
              this.viewRicercaMostra.getColumns()
-                             .addAll(Arrays.asList(nome,città, data_inizio, data_fine, codice_mostra, valore, numero_opere));
+                             .addAll(Arrays.asList(nome,città, data_inizio, data_fine, codice_mostra, valore, numero_opere,nomeArte));
              this.viewRicercaMostra.setItems(this.queryRicerca.viewRicercaMostra(this.nome_mostra.getText()));
              nome_mostra.clear();
             

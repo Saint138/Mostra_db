@@ -8,6 +8,8 @@ public class Mostra {
     private int valore;
     private String dataInizio;
     private String dataFine;
+    private String nomeArte;
+    private Float media;
 
     public Mostra(String nome, String città, int numeroOpere, String dataInizio, String codiceMostra,
             int valore, String dataFine) {
@@ -21,7 +23,7 @@ public class Mostra {
     }
 
     public Mostra(String nome,String città, String dataInizio, String dataFine, String codiceMostra, int valore,
-            int numeroOpere) {
+            int numeroOpere,String nome_arte) {
         this.città = città;
         this.nome = nome;
         this.numeroOpere = numeroOpere;
@@ -29,6 +31,7 @@ public class Mostra {
         this.valore = valore;
         this.dataInizio = dataInizio;
         this.dataFine = dataFine;
+        this.nomeArte = nome_arte;
     }
 
     public Mostra(String nome, int valore) {
@@ -36,8 +39,16 @@ public class Mostra {
         this.nome = nome;
 
     }
-    
 
+    
+    public Mostra(String nome, Float media) {
+        this.nome = nome;
+        this.media = media;
+    }
+    
+    public String getNomeArte() {
+        return nomeArte;
+    }
     public String getNome(){
         return nome;
     }
@@ -60,7 +71,9 @@ public class Mostra {
     public Integer getValore(){
         return valore;
     }
-
     
-
+    
+    public Float getMedia() {
+        return media;
+    }
 }

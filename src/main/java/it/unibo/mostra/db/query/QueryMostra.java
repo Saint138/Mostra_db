@@ -186,5 +186,28 @@ public class QueryMostra {
         }
 
     }
+    public ObservableList<Mostra> mediaOpere(){
+        final String query = "SELECT M.nome, AVG(numero_opere) AS numero_medio"
+                            + " FROM MOSTRA M "
+                            + " LEFT JOIN ("
+                            + "  SELECT codice_mostra, COUNT(*) AS numero_opere "
+                            + " FROM PRESENZA"
+                            + " GROUP BY codice_mostra"
+                            + " ) AS OperePerMostra ON M.codice_mostra = OperePerMostra.codice_mostra"
+                            + " GROUP BY M.nome;";
+
+                            try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
+                                final ResultSet rs = stmt.executeQuery();
+                    
+                                final ObservableList<Mostra> list = FXCollections.observableArrayList();
+                                while (rs.next()) {
+                                    list.add(new Mostra(rs.getString("nome"), rs.getFloat("numero_medio")));
+                                }
+                                return list;
+                            } catch (final SQLException e) {
+                                throw new IllegalStateException("Cannot execute the query!", e);
+                            
+                            }
+    }
 
 }
