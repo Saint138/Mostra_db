@@ -301,6 +301,7 @@ public class AdminViewController {
             nome_arte_artista.clear();
             nome_artista.clear();
             cognome_artista.clear();
+            data_di_nascita.clear();
             data_decesso.clear();
             breve_biografia.clear();
             this.refreshArtisti();
