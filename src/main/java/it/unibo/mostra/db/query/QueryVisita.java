@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import it.unibo.mostra.db.entity.Visita;
+import it.unibo.mostra.utils.DateAdapter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -18,14 +19,14 @@ public class QueryVisita {
         this.connection = connection;
     }
 
-    public void addVisita(String codice_visita, String ora_inizio, String data_visita,
+    public void addVisita(String codice_visita, float ora_inizio, String data_visita,
     String codice_mostra, String codice_contratto) throws SQLException, SQLIntegrityConstraintViolationException {
         final String query = "INSERT INTO Visita(codice_visita,ora_inizio,data_visita,numero_partecipanti,codice_mostra,codice_contratto)"
                             + "VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, codice_visita);
-            stmt.setString(2, ora_inizio);
-            stmt.setString(3, data_visita);
+            stmt.setFloat(2, ora_inizio);
+            stmt.setTimestamp(3, DateAdapter.dateToSqlDate(DateAdapter.buildDate(data_visita).get()));
             stmt.setInt(4, 0);
             stmt.setString(5, codice_mostra);
             stmt.setString(6, codice_contratto);

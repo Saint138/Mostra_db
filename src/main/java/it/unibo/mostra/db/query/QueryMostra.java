@@ -136,7 +136,8 @@ public class QueryMostra {
     }
    
     public ObservableList<RefreshMostra> refreshMostra(){
-        final String query = "SELECT nome,codice_mostra,città,data_inizio,data_fine "
+
+        final String query = "SELECT nome,codice_mostra,città,data_inizio,data_fine, valore "
                             + " FROM Mostra ";
 
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {

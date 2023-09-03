@@ -530,7 +530,7 @@ public class AdminViewController {
     @FXML
     public void addVisita() { 
         try{
-            queryVisita.addVisita(codice_visita.getText(),ora_inizio_visita.getText(), data_visita.getText(),
+            queryVisita.addVisita(codice_visita.getText(),Float.parseFloat(ora_inizio_visita.getText()), data_visita.getText(),
                                     codice_mostra_visita.getText(),codice_contratto_guida.getText());
             codice_visita.clear();
             ora_inizio_visita.clear();

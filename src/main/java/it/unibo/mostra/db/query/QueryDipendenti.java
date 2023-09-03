@@ -22,7 +22,7 @@ public class QueryDipendenti {
     }
 
     public void removeDipendenti(String matricola)  throws SQLException{
-        final String query2 = "DELETE FROM Guida WHERE matricola=?";
+        final String query2 = "DELETE FROM Membro_guida WHERE matricola=?";
         try (PreparedStatement statement = connection.prepareStatement(query2)) {
             statement.setString(1, matricola);
             statement.executeUpdate();
@@ -139,7 +139,7 @@ public class QueryDipendenti {
     }
 
     private void addGuida(String matricola ,Integer stipendio, String codContratto) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Guida (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
+        final String query = "INSERT INTO Membro_guida (STIPENDIO, CODICE_CONTRATTO, MATRICOLA) "
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, stipendio);

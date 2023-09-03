@@ -25,8 +25,8 @@ public class QueryBiglietteria {
      public void initialize() {
         refreshBiglietteria();
      }
-    public void newBiglietto(Float prezzo, String CF, String codice_visita) {
-
+    public void newBiglietto(String CF, String codice_visita) {
+        float prezzo = (float) 15.5;
         Random rand = new Random();
         String cod = "B" + Integer.toString(rand.nextInt(100000000, 999999999));
         Date data = new Date (System.currentTimeMillis ());
@@ -36,7 +36,7 @@ public class QueryBiglietteria {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1,  CF);
             statement.setString(2, cod);
-            statement.setFloat(3, prezzo);
+            statement.setFloat(3, prezzo );
             statement.setTimestamp(4, DateAdapter.dateToSqlDate(data));
             statement.setString(5, codice_visita);
             statement.executeUpdate();
@@ -49,8 +49,8 @@ public class QueryBiglietteria {
     }
 
     public ObservableList<RefreshBiglietteria> refreshBiglietteria() {
-        final String query = "SELECT M.nome, V.codice_visita, M.data_inizio, M.data_fine, B.prezzo "
-                + " FROM Mostra M, Visita V, Biglietto B"
+        final String query = "SELECT M.nome, V.codice_visita, M.data_inizio, M.data_fine"
+                + " FROM Mostra M, Visita V"
                 + " WHERE M.codice_mostra = V.codice_mostra;";
 
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
@@ -60,7 +60,7 @@ public class QueryBiglietteria {
             while (rs.next()) {
                 tab.add(new RefreshBiglietteria(rs.getString("nome"), rs.getString("codice_visita"),
                         rs.getString("data_inizio"),
-                        rs.getString("data_fine"), rs.getFloat("prezzo")));
+                        rs.getString("data_fine")));
 
             }
             return tab;

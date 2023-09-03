@@ -52,7 +52,7 @@ public class QueryPresenza {
     public ObservableList<Presenza> refreshPresenze() {
         final String query = "SELECT P.nome_arte, P.nome, P.codice_mostra, M.nome AS nome_mostra"
                 + " FROM Presenza AS P, MOSTRA AS M"
-                + " WHERE P.codice_mostra = M.codice_mostra;";
+                + " WHERE P.codice_mostra = M.codice_mostra";
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();
 
@@ -78,8 +78,8 @@ public class QueryPresenza {
                 + " GROUP BY P.codice_mostra"
                 + " ) AS Subquery"
                 + " ON M.codice_mostra = Subquery.codice_mostra"
-                + "SET M.valore = Subquery.total_value"
-                + " WHERE M.codice_mostra = ?;";
+                + " SET M.valore = Subquery.total_value"
+                + " WHERE M.codice_mostra =?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, codiceMostra);
             statement.executeUpdate();
@@ -97,7 +97,7 @@ public class QueryPresenza {
                 + " ) AS Subquery"
                 + " ON M.codice_mostra = Subquery.codice_mostra"
                 + " SET M.numero_opere = Subquery.total_opere"
-                + " WHERE M.codice_mostra = ?;";
+                + " WHERE M.codice_mostra = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, codiceMostra);
             statement.executeUpdate();

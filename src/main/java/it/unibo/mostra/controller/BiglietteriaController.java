@@ -8,6 +8,7 @@ import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class BiglietteriaController {
@@ -15,6 +16,8 @@ public class BiglietteriaController {
     private ViewImpl view;
     private QueryBiglietteria queryBiglietteria;
     @FXML private TableView<RefreshBiglietteria> refreshBiglietteriaView;
+    private TextField cf;
+    private TextField cod_visita;
     
     public BiglietteriaController(ViewImpl view, QueryBiglietteria queryBiglietteria) {
         this.view = view;
@@ -32,10 +35,8 @@ public class BiglietteriaController {
         dataInizio.setCellValueFactory(new PropertyValueFactory<>("dataInizio"));
         TableColumn<RefreshBiglietteria, String> dataFine = new TableColumn<>("Data Fine");
         dataFine.setCellValueFactory(new PropertyValueFactory<>("dataFine"));
-        TableColumn<RefreshBiglietteria, Float> prezzo = new TableColumn<>("prezzo");
-        prezzo.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
         this.refreshBiglietteriaView.getColumns()
-                .addAll(Arrays.asList(nome,codiceVisita,dataInizio, dataFine, prezzo));
+                .addAll(Arrays.asList(nome,codiceVisita,dataInizio, dataFine));
         this.refreshBiglietteriaView.setItems(this.queryBiglietteria.refreshBiglietteria());
     }
 
@@ -43,7 +44,9 @@ public class BiglietteriaController {
 
     @FXML
     public void newBiglietto() {
-        /* */
+            this.queryBiglietteria.newBiglietto(cf.getText(),cod_visita.getText());
+            cf.clear();
+            cod_visita.clear();
     }
 
     @FXML

@@ -104,7 +104,9 @@ public class QueryRicerca {
         }
     }
 
+
     public ObservableList<Mostra> classificaValoreMostra() {
+        
         final String query = " SELECT nome, valore"
                 + " FROM MOSTRA"
                 + " ORDER BY valore DESC;";
