@@ -18,13 +18,13 @@ public class QueryPresenza {
         this.connection = connection;
     }
 
-    public void addPresenza(String artista, String opera, String mostra) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Presenza(codice_mostra,nome,nome_arte)"
+    public void addPresenza(String mostra,String artista, String opera ) throws SQLException, SQLIntegrityConstraintViolationException {
+        final String query = "INSERT INTO Presenza(codice_mostra,nome_arte,nome)"
                             + "VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, mostra);
-            stmt.setString(2, opera);
-            stmt.setString(3, artista);
+            stmt.setString(3, opera);
+            stmt.setString(2, artista);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("presenza già inserita");
@@ -36,12 +36,12 @@ public class QueryPresenza {
 
     }
 
-    public void removePresenza(String nomeArtista, String nomeOpera, String codiceMostra) throws SQLException {
-        final String query = "DELETE FROM Presenza WHERE nome_arte=? AND codice_mostra=? AND nome=? ";
+    public void removePresenza(String codiceMostra,String nomeArtista, String nomeOpera) throws SQLException {
+        final String query = "DELETE FROM Presenza WHERE codice_mostra=? AND nome_arte = ? AND nome=? ";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, nomeArtista);
-            statement.setString(2, nomeOpera);
-            statement.setString(3, codiceMostra);
+            statement.setString(1, codiceMostra);
+            statement.setString(2, nomeArtista);
+            statement.setString(3, nomeOpera);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e);

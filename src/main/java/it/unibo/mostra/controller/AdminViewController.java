@@ -630,7 +630,7 @@ public class AdminViewController {
     @FXML
     public void addPresenza() { 
         try{
-            queryPresenza.addPresenza(nome_opera_presenza.getText(),nome_arte_presenza.getText(), codice_mostra_presenza.getText());
+            queryPresenza.addPresenza(codice_mostra_presenza.getText(),nome_arte_presenza.getText(),nome_opera_presenza.getText() );
             codice_mostra_presenza.clear();
             nome_arte_presenza.clear();
             nome_opera_presenza.clear();

@@ -23,6 +23,10 @@ public class BiglietteriaController {
         this.view = view;
         this.queryBiglietteria = queryBiglietteria;
     }
+    @FXML
+    public void initialize() {
+        refreshBiglietteria();
+    }
 
     @FXML
     public void refreshBiglietteria() {

@@ -1,7 +1,5 @@
 package it.unibo.mostra.db.entity;
 
-import javafx.scene.chart.PieChart.Data;
-
 public class Visita {
     private String codice_visita;
     private float ora_inizio;
