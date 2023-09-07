@@ -39,7 +39,7 @@ public class AdminViewController {
     private TextField matricola, nome_dipendente, cognome_dipendente, email_dipendente,stipendio;
     //turno
     @FXML
-    private TextField codice_turno, data_turno, ora_inizio, ora_fine, codice_mostra_turno;
+    private TextField codice_contratto,codice_turno, data_turno, ora_inizio, ora_fine, codice_mostra_turno;
     //vendita
     @FXML
     private TextField codice_vendita_vendita, data_vendita, importo, codice_fornitore_vendita;
@@ -427,7 +427,9 @@ public class AdminViewController {
             
         try{
             queryTurno.addTurno(codice_turno.getText(),data_turno.getText(), ora_inizio.getText(),
-                                    ora_fine.getText(),codice_mostra_turno.getText(),guida_turno.isSelected(),guardia_turno.isSelected(),magazziniere_turno.isSelected(),receptionist_turno.isSelected(),souvenir_turno.isSelected() ); 
+                    ora_fine.getText(), codice_mostra_turno.getText(), guida_turno.isSelected(),
+                    guardia_turno.isSelected(), magazziniere_turno.isSelected(), receptionist_turno.isSelected(),
+                    souvenir_turno.isSelected(), codice_contratto.getText());
             codice_turno.clear();
             data_turno.clear();
             ora_inizio.clear();

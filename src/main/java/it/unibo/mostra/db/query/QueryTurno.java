@@ -19,7 +19,7 @@ public class QueryTurno {
         this.connection = connection;
     }
 
-    public void addTurno(String codice_turno, String data_turno, String ora_inizio, String ora_fine, String codice_mostra,boolean codice_guida, boolean codice_guardia,  boolean codice_magazziniere, boolean codice_receptionist,boolean codice_souvenir) throws SQLIntegrityConstraintViolationException, SQLException{
+    public void addTurno(String codice_turno, String data_turno, String ora_inizio, String ora_fine, String codice_mostra,boolean codice_guida, boolean codice_guardia,  boolean codice_magazziniere, boolean codice_receptionist,boolean codice_souvenir,String codice_contratto) throws SQLIntegrityConstraintViolationException, SQLException{
         final String query = "INSERT INTO Turno(codice_turno, data_turno, ora_inizio, ora_fine, codice_mostra, codice_contratto, codice_contratto_receptionist, codice_contratto_guardia, codice_contratto_magazziniere) "
                 + " values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
           try (PreparedStatement stmt = connection.prepareStatement(query)) {
