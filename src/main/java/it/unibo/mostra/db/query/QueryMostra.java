@@ -90,10 +90,10 @@ public class QueryMostra {
 
 
     public ObservableList<GuadagnoMostraTotale> GuadagnoMostra(){
-        final String query = " SELECT M.nome AS nome_mostra, SUM(B.prezzo) AS valore"
+        final String query = " SELECT M.nome AS nome_mostra, SUM(V.costo_visita) AS guadagno_totale"
                             + " FROM MOSTRA M"
-                            + " JOIN VISITA V ON M.codice_mostra = V.codice_mostra"
-                            + " JOIN BIGLIETTO B ON V.codice_visita = B.codice_visita"
+                            + " INNER JOIN VISITA V ON M.codice_mostra = V.codice_mostra"
+                            + " INNER JOIN BIGLIETTO B ON V.codice_visita = B.codice_visita"
                             + " GROUP BY M.nome"
                             + " ORDER BY valore DESC;";
         
@@ -136,8 +136,7 @@ public class QueryMostra {
     }
    
     public ObservableList<RefreshMostra> refreshMostra(){
-
-        final String query = "SELECT nome,codice_mostra,città,data_inizio,data_fine, valore "
+        final String query = "SELECT nome,codice_mostra,città,data_inizio,data_fine "
                             + " FROM Mostra ";
 
                             try (PreparedStatement stmt = this.connection.prepareStatement(query)) {

@@ -17,7 +17,7 @@ public class ConnectionManager {
     public ConnectionManager(String username, String password) {
         this.username = username;
         this.password = password;
-        this.dbname = "Mostradb";
+        this.dbname = "ASSOCIAZIONE_CULTURALE";
     }
 
     /**

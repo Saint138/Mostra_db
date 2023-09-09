@@ -23,7 +23,7 @@
       </Button>
       <PasswordField fx:id="password" layoutX="317.0" layoutY="293.0" prefHeight="36.0" prefWidth="202.0" promptText="MySqlPassword" />
       <TextField fx:id="username" layoutX="317.0" layoutY="227.0" prefHeight="36.0" prefWidth="202.0" promptText="Username" />
-      <Label layoutX="195.0" layoutY="52.0" prefHeight="95.0" prefWidth="423.0" text="MOSTRADB" textFill="#f5f5dc">
+      <Label layoutX="195.0" layoutY="52.0" prefHeight="95.0" prefWidth="423.0" text="Associazione Culturale" textFill="#f5f5dc">
          <font>
             <Font name="Calisto MT" size="71.0" />
          </font>

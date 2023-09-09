@@ -5,7 +5,7 @@ import javafx.application.Application;
 /**
  * Main class.
  */
-public final class MostraDb {
+public final class AssociazioneCulturale {
 
     /**
      * Main application method.

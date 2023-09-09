@@ -28,5 +28,6 @@ public class RefreshBiglietteria {
     public String getDataFine() {
         return dataFine;
     }
+
     
 }

@@ -10,9 +10,10 @@ public class Dipendente {
     private boolean guida;
     private boolean magazzieniere;
     private boolean receptionist;
+    private String codiceTurno;
 
     public Dipendente(String matricola, String nome, String cognome, String email, boolean guardia, boolean guida,
-            boolean commesso_souvenir, boolean receptionist, boolean magazzieniere) {
+            boolean commesso_souvenir, boolean receptionist, boolean magazzieniere,String codice_turno) {
         this.cognome = cognome;
         this.commesso_souvenir = commesso_souvenir;
         this.email = email;
@@ -22,6 +23,7 @@ public class Dipendente {
         this.nome = nome;
         this.receptionist = receptionist;
         this.matricola = matricola;
+        this.codiceTurno = codice_turno;
     }
     
     public Dipendente ( String matricola, String nome, String cognome, String email){
@@ -64,6 +66,9 @@ public class Dipendente {
 
     public boolean isReceptionist() {
         return receptionist;
+    }
+    public String getCodiceTurno() {
+        return codiceTurno;
     }
     
 }

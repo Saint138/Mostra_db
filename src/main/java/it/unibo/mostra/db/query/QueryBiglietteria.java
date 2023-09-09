@@ -25,18 +25,17 @@ public class QueryBiglietteria {
      public void initialize() {
         refreshBiglietteria();
      }
-    public void newBiglietto(String CF, String codice_visita) {
-        float prezzo = (float) 15.5;
+    public void newBiglietto( String CF, String codice_visita) {
+
         Random rand = new Random();
         String cod = "B" + Integer.toString(rand.nextInt(100000000, 999999999));
         Date data = new Date (System.currentTimeMillis ());
 
-        final String query = "INSERT INTO Biglietto (CF, codice_biglietto, prezzo, data_biglietto, codice_visita) "
-                + " VALUES (?, ?, ?, ?, ?, ?, ?);";
+        final String query = "INSERT INTO Biglietto (CF, codice_biglietto, data_biglietto, codice_visita) "
+                + " VALUES (?, ?, ?, ?, ?, ?);";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1,  CF);
             statement.setString(2, cod);
-            statement.setFloat(3, prezzo );
             statement.setTimestamp(4, DateAdapter.dateToSqlDate(data));
             statement.setString(5, codice_visita);
             statement.executeUpdate();
@@ -49,9 +48,9 @@ public class QueryBiglietteria {
     }
 
     public ObservableList<RefreshBiglietteria> refreshBiglietteria() {
-        final String query = "SELECT M.nome, V.codice_visita, M.data_inizio, M.data_fine"
+        final String query = "SELECT M.nome, V.codice_visita, M.data_inizio, M.data_fine,V.costo_visita "
                 + " FROM Mostra M, Visita V"
-                + " WHERE M.codice_mostra = V.codice_mostra;";
+                + " WHERE M.codice_mostra = V.codice_mostra";
 
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
             final ResultSet rs = stmt.executeQuery();

@@ -21,7 +21,7 @@ public class QueryArtista {
 
     public void addArtista(String nome, String nome_arte, String cognome, String data_di_nascita, String data_decesso,
     String breve_biografia) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Artista (nome_arte, nome, cognome, data_di_nascita, data_decesso, breve_biografia)"
+        final String query = "INSERT INTO Artista (nome_arte, nome, cognome, data_nascita, data_decesso, breve_biografia)"
                 + " VALUES (?, ?, ?, ?, ?, ?);";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nome_arte);
@@ -65,7 +65,7 @@ public class QueryArtista {
     }
 
     public ObservableList<Artista> refreshArtista() {
-        final String query = "SELECT nome_arte, nome, cognome, data_di_nascita, data_decesso, breve_biografia"
+        final String query = "SELECT nome_arte, nome, cognome, data_nascita, data_decesso, breve_biografia"
                 + " FROM Artista; ";
 
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
@@ -73,7 +73,7 @@ public class QueryArtista {
             final ObservableList<Artista> tab = FXCollections.observableArrayList();
             while (rs.next()) {
                 tab.add(new Artista(rs.getString("nome_arte"), rs.getString("nome"), rs.getString("cognome"),
-                        rs.getString("data_di_nascita"), rs.getString("data_decesso"),
+                        rs.getString("data_nascita"), rs.getString("data_decesso"),
                         rs.getString("breve_biografia")));
 
             }

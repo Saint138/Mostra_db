@@ -8,7 +8,6 @@ import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class BiglietteriaController {
@@ -16,16 +15,10 @@ public class BiglietteriaController {
     private ViewImpl view;
     private QueryBiglietteria queryBiglietteria;
     @FXML private TableView<RefreshBiglietteria> refreshBiglietteriaView;
-    private TextField cf;
-    private TextField cod_visita;
     
     public BiglietteriaController(ViewImpl view, QueryBiglietteria queryBiglietteria) {
         this.view = view;
         this.queryBiglietteria = queryBiglietteria;
-    }
-    @FXML
-    public void initialize() {
-        refreshBiglietteria();
     }
 
     @FXML
@@ -48,9 +41,7 @@ public class BiglietteriaController {
 
     @FXML
     public void newBiglietto() {
-            this.queryBiglietteria.newBiglietto(cf.getText(),cod_visita.getText());
-            cf.clear();
-            cod_visita.clear();
+        /* */
     }
 
     @FXML

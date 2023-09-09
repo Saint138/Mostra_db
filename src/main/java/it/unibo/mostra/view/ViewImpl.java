@@ -41,7 +41,7 @@ public class ViewImpl implements View {
      */
     public ViewImpl(final Stage primaryStage) {
         this.primaryStage = primaryStage;
-        primaryStage.setTitle("MostraDb");
+        primaryStage.setTitle("Associazione Culturale");
         primaryStage.getIcons().add(new Image(ClassLoader.getSystemResource("images/logo.jpg").toExternalForm()));
         primaryStage.centerOnScreen();
         primaryStage.setResizable(false);

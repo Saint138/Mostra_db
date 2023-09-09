@@ -39,7 +39,7 @@ public class AdminViewController {
     private TextField matricola, nome_dipendente, cognome_dipendente, email_dipendente,stipendio;
     //turno
     @FXML
-    private TextField codice_contratto,codice_turno, data_turno, ora_inizio, ora_fine, codice_mostra_turno;
+    private TextField codice_turno, ora_inizio, ora_fine, codice_mostra_turno;
     //vendita
     @FXML
     private TextField codice_vendita_vendita, data_vendita, importo, codice_fornitore_vendita;
@@ -301,7 +301,6 @@ public class AdminViewController {
             nome_arte_artista.clear();
             nome_artista.clear();
             cognome_artista.clear();
-            data_di_nascita.clear();
             data_decesso.clear();
             breve_biografia.clear();
             this.refreshArtisti();
@@ -426,20 +425,12 @@ public class AdminViewController {
     public void addTurno() {
             
         try{
-            queryTurno.addTurno(codice_turno.getText(),data_turno.getText(), ora_inizio.getText(),
-                    ora_fine.getText(), codice_mostra_turno.getText(), guida_turno.isSelected(),
-                    guardia_turno.isSelected(), magazziniere_turno.isSelected(), receptionist_turno.isSelected(),
-                    souvenir_turno.isSelected(), codice_contratto.getText());
+            queryTurno.addTurno(codice_turno.getText(), ora_inizio.getText(),
+                                    ora_fine.getText(),codice_mostra_turno.getText()); 
             codice_turno.clear();
-            data_turno.clear();
             ora_inizio.clear();
             ora_fine.clear();
             codice_mostra_turno.clear();
-             guida_turno.setSelected(false);
-            guardia_turno.setSelected(false);
-            magazziniere_turno.setSelected(false);
-            receptionist_turno.setSelected(false);
-            souvenir_turno.setSelected(false);
             this.refreshTurni();
         } catch (SQLIntegrityConstraintViolationException e) {
             codice_turno.clear();
@@ -459,7 +450,6 @@ public class AdminViewController {
         try {
             this.queryTurno.removeTurno(codice_turno.getText());
             codice_turno.clear();
-            data_turno.clear();
             ora_inizio.clear();
             ora_fine.clear();
             codice_mostra_turno.clear();
@@ -477,8 +467,6 @@ public class AdminViewController {
         this.tabTurni.getColumns().clear();
         TableColumn<Turno, String> codiceTurno = new TableColumn<>("Codice Turno");
         codiceTurno.setCellValueFactory(new PropertyValueFactory<>("codiceTurno"));
-        TableColumn<Turno, String> dataTurno = new TableColumn<>("Data Turno");
-        dataTurno.setCellValueFactory(new PropertyValueFactory<>("dataTurno"));
         TableColumn<Turno, String> oraInizio = new TableColumn<>("Ora Inizio");
         oraInizio.setCellValueFactory(new PropertyValueFactory<>("oraInizio"));
         TableColumn<Turno, String> oraFine = new TableColumn<>("Ora fine");
@@ -486,7 +474,7 @@ public class AdminViewController {
         TableColumn<Turno, String> codiceMostra = new TableColumn<>("Codice Mostra");
         codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codiceMostra"));
         this.tabTurni.getColumns()
-                .addAll(Arrays.asList(codiceTurno, dataTurno, oraInizio, oraFine, codiceMostra));
+                .addAll(Arrays.asList(codiceTurno, oraInizio, oraFine, codiceMostra));
         this.tabTurni.setItems(this.queryTurno.refreshTurni());
     }
 
@@ -532,7 +520,7 @@ public class AdminViewController {
     @FXML
     public void addVisita() { 
         try{
-            queryVisita.addVisita(codice_visita.getText(),Float.parseFloat(ora_inizio_visita.getText()), data_visita.getText(),
+            queryVisita.addVisita(codice_visita.getText(),ora_inizio_visita.getText(), data_visita.getText(),
                                     codice_mostra_visita.getText(),codice_contratto_guida.getText());
             codice_visita.clear();
             ora_inizio_visita.clear();
@@ -632,7 +620,7 @@ public class AdminViewController {
     @FXML
     public void addPresenza() { 
         try{
-            queryPresenza.addPresenza(codice_mostra_presenza.getText(),nome_arte_presenza.getText(),nome_opera_presenza.getText() );
+            queryPresenza.addPresenza(nome_opera_presenza.getText(),nome_arte_presenza.getText(), codice_mostra_presenza.getText());
             codice_mostra_presenza.clear();
             nome_arte_presenza.clear();
             nome_opera_presenza.clear();
