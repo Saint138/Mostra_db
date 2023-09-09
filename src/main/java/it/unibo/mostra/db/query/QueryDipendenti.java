@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.Random;
 
 import it.unibo.mostra.db.entity.Dipendente;
 import javafx.collections.FXCollections;

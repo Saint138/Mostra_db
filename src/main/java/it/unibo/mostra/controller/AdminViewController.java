@@ -7,7 +7,6 @@ import it.unibo.mostra.db.entity.*;
 import it.unibo.mostra.db.query.*;
 import it.unibo.mostra.view.ViewImpl;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;

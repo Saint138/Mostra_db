@@ -45,25 +45,22 @@ public class QueryTurno {
 
     }
 
-    public  ObservableList<Turno> refreshTurniDipendente(String codContratto) {
-         final String query = "SELECT T.codice_turno, T.ora_inizio, T.ora_fine, T.codice_mostra "
-                 + " FROM TURNO T "
-                 + "WHERE T.codice_contratto = ? "
-                 + "   OR T.codice_contratto_receptionist = ? "
-                 + "   OR T.codice_contratto_guardia = ? "
-                 + "   OR T.codice_contratto_magazziniere = ? "
-                + "ORDER BY  T.ora_inizio";
+    public  ObservableList<Turno> refreshTurniDipendente(String matricola) {
+         final String query = "SELECT T.codice_turno, T.ora_inizio, T.ora_fine, M.nome AS nome_mostra, D.nome_ruolo, R.stipendio "
+                 + "FROM DIPENDENTE AS D "
+                 + "JOIN TURNO AS T ON D.codice_turno = T.codice_turno "
+                 + "JOIN MOSTRA AS M ON T.codice_mostra = M.codice_mostra "
+                 + "JOIN RUOLO AS R ON D.nome_ruolo = R.nome_ruolo "
+                 + "WHERE D.matricola = ? ; " ;
                 try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
-                    stmt.setString(1, codContratto);
-                    stmt.setString(2, codContratto);
-                    stmt.setString(3, codContratto);
-                    stmt.setString(4, codContratto);
+                    stmt.setString(1, matricola);
+                    
                     final ResultSet rs = stmt.executeQuery();
             
                     final ObservableList<Turno> list = FXCollections.observableArrayList();
                     while (rs.next()) {
                         list.add(new Turno(rs.getString("codice_turno"),
-                                rs.getString("ora_inizio"), rs.getString("ora_fine"),rs.getString("codice_mostra")));
+                                rs.getString("ora_inizio"), rs.getString("ora_fine"),rs.getString("nome_mostra"),rs.getString("nome_ruolo"),rs.getInt("stipendio")));
                     }
                     return list;
                 } catch (final SQLException e) {

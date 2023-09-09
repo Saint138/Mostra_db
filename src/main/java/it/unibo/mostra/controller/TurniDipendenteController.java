@@ -34,15 +34,17 @@ public class TurniDipendenteController {
         this.tabTurniDipendente.getColumns().clear();
        TableColumn<Turno, String> codiceTurno = new TableColumn<>("Codice Turno");
         codiceTurno.setCellValueFactory(new PropertyValueFactory<>("codiceTurno"));
-        TableColumn<Turno, String> dataTurno = new TableColumn<>("Data Turno");  
-        dataTurno.setCellValueFactory(new PropertyValueFactory<>("dataTurno"));
         TableColumn<Turno, String> oraInizio = new TableColumn<>(" Ora Inizio");
         oraInizio.setCellValueFactory(new PropertyValueFactory<>("oraInizio"));
         TableColumn<Turno, String> oraFine = new TableColumn<>("Ora Fine");
         oraFine.setCellValueFactory(new PropertyValueFactory<>("oraFine"));
-        TableColumn<Turno, String> codiceMostra = new TableColumn<>("Codice Mostra");
-        codiceMostra.setCellValueFactory(new PropertyValueFactory<>("codiceMostra"));
-        this.tabTurniDipendente.getColumns().addAll(Arrays.asList(codiceTurno, dataTurno, oraInizio, oraFine, codiceMostra));
+        TableColumn<Turno, String> nomeMostra = new TableColumn<>("Nome Mostra");
+        nomeMostra.setCellValueFactory(new PropertyValueFactory<>("nomeMostra"));
+        TableColumn<Turno, String> nomeRuolo = new TableColumn<>("Ruolo");
+        nomeRuolo.setCellValueFactory(new PropertyValueFactory<>("ruolo"));
+         TableColumn<Turno, Integer> stipendio = new TableColumn<>("Stipendio");
+        stipendio.setCellValueFactory(new PropertyValueFactory<>("stipendio"));
+        this.tabTurniDipendente.getColumns().addAll(Arrays.asList(codiceTurno, oraInizio, oraFine, nomeMostra,nomeRuolo,stipendio));
         this.tabTurniDipendente.setItems(this.queryTurno.refreshTurniDipendente(this.codice_contratto.getText()));
     }
 
