@@ -23,9 +23,9 @@ public class QueryTurno {
                 + " values (?, ?, ?, ?);";
           try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, codice_turno);
-            stmt.setString(3, ora_inizio);
-            stmt.setString(4, ora_fine);
-            stmt.setString(5, codice_mostra);
+            stmt.setString(2, ora_inizio);
+            stmt.setString(3, ora_fine);
+            stmt.setString(4, codice_mostra);
             stmt.executeUpdate();
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("Turno già presente");

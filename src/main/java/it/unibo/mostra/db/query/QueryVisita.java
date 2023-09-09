@@ -20,7 +20,7 @@ public class QueryVisita {
     //add visita
     public void addVisita(String codice_visita, String ora_inizio, String data_visita,
     String codice_mostra, String codice_contratto) throws SQLException, SQLIntegrityConstraintViolationException {
-        final String query = "INSERT INTO Visita(codice_visita,ora_inizio,data_visita,numero_partecipanti,codice_mostra,codice_contratto)"
+        final String query = "INSERT INTO Visita(codice_visita,ora_inizio,data_visita,numero_partecipanti,codice_mostra,matricola)"
                             + "VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, codice_visita);
