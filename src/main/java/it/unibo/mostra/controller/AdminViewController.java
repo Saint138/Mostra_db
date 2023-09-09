@@ -36,7 +36,7 @@ public class AdminViewController {
     @FXML private TextField nome_arte_artista,nome_artista,cognome_artista,data_di_nascita,data_decesso,breve_biografia;
     //dipendente
     @FXML
-    private TextField matricola, nome_dipendente, cognome_dipendente, email_dipendente,stipendio;
+    private TextField matricola, nome_dipendente, cognome_dipendente, email_dipendente,nome_ruolo,codice_turno_dipendente;
     //turno
     @FXML
     private TextField codice_turno, ora_inizio, ora_fine, codice_mostra_turno;
@@ -54,28 +54,6 @@ public class AdminViewController {
     // visitatore
     @FXML
     private TextField cf_visitatore;
-
-
-    @FXML
-    private CheckBox guida;
-    @FXML
-    private CheckBox receptionist;
-    @FXML
-    private CheckBox guardia;
-    @FXML
-    private CheckBox souvenir;
-    @FXML
-    private CheckBox magazziniere;
-    @FXML
-    private CheckBox guida_turno;
-    @FXML
-    private CheckBox receptionist_turno;
-    @FXML
-    private CheckBox guardia_turno;
-    @FXML
-    private CheckBox souvenir_turno;
-    @FXML
-    private CheckBox magazziniere_turno;
   
    
     @FXML
@@ -360,17 +338,11 @@ public class AdminViewController {
     public void addDipendente() { 
         try{
             queryDipendenti.addDipendente(matricola.getText(),nome_dipendente.getText(), cognome_dipendente.getText(),
-                                    email_dipendente.getText(),guida.isSelected(),guardia.isSelected(),magazziniere.isSelected(),receptionist.isSelected(),souvenir.isSelected(),Integer.parseInt(stipendio.getText()));
+                                    email_dipendente.getText(),nome_ruolo.getText(),codice_turno_dipendente.getText());
             matricola.clear();
             nome_dipendente.clear();
             cognome_dipendente.clear();
             email_dipendente.clear();
-            guida.setSelected(false);
-            guardia.setSelected(false);
-            magazziniere.setSelected(false);
-            receptionist.setSelected(false);
-            souvenir.setSelected(false);
-            stipendio.clear();
             this.refreshDipendenti();
         } catch (SQLIntegrityConstraintViolationException e) {
             matricola.clear();
