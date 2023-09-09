@@ -95,7 +95,7 @@ public class QueryMostra {
                             + " INNER JOIN VISITA V ON M.codice_mostra = V.codice_mostra"
                             + " INNER JOIN BIGLIETTO B ON V.codice_visita = B.codice_visita"
                             + " GROUP BY M.nome"
-                            + " ORDER BY valore DESC;";
+                            + " ORDER BY guadagno_totale DESC;";
         
     
         try (PreparedStatement stmt = this.connection.prepareStatement(query)) {
@@ -103,7 +103,7 @@ public class QueryMostra {
     
             final ObservableList<GuadagnoMostraTotale> list = FXCollections.observableArrayList();
             while(rs.next()){
-                list.add(new GuadagnoMostraTotale(rs.getString("nome_mostra"),rs.getString("valore")));
+                list.add(new GuadagnoMostraTotale(rs.getString("nome_mostra"),rs.getString("guadagno_totale")));
             }
             return list;
         } catch (SQLException e) {
