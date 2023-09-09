@@ -366,7 +366,6 @@ public class AdminViewController {
             nome_dipendente.clear();
             cognome_dipendente.clear();
             email_dipendente.clear();
-            stipendio.clear();
             this.refreshDipendenti();
         } catch (SQLException e) {
             matricola.clear();
