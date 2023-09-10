@@ -16,14 +16,19 @@
             <Image url="@../images/immagine iniziale.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="317.0" layoutY="370.0" mnemonicParsing="false" onAction="#enterMainPage"  prefHeight="70.0" prefWidth="202.0" text="Accedi">
+      <Button layoutX="299.0" layoutY="368.0" mnemonicParsing="false" onAction="#enterMainPage"  prefHeight="70.0" prefWidth="202.0" text="Accedi">
          <font>
             <Font name="Baskerville Old Face" size="28.0" />
          </font>
       </Button>
-      <PasswordField fx:id="password" layoutX="317.0" layoutY="293.0" prefHeight="36.0" prefWidth="202.0" promptText="MySqlPassword" />
-      <TextField fx:id="username" layoutX="317.0" layoutY="227.0" prefHeight="36.0" prefWidth="202.0" promptText="Username" />
-      <Label layoutX="195.0" layoutY="52.0" prefHeight="95.0" prefWidth="423.0" text="Associazione Culturale" textFill="#f5f5dc">
+      <PasswordField fx:id="password" layoutX="299.0" layoutY="292.0" prefHeight="36.0" prefWidth="202.0" promptText="MySqlPassword" />
+      <TextField fx:id="username" layoutX="299.0" layoutY="227.0" prefHeight="36.0" prefWidth="202.0" promptText="Username" />
+        <Label layoutX="188.0" layoutY="22.0" prefHeight="95.0" prefWidth="423.0" text="Associazione" textFill="#f5f5dc">
+         <font>
+            <Font name="Calisto MT" size="71.0" />
+         </font>
+      </Label>
+      <Label layoutX="257.0" layoutY="110.0" prefHeight="95.0" prefWidth="285.0" text="Culturale" textFill="#f5f5dc">
          <font>
             <Font name="Calisto MT" size="71.0" />
          </font>
